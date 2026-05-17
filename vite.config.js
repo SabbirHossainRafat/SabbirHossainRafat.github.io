@@ -1,35 +1,32 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
 
 export default defineConfig({
   root: '.',
-  base: './',
-  resolve: {
-    alias: {
-      '@src': resolve(__dirname, 'src'),
-      '@dist': resolve(__dirname, 'dist')
-    }
-  },
+  publicDir: 'public',
   build: {
     outDir: 'dist',
-    assetsDir: '.',
-    minify: 'esbuild',
+    assetsDir: 'assets',
+    sourcemap: false,
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html')
-      },
-      output: {
-        entryFileNames: 'script.js',
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return 'style.css';
-          }
-          return '[name].[ext]';
-        }
-      }
-    }
+      input: './index.html',
+    },
   },
   server: {
-    port: 3000
-  }
+    port: 3000,
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        charset: false,
+      },
+    },
+  },
 });
