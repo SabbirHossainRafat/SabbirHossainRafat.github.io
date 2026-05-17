@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabbir Hossain Rafat | Portfolio Architecture</title>
+    
+    <meta name="description" content="Sabbir Hossain Rafat - AI Product Engineer and Full-Stack Architect. Specializing in secure structural cognitive infrastructures and high-throughput systems.">
+    <meta name="keywords" content="AI Engineer, Full-Stack Developer, Cybersecurity, React, Node.js, Python, TypeScript, Security Architect">
+    <meta name="author" content="Sabbir Hossain Rafat">
+    
+    <meta property="og:title" content="Sabbir Hossain Rafat | Senior AI Product Engineer">
+    <meta property="og:description" content="Production-ready cognitive architectures and secure full-stack software nodes.">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sabbir Hossain Rafat | Senior AI Product Engineer">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="preload" href="https://lh3.googleusercontent.com/d/1ybpH93SRDNyl1vkh4PtJL3YQ50W56726" as="image">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%2300d2ff'/><stop offset='100%25' stop-color='%237c3aed'/></linearGradient><rect width='100' height='100' rx='24' fill='url(%23g)'/><text x='50%25' y='68%25' font-family='Space Grotesk' font-size='55' font-weight='700' fill='white' text-anchor='middle'>S</text></svg>">
+    
+    <link rel="stylesheet" href="dist/style.css">
+    <script src="dist/script.js" defer></script>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="reading-progress" class="reading-progress-bar" aria-hidden="true"></div>
+    <div class="custom-cursor-dot" id="custom-cursor" aria-hidden="true"></div>
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" aria-label="Sabbir Hossain Rafat Home Link">Sabbir Hossain <span>Rafat</span></a>
+            <nav class="nav-menu" id="navMenu" aria-label="Primary Portal Menu">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">Profile</a>
+                <a href="#focus" class="nav-link">Focus</a>
+                <a href="#skills" class="nav-link">Toolkit</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link btn-nav click-scale-target ripple-target" data-analytics="nav-handshake">Connect</a>
+                
+                <button id="themeToggleBtn" class="theme-toggle-btn click-scale-target" aria-label="Switch Theme UI Layer" aria-pressed="false" data-tooltip="Switch System Theme Mode">
+                    <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation visibility Menu" aria-expanded="false" aria-controls="navMenu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Asymmetric Two-Column Left-Aligned Hero Section -->
+        <section class="hero scroll-snap-node section-reveal-node" id="hero" aria-label="Introduction Interface Hub">
+            <div class="hero-split-layout">
+                <div class="hero-left-column">
+                    <!-- Square Profile Avatar Design Placement -->
+                    <div class="profile-avatar-container">
+                        <div class="skeleton-loader" id="avatar-skeleton"></div>
+                        <img data-src="https://lh3.googleusercontent.com/d/1ybpH93SRDNyl1vkh4PtJL3YQ50W56726" 
+                             alt="Sabbir Hossain Rafat - AI Product Engineer Profile Illustration" 
+                             class="profile-avatar-img hidden"
+                             id="avatar-image"
+                             decoding="async">
+                    </div>
+                    <div class="badge-container">
+                        <span class="hero-badge">Available for Core Engineering Roles</span>
+                    </div>
+                </div>
+                <div class="hero-right-column">
+                    <h1 class="hero-title">Sabbir Hossain Rafat</h1>
+                    <p class="hero-subtitle" id="typing-subtitle" aria-live="polite"></p>
+                    <p class="hero-description">
+                        Software Engineering Architect at Daffodil International University. Restructuring production systems with zero latency vectors, highly performance-driven models, and strict cybersecurity guidelines.
+                    </p>
+                    <div class="hero-ctas">
+                        <button id="heroViewProjects" class="btn btn-primary click-scale-target ripple-target magnetic-button" data-analytics="hero-deploys">System Deploys</button>
+                        <button id="heroInitializeContact" class="btn btn-secondary click-scale-target ripple-target magnetic-button" data-analytics="hero-connect">Initialize Connection</button>
+                        <button id="resumeBtn" class="btn btn-secondary click-scale-target ripple-target magnetic-button" data-analytics="hero-resume">Download Resume</button>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroller">
+                <a href="#about" class="scroll-indicator" aria-label="Scroll downstream to profiles competency footprint">
+                    <span class="mouse-wheel"></span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Profile Sections Matrix -->
+        <section class="section container scroll-snap-node section-reveal-node" id="about" aria-label="Operational Capabilities Stack">
+            <div class="section-header animate-stagger-item">
+                <span class="section-tag">01 // Profile</span>
+                <h2 class="section-title">Engineering Intelligence</h2>
+                <p class="section-subtitle">Bridging the gap between modern full-stack engineering and deep defensive security.</p>
+            </div>
+            <div class="about-grid">
+                <div class="glass-card core-card animate-stagger-item" data-tilt>
+                    <div class="card-icon-placeholder">AI</div>
+                    <h3>AI Engineering</h3>
+                    <p>Orchestrating context-aware LLM solutions via Gemini API, OpenRouter, and dynamic multi-modal data prompts.</p>
+                </div>
+                <div class="glass-card core-card animate-stagger-item" data-tilt>
+                    <div class="card-icon-placeholder">PS</div>
+                    <h3>Performance Stack</h3>
+                    <p>Building ultrafast web architectures using Astro v6, Tailwind CSS v4, and decoupled microservice workflows.</p>
+                </div>
+                <div class="glass-card core-card animate-stagger-item" data-tilt>
+                    <div class="card-icon-placeholder">SS</div>
+                    <h3>Secure Systems</h3>
+                    <p>Certified Ethical Hacker enforcing deep logic boundaries, secure API environments, and phishing analysis.</p>
+                </div>
+                <div class="glass-card core-card animate-stagger-item" data-tilt>
+                    <div class="card-icon-placeholder">FF</div>
+                    <h3>Fintech Flows</h3>
+                    <p>Integrating global and local checkout models seamlessly via Stripe, SSLCOMMERZ, bKash, and NAGAD.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Focus System Layer -->
+        <section class="section container scroll-snap-node section-reveal-node" id="focus" aria-label="Technical Direction Focus">
+            <div class="section-header animate-stagger-item">
+                <span class="section-tag">02 // Operations Matrix</span>
+                <h2 class="section-title">Current Core Focus</h2>
+                <p class="section-subtitle">Deep technical execution paths and architectural specializations currently being scaled.</p>
+            </div>
+            <div class="focus-stack">
+                <div class="focus-strip glass-card animate-stagger-item">
+                    <div class="focus-meta">
+                        <span class="focus-index">01</span>
+                        <h4>Full-Stack AI Products</h4>
+                    </div>
+                    <p>Shipping minimalist, AI-native applications featuring atomic UI structures, secure backend processing, and clean states.</p>
+                </div>
+                <div class="focus-strip glass-card animate-stagger-item">
+                    <div class="focus-meta">
+                        <span class="focus-index">02</span>
+                        <h4>Retrieval Augmented Generation (RAG)</h4>
+                    </div>
+                    <p>Engineering robust internal pipelines optimizing precise retrieval through unified custom context management.</p>
+                </div>
+                <div class="focus-strip glass-card animate-stagger-item">
+                    <div class="focus-meta">
+                        <span class="focus-index">03</span>
+                        <h4>Cyber Security &amp; Analysis</h4>
+                    </div>
+                    <p>Deepening OSINT mechanics, executing automated domain safety workflows, and auditing cross-network DNS leaks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toolkit Ecosystem Inventory Section -->
+        <section class="section container scroll-snap-node section-reveal-node" id="skills" aria-label="Ecosystem Tech Inventory">
+            <div class="section-header animate-stagger-item">
+                <span class="section-tag">03 // Tech Stack</span>
+                <h2 class="section-title">Engineered Toolkit</h2>
+                <p class="section-subtitle">Granular view of foundational languages, runtime models, and secure transactional integrations.</p>
+            </div>
+            <div class="skills-dashboard">
+                <div class="glass-card skill-group animate-stagger-item">
+                    <div class="group-header"><span class="group-dot"></span><h3>Languages &amp; Runtimes</h3></div>
+                    <div class="skills-list">
+                        <span class="skill-badge">TypeScript</span><span class="skill-badge">JavaScript</span><span class="skill-badge">Python</span><span class="skill-badge">C</span><span class="skill-badge">Node.js</span>
+                    </div>
+                </div>
+                <div class="glass-card skill-group animate-stagger-item">
+                    <div class="group-header"><span class="group-dot"></span><h3>Frameworks &amp; UI</h3></div>
+                    <div class="skills-list">
+                        <span class="skill-badge">Astro v6</span><span class="skill-badge">Tailwind CSS v4</span><span class="skill-badge">React</span><span class="skill-badge">Next.js</span><span class="skill-badge">HTML5 / CSS3</span>
+                    </div>
+                </div>
+                <div class="glass-card skill-group animate-stagger-item">
+                    <div class="group-header"><span class="group-dot"></span><h3>Cloud &amp; Databases</h3></div>
+                    <div class="skills-list">
+                        <span class="skill-badge">Supabase</span><span class="skill-badge">PostgreSQL</span><span class="skill-badge">OpenRouter</span><span class="skill-badge">Gemini API</span>
+                    </div>
+                </div>
+                <div class="glass-card skill-group animate-stagger-item">
+                    <div class="group-header"><span class="group-dot"></span><h3>Gateways &amp; Infrastructure</h3></div>
+                    <div class="skills-list">
+                        <span class="skill-badge">Stripe</span><span class="skill-badge">bKash / NAGAD</span><span class="skill-badge">SSLCOMMERZ</span><span class="skill-badge">Docker</span><span class="skill-badge">Linux (Ubuntu)</span><span class="skill-badge">Git / GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programmatic Repositories Code Matrix with Live Filters -->
+        <section class="section container scroll-snap-node section-reveal-node" id="projects" aria-label="Case Studies Portfolio Repository">
+            <div class="section-header animate-stagger-item">
+                <span class="section-tag">04 // Deploys Architecture</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Production-grade instances of specialized architectural design and execution loops.</p>
+            </div>
+            
+            <!-- Category Filtering Nodes Matrix (Feature 2) -->
+            <div class="filter-controls-container animate-stagger-item" id="filterControls" role="tablist" aria-label="Filter portfolio projects criteria">
+                <button class="filter-btn active click-scale-target" data-filter="All" role="tab" aria-selected="true">All</button>
+                <button class="filter-btn click-scale-target" data-filter="JavaScript" role="tab" aria-selected="false">JavaScript</button>
+                <button class="filter-btn click-scale-target" data-filter="TypeScript" role="tab" aria-selected="false">TypeScript</button>
+                <button class="filter-btn click-scale-target" data-filter="React" role="tab" aria-selected="false">React</button>
+                <button class="filter-btn click-scale-target" data-filter="Python" role="tab" aria-selected="false">Python</button>
+                <button class="filter-btn click-scale-target" data-filter="Security" role="tab" aria-selected="false">Security</button>
+            </div>
+
+            <!-- JavaScript-Hydrated Projects Viewports Frame Grid -->
+            <div class="projects-grid" id="projectsGridWrapper">
+                <!-- Fallback skeleton state indicators rendered natively during structural transitions -->
+                <div class="glass-card project-placeholder-skeleton" aria-hidden="true"></div>
+                <div class="glass-card project-placeholder-skeleton" aria-hidden="true"></div>
+                <div class="glass-card project-placeholder-skeleton" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <!-- Philosophy Axiom Block -->
+        <section class="section philosophy-section scroll-snap-node section-reveal-node" id="philosophy" aria-label="Core Engineering Methodology Axiom">
+            <div class="container">
+                <div class="philosophy-wrapper glass-card animate-stagger-item">
+                    <span class="philosophy-quote-mark">“</span>
+                    <blockquote>
+                        Software craftsmanship is the conscious balance between systemic optimization and deterministic security. Develop capabilities to such a level that, beyond the Creator, dependency on external vectors drops to zero.
+                    </blockquote>
+                    <cite>— Sabbir Hossain Rafat</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Validated Async Handshake Contact Section -->
+        <section class="section container scroll-snap-node section-reveal-node" id="contact" aria-label="Asynchronous Core Handshake Tunnel">
+            <div class="section-header animate-stagger-item" style="text-align: center;">
+                <span class="section-tag">// Initializing Handshake</span>
+                <h2 class="section-title">Establish Connection</h2>
+                <p class="section-subtitle" style="margin: 0 auto 2rem;">Available for enterprise integrations, architecture verification, and core system optimizations.</p>
+            </div>
+            <div class="contact-interface glass-card animate-stagger-item">
+                <p class="interface-prompt">$ channels --list</p>
+                <div class="channels-grid">
+                    <a href="mailto:sabbirrafat369@gmail.com" class="channel-item click-scale-target ripple-target" data-analytics="social-email" data-tooltip="Email: sabbirrafat369@gmail.com • Direct transmission handshake line">
+                        <span class="channel-name">"email"</span><span class="channel-link">"sabbirrafat369@gmail.com"</span>
+                    </a>
+                    <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="channel-item click-scale-target ripple-target" data-analytics="social-github" data-tooltip="GitHub: SabbirHossainRafat • Open-source system source core storage nodes">
+                        <span class="channel-name">"github"</span><span class="channel-link">"github.com/SabbirHossainRafat"</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer" class="channel-item click-scale-target ripple-target" data-analytics="social-linkedin" data-tooltip="LinkedIn: sabbirhossainrafat • Professional profile network mapping matching blocks">
+                        <span class="channel-name">"linkedin"</span><span class="channel-link">"linkedin.com/in/sabbirhossainrafat"</span>
+                    </a>
+                    <a href="https://x.com/sabbir_rafat" target="_blank" rel="noopener noreferrer" class="channel-item click-scale-target ripple-target" data-analytics="social-twitter" data-tooltip="Twitter/X: @sabbir_rafat • Architectural research log microstream channel">
+                        <span class="channel-name">"twitter"</span><span class="channel-link">"x.com/sabbir_rafat"</span>
+                    </a>
+                </div>
+
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-group floating-group">
+                        <input type="text" id="formName" name="name" required class="floating-input" placeholder=" ">
+                        <label for="formName" class="floating-label">Your Name</label>
+                    </div>
+                    <div class="form-group floating-group">
+                        <input type="email" id="formEmail" name="email" required class="floating-input" placeholder=" ">
+                        <label for="formEmail" class="floating-label">Your Email Address</label>
+                    </div>
+                    <div class="form-group floating-group">
+                        <textarea id="formMessage" name="message" required maxlength="1000" class="floating-input" placeholder=" "></textarea>
+                        <label for="formMessage" class="floating-label">Transmission Notes</label>
+                        <div class="character-counter-frame"><span id="charCount">0</span>/1000</div>
+                    </div>
+                    <button type="submit" class="submit-btn click-scale-target ripple-target" id="submitBtn" data-analytics="form-submit">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-spinner hidden" aria-hidden="true"></span>
+                        <span class="btn-success-icon hidden" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+                    </button>
+                    <div id="formFeedback" class="form-feedback" aria-live="assertive"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-gradient-line" aria-hidden="true"></div>
+        <div class="container footer-content">
+            <p>&copy; <span id="copyrightYear"></span> Sabbir Hossain Rafat. All structural designs verified.</p>
+            <p class="footer-tech-tag">Last System Hot-Sync: <span id="lastUpdated"></span> &bull; Core Execution Loop</p>
+        </div>
+    </footer>
+
+    <!-- Programmatic System Operational Overlays Panel Link -->
+    <div id="shortcutsOverlay" class="shortcuts-legend-panel" aria-hidden="true">
+        <div class="shortcuts-content glass-card">
+            <button class="shortcuts-close-btn click-scale-target" id="closeShortcutsBtn" aria-label="Dismiss System Console Overlay">×</button>
+            <h3>Portal Command Map Shortcuts</h3>
+            <div class="shortcut-row"><kbd>t</kbd> <span>Toggle UI Theme Matrix</span></div>
+            <div class="shortcut-row"><kbd>h</kbd> <span>Display Console Mapping Legend</span></div>
+            <div class="shortcut-row"><kbd>g</kbd> <span>Return Focus Node Scroll To Top</span></div>
+            <div class="shortcut-row"><kbd>esc</kbd> <span>Dismiss Port Layers Overlays</span></div>
+        </div>
+    </div>
+
+    <button id="backToTop" class="back-to-top click-scale-target" aria-label="Scroll back to the top of documentation matrix layout" title="Back to Top" data-tooltip="Scroll To Top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+
+    <!-- Custom Universal Native Tooltips Component Layer Anchor -->
+    <div id="portal-global-tooltip" class="global-portal-tooltip-node" aria-hidden="true"></div>
+
+</body>
+</html>
