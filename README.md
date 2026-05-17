@@ -131,4 +131,4 @@ Set GitHub Pages source to `gh-pages` branch.
 
 ---
 
-© 2025 Sabbir Hossain Rafat
+© 2026 Sabbir Hossain Rafat
