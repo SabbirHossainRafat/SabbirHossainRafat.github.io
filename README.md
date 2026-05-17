@@ -1,8 +1,8 @@
-# Sabbir Hossain Rafat — Portfolio
+# Sabbir Hossain Rafat - Portfolio
 
-**AI Product Engineer & Full-Stack Architect**
+**AI Product Engineer & Full - Stack Architect**
 
-A modern, dark-mode-first single-page portfolio with glassmorphism, gradient accents, smooth animations, and a Flask contact-form backend.
+A modern, dark mode first single page portfolio with glassmorphism, gradient accents, smooth animations, and a Flask contact form backend.
 
 ---
 
@@ -104,7 +104,7 @@ npm run deploy
 
 Set GitHub Pages source to `gh-pages` branch.
 
-> Note: GitHub Pages hosts static files only — the contact form backend will not run there. Either deploy the backend separately (Render/Railway) or use a form service like Formspree.
+> Note: GitHub Pages hosts static files only - the contact form backend will not run there. Either deploy the backend separately (Render/Railway) or use a form service like Formspree.
 
 ---
 
@@ -112,7 +112,7 @@ Set GitHub Pages source to `gh-pages` branch.
 
 | What | Where |
 |------|-------|
-| Profile photo | `index.html` — `<img src="...">` in hero section |
+| Profile photo | `index.html` - `<img src="...">` in hero section |
 | Resume PDF | Replace the `alert` in `script.js` with `window.open('your-pdf-url')` |
 | Projects | Edit project cards in `index.html` |
 | Colors / fonts | CSS variables at top of `style.css` |
