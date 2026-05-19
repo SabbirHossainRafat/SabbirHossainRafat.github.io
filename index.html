@@ -3,526 +3,782 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sabbir Hossain Rafat – AI Product Engineer & Full-Stack Architect. Building intelligent systems, secure APIs, and high-performance web applications." />
+  <meta name="description" content="Sabbir Hossain Rafat — AI Product Engineer & Full-Stack Architect. Building intelligent systems, secure APIs, and high-performance web applications." />
   <meta name="keywords" content="AI Engineer, Full-Stack Developer, Cyber Security, Sabbir Hossain Rafat, Daffodil International University" />
   <meta name="author" content="Sabbir Hossain Rafat" />
-  <meta property="og:title" content="Sabbir Hossain Rafat – AI Product Engineer" />
+  <meta property="og:title" content="Sabbir Hossain Rafat — AI Product Engineer" />
   <meta property="og:description" content="AI Product Engineer & Full-Stack Architect building intelligent, secure, high-performance systems." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sabbirrafat.dev" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="@sabbir_rafat" />
-  <title>Sabbir Hossain Rafat</title>
+  <meta name="theme-color" content="#080c18" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="manifest.json" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org","@type":"Person",
+    "name":"Sabbir Hossain Rafat",
+    "jobTitle":"AI Product Engineer & Full-Stack Architect",
+    "email":"sabbirrafat369@gmail.com",
+    "url":"https://sabbirrafat.dev",
+    "sameAs":["https://github.com/SabbirHossainRafat","https://linkedin.com/in/sabbirhossainrafat","https://x.com/sabbir_rafat"],
+    "alumniOf":{"@type":"CollegeOrUniversity","name":"Daffodil International University"},
+    "knowsAbout":["Artificial Intelligence","Full-Stack Development","Cyber Security","React","TypeScript","Python","Gemini API","RAG Systems"]
+  }
+  </script>
+  <title>Sabbir Hossain Rafat · AI Product Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Reading Progress Bar -->
-  <div id="progress-bar" aria-hidden="true"></div>
 
-  <!-- Custom Cursor -->
-  <div id="cursor-dot" aria-hidden="true"></div>
+<!-- ── Reading progress ── -->
+<div id="progress-bar" aria-hidden="true"></div>
 
-  <!-- Grain Overlay -->
-  <div class="grain-overlay" aria-hidden="true"></div>
+<!-- ── Custom cursor ── -->
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Navigation -->
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="#home" class="nav-logo" aria-label="Sabbir Rafat – Home">
-        <span>Sabbir Hossain </span><span class="logo-accent">Rafat</span>
-      </a>
-      <ul class="nav-links" role="list">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">Profile</a></li>
-        <li><a href="#focus" class="nav-link">Focus</a></li>
-        <li><a href="#skills" class="nav-link">Toolkit</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Connect</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
-          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-      <ul role="list">
-        <li><a href="#home" class="mobile-link">Home</a></li>
-        <li><a href="#about" class="mobile-link">Profile</a></li>
-        <li><a href="#focus" class="mobile-link">Focus</a></li>
-        <li><a href="#skills" class="mobile-link">Toolkit</a></li>
-        <li><a href="#projects" class="mobile-link">Projects</a></li>
-        <li><a href="#contact" class="mobile-link">Connect</a></li>
-      </ul>
+<!-- ── Grain overlay ── -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ── Particle canvas ── -->
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- ── Ambient orbs ── -->
+<div class="ambient-orbs" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<header id="site-nav" role="banner">
+  <nav class="nav-container" aria-label="Primary navigation">
+    <a href="#home" class="nav-logo" aria-label="Sabbir Rafat — back to top">
+      <span class="logo-first">Sabbir</span><span class="logo-accent">Rafat</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#home"     class="nav-link">Home</a></li>
+      <li><a href="#about"    class="nav-link">Profile</a></li>
+      <li><a href="#focus"    class="nav-link">Focus</a></li>
+      <li><a href="#skills"   class="nav-link">Toolkit</a></li>
+      <li><a href="#timeline" class="nav-link">Journey</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact"  class="nav-link">Connect</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button id="terminal-btn" class="nav-icon-btn" aria-label="Open terminal" title="Open terminal (/)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      </button>
+      <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme (T)">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button id="help-btn" class="nav-icon-btn" aria-label="Keyboard shortcuts (H)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </button>
+      <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero section">
-    <div class="container hero-grid">
-      <div class="hero-image-col">
-        <div class="hero-photo-wrap">
-          <img
-            src="https://lh3.googleusercontent.com/d/1ybpH93SRDNyl1vkh4PtJL3YQ50W56726"
-            alt="Sabbir Hossain Rafat"
-            class="hero-photo"
-            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'320\' height=\'320\' viewBox=\'0 0 320 320\'%3E%3Crect width=\'320\' height=\'320\' fill=\'%231a1a2e\'/%3E%3Ccircle cx=\'160\' cy=\'130\' r=\'60\' fill=\'%23667eea\'/%3E%3Cellipse cx=\'160\' cy=\'290\' rx=\'90\' ry=\'60\' fill=\'%23667eea\'/%3E%3C/svg%3E'"
-          />
-          <div class="photo-glow" aria-hidden="true"></div>
-        </div>
-        <div class="available-badge">
-          <span class="badge-dot"></span>
-          Available for Core Engineering Roles
-        </div>
-      </div>
-      <div class="hero-content">
-        <h1 class="hero-name">Sabbir Hossain<br /><span class="gradient-text">Rafat</span></h1>
-        <div class="hero-typing-wrap">
-          <span class="typing-prefix">&gt; </span>
-          <span id="typed-text" class="typed-text"></span>
-          <span class="cursor-blink">|</span>
-        </div>
-        <p class="hero-desc">
-          AI Product Engineer crafting intelligent, secure, and blazingly fast systems. 
-          I bridge the gap between LLM capabilities and production - grade engineering.
-        </p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary ripple">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            System Deploys
-          </a>
-          <a href="#contact" class="btn btn-secondary ripple">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Initialize Connection
-          </a>
-          <a href="#" class="btn btn-ghost ripple" id="resume-btn" aria-label="Download Resume">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download Resume
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-indicator" aria-hidden="true">
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
-      </div>
-      <span>Scroll to explore</span>
-    </div>
-  </section>
+<!-- Mobile backdrop -->
+<div id="mobile-backdrop" class="mobile-backdrop" aria-hidden="true"></div>
 
-  <!-- About / Profile Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="section-title">Engineered for <span class="gradient-text">Impact</span></h2>
-        <p class="section-subtitle">I build systems that think, perform, and stay secure from LLM pipelines to production deployments.</p>
+<!-- Mobile menu -->
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+  <div class="mobile-header">
+    <span class="mobile-title">Navigation</span>
+    <button id="mobile-close" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <ul class="mobile-links" role="list">
+    <li><a href="#home"     class="mobile-link">Home</a></li>
+    <li><a href="#about"    class="mobile-link">Profile</a></li>
+    <li><a href="#focus"    class="mobile-link">Focus</a></li>
+    <li><a href="#skills"   class="mobile-link">Toolkit</a></li>
+    <li><a href="#timeline" class="mobile-link">Journey</a></li>
+    <li><a href="#projects" class="mobile-link">Projects</a></li>
+    <li><a href="#contact"  class="mobile-link">Connect</a></li>
+  </ul>
+  <div class="mobile-socials">
+    <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="https://linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://x.com/sabbir_rafat" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.213 5.567 6.03-5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="home" class="section hero">
+  <div class="container hero-grid">
+    <!-- Photo column -->
+    <div class="hero-visual">
+      <div class="photo-shell" id="avatar-3d">
+        <div class="photo-halo" aria-hidden="true"></div>
+        <div class="orbit orbit-a" aria-hidden="true"></div>
+        <div class="orbit orbit-b" aria-hidden="true"></div>
+        <div class="orbit-node node-a" aria-hidden="true"></div>
+        <div class="orbit-node node-b" aria-hidden="true"></div>
+        <img
+          src="https://lh3.googleusercontent.com/d/1ybpH93SRDNyl1vkh4PtJL3YQ50W56726"
+          alt="Sabbir Hossain Rafat"
+          class="hero-photo"
+          loading="eager"
+          onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\'%3E%3Crect width=\'300\' height=\'300\' fill=\'%230d1117\'/%3E%3Ccircle cx=\'150\' cy=\'120\' r=\'55\' fill=\'%23667eea\'/%3E%3Cellipse cx=\'150\' cy=\'270\' rx=\'85\' ry=\'55\' fill=\'%23667eea\'/%3E%3C/svg%3E'"
+        />
       </div>
-      <div class="about-cards">
-        <div class="about-card tilt-card reveal" data-delay="0">
-          <div class="about-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-          </div>
-          <h3>AI Engineering</h3>
-          <p>LLM solutions with Gemini API & OpenRouter. Building production RAG pipelines, intelligent agents, and AI - powered workflows.</p>
-          <div class="about-card-tags">
-            <span>Gemini API</span><span>OpenRouter</span><span>RAG</span>
-          </div>
+
+      <div class="avail-badge">
+        <span class="avail-dot" aria-hidden="true"></span>
+        Available for Core Engineering Roles
+      </div>
+
+      <div class="hero-stats" aria-label="Quick stats">
+        <div class="stat-item">
+          <span class="stat-num counter" data-target="20">0</span><span class="stat-plus" aria-hidden="true">+</span>
+          <span class="stat-lbl">Projects</span>
         </div>
-        <div class="about-card tilt-card reveal" data-delay="100">
-          <div class="about-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>Performance Stack</h3>
-          <p>Astro v6, Tailwind CSS v4 & microservices architecture. Obsessed with Core Web Vitals, SSR, and zero-JS-by-default philosophy.</p>
-          <div class="about-card-tags">
-            <span>Astro v6</span><span>Tailwind v4</span><span>Microservices</span>
-          </div>
+        <div class="stat-rule" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num counter" data-target="15">0</span><span class="stat-plus" aria-hidden="true">+</span>
+          <span class="stat-lbl">Tech stack</span>
         </div>
-        <div class="about-card tilt-card reveal" data-delay="200">
-          <div class="about-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Secure Systems</h3>
-          <p>Certified Ethical Hacker mindset applied to API security, threat modeling, and penetration testing. Security - first by design.</p>
-          <div class="about-card-tags">
-            <span>CEH</span><span>API Security</span><span>Pentest</span>
-          </div>
-        </div>
-        <div class="about-card tilt-card reveal" data-delay="300">
-          <div class="about-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-          </div>
-          <h3>Fintech Flows</h3>
-          <p>Stripe, bKash, NAGAD & SSLCOMMERZ integrations. Building compliant, robust payment pipelines for South Asian & global markets.</p>
-          <div class="about-card-tags">
-            <span>Stripe</span><span>bKash</span><span>SSLCOMMERZ</span>
-          </div>
+        <div class="stat-rule" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num counter" data-target="3">0</span><span class="stat-plus" aria-hidden="true">+</span>
+          <span class="stat-lbl">Yrs coding</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Focus Section -->
-  <section id="focus" class="section focus-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="section-title">Where I'm <span class="gradient-text">Deep In</span></h2>
+    <!-- Copy column -->
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Hello, World! 👋</p>
+      <h1 class="hero-name">Sabbir Hossain<br /><span class="gradient-text">Rafat</span></h1>
+
+      <div class="hero-role" aria-live="polite">
+        <span class="role-prefix" aria-hidden="true">›_ </span>
+        <span id="typed-text" class="typed-text"></span>
+        <span class="type-cursor" aria-hidden="true"></span>
       </div>
-      <div class="focus-grid">
-        <div class="focus-card reveal" data-delay="0">
-          <div class="focus-number">01</div>
-          <div class="focus-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 9H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S16.33 9 15.5 9z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 15H10v-1.5c0-.83-.67-1.5-1.5-1.5S7 12.67 7 13.5 7.67 15 8.5 15z"/></svg>
-          </div>
-          <h3>Full - Stack AI Products</h3>
-          <p>End-to-end AI-powered applications from intelligent backends to reactive frontends, deployed at scale with observability built in.</p>
-          <div class="focus-bar">
-            <div class="focus-bar-fill" style="--pct: 85%"></div>
-          </div>
-        </div>
-        <div class="focus-card reveal" data-delay="150">
-          <div class="focus-number">02</div>
-          <div class="focus-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          </div>
-          <h3>Retrieval Augmented Generation</h3>
-          <p>Building domain specific RAG systems with vector databases, semantic search, and context - aware LLM orchestration for enterprise use cases.</p>
-          <div class="focus-bar">
-            <div class="focus-bar-fill" style="--pct: 70%"></div>
-          </div>
-        </div>
-        <div class="focus-card reveal" data-delay="300">
-          <div class="focus-number">03</div>
-          <div class="focus-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3>Cyber Security & Analysis</h3>
-          <p>Active threat analysis, vulnerability research, and building security tools. Applying CEH knowledge to real-world attack surface reduction.</p>
-          <div class="focus-bar">
-            <div class="focus-bar-fill" style="--pct: 60%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="section-title">My <span class="gradient-text">Arsenal</span></h2>
-        <p class="section-subtitle">Technologies I wield daily to build production systems.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-group reveal" data-delay="0">
-          <h3 class="skill-group-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            Languages
-          </h3>
-          <div class="skill-pills">
-            <span class="skill-pill">TypeScript</span>
-            <span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">C</span>
-            <span class="skill-pill">Node.js</span>
-          </div>
-        </div>
-        <div class="skill-group reveal" data-delay="100">
-          <h3 class="skill-group-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Frameworks
-          </h3>
-          <div class="skill-pills">
-            <span class="skill-pill">Astro v6</span>
-            <span class="skill-pill">Tailwind v4</span>
-            <span class="skill-pill">React</span>
-            <span class="skill-pill">Next.js</span>
-            <span class="skill-pill">HTML5 / CSS3</span>
-          </div>
-        </div>
-        <div class="skill-group reveal" data-delay="200">
-          <h3 class="skill-group-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-            Cloud & Databases
-          </h3>
-          <div class="skill-pills">
-            <span class="skill-pill">Supabase</span>
-            <span class="skill-pill">PostgreSQL</span>
-            <span class="skill-pill">OpenRouter</span>
-            <span class="skill-pill">Gemini API</span>
-          </div>
-        </div>
-        <div class="skill-group reveal" data-delay="300">
-          <h3 class="skill-group-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-            Gateways & DevOps
-          </h3>
-          <div class="skill-pills">
-            <span class="skill-pill">Stripe</span>
-            <span class="skill-pill">bKash / NAGAD</span>
-            <span class="skill-pill">SSLCOMMERZ</span>
-            <span class="skill-pill">Docker</span>
-            <span class="skill-pill">Linux</span>
-            <span class="skill-pill">Git / GitHub</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      <p class="hero-bio">
+        <strong>AI</strong> Product Engineer crafting intelligent, <strong>secure</strong>, and blazingly
+        <strong>fast</strong> systems. I bridge the gap between LLM capabilities and production-grade engineering.
+      </p>
 
-  <!-- Projects Section -->
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="section-title">What I've <span class="gradient-text">Shipped</span></h2>
-        <p class="section-subtitle">Production systems, experiments, and tools.</p>
-      </div>
-      <div class="project-filters reveal">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="javascript">JavaScript</button>
-        <button class="filter-btn" data-filter="typescript">TypeScript</button>
-        <button class="filter-btn" data-filter="react">React</button>
-        <button class="filter-btn" data-filter="python">Python</button>
-        <button class="filter-btn" data-filter="security">Security</button>
-      </div>
-      <div class="projects-grid" id="projects-grid">
-        <div class="project-card reveal" data-tags="javascript html5" data-delay="0">
-          <div class="project-top pattern-ring">
-            <div class="pattern-el ring-el" aria-hidden="true"></div>
-          </div>
-          <div class="project-body">
-            <h3>Studia</h3>
-            <p>Academic management system for students - schedule tracking, assignment management, and GPA calculation in one unified platform.</p>
-            <div class="project-tags">
-              <span>JavaScript</span><span>HTML5</span>
-            </div>
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="project-link ripple">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card reveal" data-tags="react typescript security" data-delay="100">
-          <div class="project-top pattern-dots">
-            <div class="pattern-el dots-el" aria-hidden="true"></div>
-          </div>
-          <div class="project-body">
-            <h3>AuthPage</h3>
-            <p>3D authentication component with secure session handling, TOTP support, and animated login/register flow built with React + TypeScript.</p>
-            <div class="project-tags">
-              <span>React</span><span>TypeScript</span><span>Security</span>
-            </div>
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="project-link ripple">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card reveal" data-tags="python security" data-delay="200">
-          <div class="project-top pattern-mesh">
-            <div class="pattern-el mesh-el" aria-hidden="true"></div>
-          </div>
-          <div class="project-body">
-            <h3>Security Scanner</h3>
-            <p>Automated safety diagnostic tool - crawls web targets, identifies OWASP top - 10 vulnerabilities, and generates structured security reports.</p>
-            <div class="project-tags">
-              <span>Python</span><span>Security</span>
-            </div>
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="project-link ripple">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card reveal" data-tags="javascript" data-delay="0">
-          <div class="project-top pattern-bars">
-            <div class="pattern-el bars-el" aria-hidden="true"></div>
-          </div>
-          <div class="project-body">
-            <h3>Vanish Pen</h3>
-            <p>Auto-fading canvas drawing app — strokes gradually disappear like ink on water. Smooth pressure simulation, color pickers, and export mode.</p>
-            <div class="project-tags">
-              <span>JavaScript</span>
-            </div>
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="project-link ripple">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card reveal" data-tags="javascript" data-delay="100">
-          <div class="project-top pattern-diamonds">
-            <div class="pattern-el diamonds-el" aria-hidden="true"></div>
-          </div>
-          <div class="project-body">
-            <h3>Artmoji</h3>
-            <p>Text to dot art parser - converts any text input into creative ASCII/dot-art compositions with customizable density and character mapping.</p>
-            <div class="project-tags">
-              <span>JavaScript</span>
-            </div>
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="project-link ripple">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="project-card reveal" data-tags="javascript typescript" data-delay="200">
-          <div class="project-top pattern-cross">
-            <div class="pattern-el cross-el" aria-hidden="true"></div>
-          </div>
-          <div class="project-body">
-            <h3>Mystical Dragon</h3>
-            <p>3D interactive dragon model with real-time physics, fire breath particle systems, and WebGL-powered environment built with Three.js.</p>
-            <div class="project-tags">
-              <span>JavaScript</span><span>TypeScript</span>
-            </div>
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="project-link ripple">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Philosophy Quote -->
-  <section class="quote-section section">
-    <div class="container">
-      <div class="quote-wrap reveal">
-        <div class="quote-mark" aria-hidden="true">"</div>
-        <blockquote>
-          <p>Software is not just code - it's a living system. Great engineering means writing for the machine today and the engineer tomorrow.</p>
-          <footer>⇒ Sabbir Hossain Rafat</footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="section-title">Let's <span class="gradient-text">Build Together</span></h2>
-        <p class="section-subtitle">Open to core engineering roles, freelance projects, and collaboration.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-left reveal">
-          <div class="terminal-prompt">
-            <span class="terminal-dollar">$</span>
-            <span class="terminal-cmd">channels --list</span>
-          </div>
-          <div class="contact-links">
-            <a href="mailto:sabbirrafat369@gmail.com" class="contact-link" aria-label="Email">
-              <div class="contact-link-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div class="contact-link-info">
-                <span class="contact-link-label">Email</span>
-                <span class="contact-link-value">sabbirrafat369@gmail.com</span>
-              </div>
-            </a>
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="GitHub">
-              <div class="contact-link-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              </div>
-              <div class="contact-link-info">
-                <span class="contact-link-label">GitHub</span>
-                <span class="contact-link-value">SabbirHossainRafat</span>
-              </div>
-            </a>
-            <a href="https://linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="LinkedIn">
-              <div class="contact-link-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </div>
-              <div class="contact-link-info">
-                <span class="contact-link-label">LinkedIn</span>
-                <span class="contact-link-value">sabbirhossainrafat</span>
-              </div>
-            </a>
-            <a href="https://x.com/sabbir_rafat" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Twitter / X">
-              <div class="contact-link-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.213 5.567 6.03-5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </div>
-              <div class="contact-link-info">
-                <span class="contact-link-label">Twitter / X</span>
-                <span class="contact-link-value">@sabbir_rafat</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="contact-right reveal" data-delay="200">
-          <form id="contact-form" class="contact-form" novalidate>
-            <div class="form-group">
-              <input type="text" id="form-name" name="name" required autocomplete="name" placeholder=" " />
-              <label for="form-name">Your Name</label>
-            </div>
-            <div class="form-group">
-              <input type="email" id="form-email" name="email" required autocomplete="email" placeholder=" " />
-              <label for="form-email">Email Address</label>
-            </div>
-            <div class="form-group">
-              <textarea id="form-message" name="message" required rows="5" maxlength="1000" placeholder=" "></textarea>
-              <label for="form-message">Message</label>
-              <div class="char-counter"><span id="char-count">0</span>/1000</div>
-            </div>
-            <button type="submit" id="submit-btn" class="btn btn-primary ripple">
-              <span id="submit-text">Send Message</span>
-              <svg id="submit-spinner" class="spinner hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10" opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>
-              <svg id="submit-check" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <p id="form-error" class="form-error hidden"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p class="footer-copy">© <span id="footer-year"></span> Sabbir Hossain Rafat. All systems operational.</p>
-      <p class="footer-sync">Last Hot-Sync: <span id="footer-date"></span></p>
-      <button id="help-btn" class="help-btn" aria-label="Keyboard shortcuts">?</button>
-    </div>
-  </footer>
-
-  <!-- Back to Top -->
-  <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-  </button>
-
-  <!-- Keyboard Shortcuts Panel -->
-  <div id="shortcuts-panel" class="shortcuts-panel" aria-modal="true" role="dialog" aria-label="Keyboard shortcuts" aria-hidden="true">
-    <div class="shortcuts-backdrop" id="shortcuts-backdrop"></div>
-    <div class="shortcuts-box">
-      <div class="shortcuts-header">
-        <h2>Keyboard Shortcuts</h2>
-        <button id="shortcuts-close" aria-label="Close shortcuts panel">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          System Deploys
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Initialize Connection
+        </a>
+        <button id="resume-btn" class="btn btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume
         </button>
       </div>
-      <ul class="shortcuts-list">
-        <li><kbd>T</kbd><span>Toggle theme</span></li>
-        <li><kbd>H</kbd><span>Open / close help</span></li>
-        <li><kbd>G</kbd><span>Scroll to top</span></li>
-        <li><kbd>ESC</kbd><span>Close panel</span></li>
-      </ul>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <div class="scroll-cue" aria-hidden="true">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ABOUT / PROFILE
+════════════════════════════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <header class="section-hd reveal">
+      <p class="section-eyebrow">// who I am</p>
+      <h2 class="section-title">Engineered for <span class="gradient-text">Impact</span></h2>
+      <p class="section-sub">I build systems that think, perform, and stay secure — from LLM pipelines to production deployments.</p>
+    </header>
+
+    <div class="about-grid">
+      <article class="about-card tilt-card reveal" data-delay="0">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3>AI Engineering</h3>
+        <p>LLM solutions with Gemini API & OpenRouter. Building production RAG pipelines, intelligent agents, and AI-powered workflows that scale.</p>
+        <div class="card-tags"><span>Gemini API</span><span>OpenRouter</span><span>RAG</span></div>
+      </article>
+
+      <article class="about-card tilt-card reveal" data-delay="80">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Performance Stack</h3>
+        <p>Astro v6, Tailwind CSS v4 & microservices architecture. Obsessed with Core Web Vitals, SSR, and zero-JS-by-default philosophy.</p>
+        <div class="card-tags"><span>Astro v6</span><span>Tailwind v4</span><span>Microservices</span></div>
+      </article>
+
+      <article class="about-card tilt-card reveal" data-delay="160">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Secure Systems</h3>
+        <p>Certified Ethical Hacker mindset applied to API security, threat modeling, and penetration testing. Security-first by design.</p>
+        <div class="card-tags"><span>CEH</span><span>API Security</span><span>Pentest</span></div>
+      </article>
+
+      <article class="about-card tilt-card reveal" data-delay="240">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3>Fintech Flows</h3>
+        <p>Stripe, bKash, NAGAD & SSLCOMMERZ integrations. Building compliant, robust payment pipelines for South Asian & global markets.</p>
+        <div class="card-tags"><span>Stripe</span><span>bKash</span><span>SSLCOMMERZ</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOCUS
+════════════════════════════════════════ -->
+<section id="focus" class="section alt-bg">
+  <div class="container">
+    <header class="section-hd reveal">
+      <p class="section-eyebrow">// current focus</p>
+      <h2 class="section-title">Where I'm <span class="gradient-text">Deep In</span></h2>
+    </header>
+
+    <div class="focus-grid">
+      <div class="focus-card reveal" data-delay="0">
+        <span class="focus-num" aria-hidden="true">01</span>
+        <div class="focus-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Full-Stack AI Products</h3>
+        <p>End-to-end AI-powered applications — from intelligent backends to reactive frontends, deployed at scale with observability built in.</p>
+        <div class="focus-prog"><div class="focus-fill" style="--w:85%"></div></div>
+      </div>
+
+      <div class="focus-card reveal" data-delay="120">
+        <span class="focus-num" aria-hidden="true">02</span>
+        <div class="focus-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <h3>Retrieval Augmented Generation</h3>
+        <p>Building domain-specific RAG systems with vector databases, semantic search, and context-aware LLM orchestration for enterprise use cases.</p>
+        <div class="focus-prog"><div class="focus-fill" style="--w:72%"></div></div>
+      </div>
+
+      <div class="focus-card reveal" data-delay="240">
+        <span class="focus-num" aria-hidden="true">03</span>
+        <div class="focus-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h3>Cyber Security &amp; Analysis</h3>
+        <p>Active threat analysis, vulnerability research, and building security tools. Applying CEH knowledge to real-world attack surface reduction.</p>
+        <div class="focus-prog"><div class="focus-fill" style="--w:61%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SKILLS / TOOLKIT
+════════════════════════════════════════ -->
+<section id="skills" class="section">
+  <div class="container">
+    <header class="section-hd reveal">
+      <p class="section-eyebrow">// toolkit</p>
+      <h2 class="section-title">My <span class="gradient-text">Arsenal</span></h2>
+      <p class="section-sub">Hover any tag to see proficiency. Technologies I wield daily in production.</p>
+    </header>
+
+    <div class="skills-layout">
+      <div class="skill-group reveal" data-delay="0">
+        <h3 class="group-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Languages
+        </h3>
+        <div class="pills">
+          <button class="pill" data-level="95" data-desc="Primary language for type-safe full-stack development">TypeScript</button>
+          <button class="pill" data-level="92" data-desc="Browser tooling, interactive UIs, and scripting">JavaScript</button>
+          <button class="pill" data-level="80" data-desc="AI/ML pipelines, automation, Flask APIs">Python</button>
+          <button class="pill" data-level="65" data-desc="Systems programming and DSA fundamentals">C</button>
+          <button class="pill" data-level="88" data-desc="Backend runtime — REST APIs & microservices">Node.js</button>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" data-delay="80">
+        <h3 class="group-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Frameworks
+        </h3>
+        <div class="pills">
+          <button class="pill" data-level="90" data-desc="Zero-JS island architecture — blazing-fast static sites">Astro v6</button>
+          <button class="pill" data-level="93" data-desc="Utility-first CSS with v4's new engine">Tailwind v4</button>
+          <button class="pill" data-level="86" data-desc="Component UIs with hooks, context, concurrent mode">React</button>
+          <button class="pill" data-level="78" data-desc="SSR/SSG with App Router, Server Components">Next.js</button>
+          <button class="pill" data-level="96" data-desc="Semantic markup with Canvas, WebGL, Web Audio">HTML5 / CSS3</button>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" data-delay="160">
+        <h3 class="group-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          Cloud &amp; Data
+        </h3>
+        <div class="pills">
+          <button class="pill" data-level="83" data-desc="BaaS — auth, realtime DB, storage, edge functions">Supabase</button>
+          <button class="pill" data-level="76" data-desc="Relational DB with JSONB, full-text search, RLS">PostgreSQL</button>
+          <button class="pill" data-level="85" data-desc="LLM routing and model switching across providers">OpenRouter</button>
+          <button class="pill" data-level="88" data-desc="Google's multimodal AI for text, image, code generation">Gemini API</button>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" data-delay="240">
+        <h3 class="group-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Payments &amp; DevOps
+        </h3>
+        <div class="pills">
+          <button class="pill" data-level="82" data-desc="Global payments — webhooks, subscriptions, Connect">Stripe</button>
+          <button class="pill" data-level="78" data-desc="Bangladesh mobile banking API integrations">bKash / NAGAD</button>
+          <button class="pill" data-level="75" data-desc="South Asian payment gateway for local markets">SSLCOMMERZ</button>
+          <button class="pill" data-level="71" data-desc="Containerised deployments, multi-stage builds">Docker</button>
+          <button class="pill" data-level="86" data-desc="Shell scripting, sysadmin, server management">Linux</button>
+          <button class="pill" data-level="91" data-desc="Version control, CI/CD, GitHub Actions">Git / GitHub</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skill tooltip (JS-positioned) -->
+<div id="skill-tip" class="skill-tip" role="tooltip" aria-hidden="true">
+  <div class="tip-name"></div>
+  <div class="tip-track"><div class="tip-fill"></div></div>
+  <div class="tip-meta"><span class="tip-level"></span><span class="tip-desc"></span></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     TIMELINE / JOURNEY
+════════════════════════════════════════ -->
+<section id="timeline" class="section alt-bg">
+  <div class="container">
+    <header class="section-hd reveal">
+      <p class="section-eyebrow">// career journey</p>
+      <h2 class="section-title">The <span class="gradient-text">Progression</span></h2>
+      <p class="section-sub">Education, milestones, and the path that shaped my engineering mind.</p>
+    </header>
+
+    <ol class="timeline-list" aria-label="Career timeline">
+      <li class="tl-item reveal" data-delay="0">
+        <div class="tl-spine" aria-hidden="true"></div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card">
+          <time class="tl-year" datetime="2021">2021</time>
+          <h3>Started Software Engineering</h3>
+          <p class="tl-org">Daffodil International University</p>
+          <p>Began the academic journey into computer science — algorithms, data structures, and the first sparks of curiosity for building real systems.</p>
+          <div class="tl-tags"><span>DSA</span><span>C</span><span>OOP</span></div>
+        </div>
+      </li>
+
+      <li class="tl-item reveal" data-delay="100">
+        <div class="tl-spine" aria-hidden="true"></div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card">
+          <time class="tl-year" datetime="2022">2022</time>
+          <h3>Web Development Deep Dive</h3>
+          <p class="tl-org">Self-Directed Learning</p>
+          <p>Mastered HTML/CSS/JS, then levelled up to React and Node.js. Built first full-stack applications with real database connections and deployed them live.</p>
+          <div class="tl-tags"><span>React</span><span>Node.js</span><span>PostgreSQL</span></div>
+        </div>
+      </li>
+
+      <li class="tl-item reveal" data-delay="200">
+        <div class="tl-spine" aria-hidden="true"></div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card">
+          <time class="tl-year" datetime="2023">2023</time>
+          <h3>TypeScript &amp; AI Integration</h3>
+          <p class="tl-org">Open Source &amp; Client Projects</p>
+          <p>Adopted TypeScript across all codebases. Integrated first LLM APIs — Gemini and OpenRouter. Explored and shipped RAG architecture for production use cases.</p>
+          <div class="tl-tags"><span>TypeScript</span><span>LLMs</span><span>RAG</span></div>
+        </div>
+      </li>
+
+      <li class="tl-item reveal" data-delay="300">
+        <div class="tl-spine" aria-hidden="true"></div>
+        <div class="tl-dot" aria-hidden="true"></div>
+        <div class="tl-card">
+          <time class="tl-year" datetime="2024">2024</time>
+          <h3>Security Certification &amp; Fintech</h3>
+          <p class="tl-org">CEH Preparation + Payment APIs</p>
+          <p>Deep-dived into ethical hacking methodologies. Built production-grade fintech integrations with Stripe, bKash, and SSLCOMMERZ for real client projects.</p>
+          <div class="tl-tags"><span>CEH</span><span>Stripe</span><span>Security</span></div>
+        </div>
+      </li>
+
+      <li class="tl-item tl-item-now reveal" data-delay="400">
+        <div class="tl-spine tl-spine-end" aria-hidden="true"></div>
+        <div class="tl-dot tl-dot-active" aria-hidden="true"></div>
+        <div class="tl-card tl-card-active">
+          <time class="tl-year" datetime="2025">2025 →</time>
+          <h3>AI Product Engineer</h3>
+          <p class="tl-org">Open to core engineering roles</p>
+          <p>Combining AI, security, and performance engineering into a distinctive skillset. Shipping portfolio projects that demonstrate production-ready thinking at every level.</p>
+          <div class="tl-tags"><span>AI Products</span><span>Full-Stack</span><span>Open to Work</span></div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     PROJECTS
+════════════════════════════════════════ -->
+<section id="projects" class="section">
+  <div class="container">
+    <header class="section-hd reveal">
+      <p class="section-eyebrow">// system deploys</p>
+      <h2 class="section-title">What I've <span class="gradient-text">Shipped</span></h2>
+      <p class="section-sub">Production systems, creative experiments, and security tooling.</p>
+    </header>
+
+    <div class="filter-row reveal" role="group" aria-label="Filter projects">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="javascript">JavaScript</button>
+      <button class="filter-btn" data-filter="typescript">TypeScript</button>
+      <button class="filter-btn" data-filter="react">React</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="security">Security</button>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+
+      <article class="proj-card reveal" data-tags="javascript html5" data-delay="0">
+        <div class="proj-vis pv-indigo" aria-hidden="true"><div class="pv-deco deco-rings"></div></div>
+        <div class="proj-body">
+          <h3>Studia</h3>
+          <p>Academic management system — schedule tracking, assignment management, and GPA calculation in one unified platform for students.</p>
+          <div class="proj-tags"><span>JavaScript</span><span>HTML5</span></div>
+          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View Source
+          </a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="react typescript security" data-delay="80">
+        <div class="proj-vis pv-violet" aria-hidden="true"><div class="pv-deco deco-dots"></div></div>
+        <div class="proj-body">
+          <h3>AuthPage</h3>
+          <p>3D authentication component with secure session handling, TOTP support, and animated login/register flow in React + TypeScript.</p>
+          <div class="proj-tags"><span>React</span><span>TypeScript</span><span>Security</span></div>
+          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View Source
+          </a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="python security" data-delay="160">
+        <div class="proj-vis pv-teal" aria-hidden="true"><div class="pv-deco deco-mesh"></div></div>
+        <div class="proj-body">
+          <h3>Security Scanner</h3>
+          <p>Automated safety diagnostic tool — crawls web targets, identifies OWASP Top-10 vulnerabilities, and generates structured security reports.</p>
+          <div class="proj-tags"><span>Python</span><span>Security</span></div>
+          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View Source
+          </a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="javascript canvas" data-delay="0">
+        <div class="proj-vis pv-rose" aria-hidden="true"><div class="pv-deco deco-bars"></div></div>
+        <div class="proj-body">
+          <h3>Vanish Pen</h3>
+          <p>Auto-fading canvas drawing app — strokes gradually disappear like ink on water. Pressure simulation, colour pickers, and export mode.</p>
+          <div class="proj-tags"><span>JavaScript</span><span>Canvas</span></div>
+          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View Source
+          </a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="javascript" data-delay="80">
+        <div class="proj-vis pv-amber" aria-hidden="true"><div class="pv-deco deco-diamonds"></div></div>
+        <div class="proj-body">
+          <h3>Artmoji</h3>
+          <p>Text-to-dot-art parser — converts any input into creative ASCII / dot-art compositions with customisable density and character mapping.</p>
+          <div class="proj-tags"><span>JavaScript</span></div>
+          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View Source
+          </a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal" data-tags="javascript typescript" data-delay="160">
+        <div class="proj-vis pv-purple" aria-hidden="true"><div class="pv-deco deco-cross"></div></div>
+        <div class="proj-body">
+          <h3>Mystical Dragon</h3>
+          <p>3D interactive dragon with real-time physics, fire breath particle systems, and a WebGL-powered environment built with Three.js.</p>
+          <div class="proj-tags"><span>JavaScript</span><span>TypeScript</span></div>
+          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View Source
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     QUOTE
+════════════════════════════════════════ -->
+<section class="section alt-bg quote-sec">
+  <div class="container">
+    <div class="quote-wrap reveal">
+      <span class="quote-mark" aria-hidden="true">"</span>
+      <blockquote>
+        <p>Software is not just code — it's a living system. Great engineering means writing for the machine today and the engineer tomorrow.</p>
+        <footer><cite>— Sabbir Hossain Rafat</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <header class="section-hd reveal">
+      <p class="section-eyebrow">// initialize connection</p>
+      <h2 class="section-title">Let's <span class="gradient-text">Build Together</span></h2>
+      <p class="section-sub">Open to core engineering roles, freelance contracts, and interesting collaborations.</p>
+    </header>
+
+    <div class="contact-grid">
+      <!-- Channels -->
+      <div class="contact-info reveal">
+        <p class="channel-cmd"><span class="cmd-dollar">$</span> <span class="cmd-text">channels --list</span></p>
+
+        <div class="channels">
+          <a href="mailto:sabbirrafat369@gmail.com" class="channel-item">
+            <div class="ch-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="ch-copy">
+              <span class="ch-label">Email</span>
+              <span class="ch-val">sabbirrafat369@gmail.com</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="channel-item">
+            <div class="ch-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div class="ch-copy">
+              <span class="ch-label">GitHub</span>
+              <span class="ch-val">SabbirHossainRafat</span>
+            </div>
+          </a>
+
+          <a href="https://linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer" class="channel-item">
+            <div class="ch-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div class="ch-copy">
+              <span class="ch-label">LinkedIn</span>
+              <span class="ch-val">sabbirhossainrafat</span>
+            </div>
+          </a>
+
+          <a href="https://x.com/sabbir_rafat" target="_blank" rel="noopener noreferrer" class="channel-item">
+            <div class="ch-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.213 5.567 6.03-5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <div class="ch-copy">
+              <span class="ch-label">Twitter / X</span>
+              <span class="ch-val">@sabbir_rafat</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="tz-hint" id="tz-hint" aria-live="polite">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="tz-text">Detecting your timezone…</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form-wrap reveal" data-delay="150">
+        <form id="contact-form" novalidate>
+          <div class="field-wrap">
+            <input type="text" id="f-name" name="name" placeholder=" " autocomplete="name" required />
+            <label for="f-name">Your Name</label>
+            <span class="field-err" id="err-name" role="alert"></span>
+          </div>
+          <div class="field-wrap">
+            <input type="email" id="f-email" name="email" placeholder=" " autocomplete="email" required />
+            <label for="f-email">Email Address</label>
+            <span class="field-err" id="err-email" role="alert"></span>
+          </div>
+          <div class="field-wrap field-textarea">
+            <textarea id="f-msg" name="message" rows="5" maxlength="1000" placeholder=" " required></textarea>
+            <label for="f-msg">Message</label>
+            <span class="field-err" id="err-msg" role="alert"></span>
+            <div class="char-wrap"><span id="char-count">0</span> / 1000</div>
+          </div>
+          <button type="submit" id="form-submit" class="btn btn-primary btn-full">
+            <span class="btn-label">Send Message</span>
+            <svg class="btn-spinner hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><circle cx="12" cy="12" r="10" opacity="0.2"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>
+            <svg class="btn-check hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <p id="form-global-err" class="form-global hidden" role="alert"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="footer-copy">© <span id="footer-year"></span> Sabbir Hossain Rafat · All systems operational.</p>
+    <p class="footer-sync">Last hot-sync: <time id="footer-date"></time></p>
+    <nav class="footer-nav" aria-label="Footer links">
+      <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:sabbirrafat369@gmail.com">Email</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ── Back to top ── -->
+<button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ════════════════════════════════════════
+     TERMINAL MODAL
+════════════════════════════════════════ -->
+<div id="terminal-overlay" class="overlay" aria-hidden="true">
+  <div id="terminal-modal" class="terminal" role="dialog" aria-modal="true" aria-label="Portfolio terminal">
+    <div class="term-titlebar">
+      <div class="term-dots">
+        <button class="tdot tdot-red" id="term-x-dot" aria-label="Close terminal"></button>
+        <span class="tdot tdot-yellow" aria-hidden="true"></span>
+        <span class="tdot tdot-green" aria-hidden="true"></span>
+      </div>
+      <span class="term-title">sabbir@portfolio — zsh</span>
+      <button id="terminal-close-btn" class="term-close" aria-label="Close terminal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="term-output" class="term-output" role="log" aria-live="polite" aria-label="Terminal output"></div>
+    <div class="term-row">
+      <span class="term-prompt" aria-hidden="true">
+        <span class="tp-user">sabbir</span><span class="tp-at">@</span><span class="tp-host">portfolio</span><span class="tp-sep">:</span><span class="tp-tilde">~</span><span class="tp-dollar">$</span>
+      </span>
+      <input id="term-input" type="text" class="term-input" autocomplete="off" spellcheck="false" autocapitalize="none" aria-label="Terminal command input" />
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     AI CHAT
+════════════════════════════════════════ -->
+<button id="chat-fab" class="chat-fab" aria-label="Open AI assistant">
+  <svg class="fab-icon-chat" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <svg class="fab-icon-close hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  <span class="fab-badge" aria-hidden="true">AI</span>
+</button>
+
+<div id="chat-panel" class="chat-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-label="AI portfolio assistant">
+  <div class="chat-hd">
+    <div class="chat-hd-left">
+      <div class="chat-avatar" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+      </div>
+      <div>
+        <p class="chat-bot-name">Sabbir's AI</p>
+        <p class="chat-bot-status"><span class="online-dot" aria-hidden="true"></span>Online</p>
+      </div>
+    </div>
+    <button id="chat-close" aria-label="Close AI chat">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="chat-messages" class="chat-msgs"></div>
+  <div id="chat-quick" class="chat-quick">
+    <button class="quick-chip">What are his top skills?</button>
+    <button class="quick-chip">Tell me about his projects</button>
+    <button class="quick-chip">Is he open to work?</button>
+    <button class="quick-chip">What is his background?</button>
+  </div>
+  <div class="chat-input-bar">
+    <input type="text" id="chat-input" placeholder="Ask anything about Sabbir…" autocomplete="off" aria-label="Chat message" />
+    <button id="chat-send" aria-label="Send">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     HELP / SHORTCUTS PANEL
+════════════════════════════════════════ -->
+<div id="help-overlay" class="overlay" aria-hidden="true">
+  <div class="help-modal" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+    <div class="help-hd">
+      <h2>Keyboard Shortcuts</h2>
+      <button id="help-close" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <ul class="shortcut-list">
+      <li><kbd>T</kbd><span>Toggle dark / light theme</span></li>
+      <li><kbd>H</kbd><span>Open this help panel</span></li>
+      <li><kbd>G</kbd><span>Scroll to top</span></li>
+      <li><kbd>/</kbd><span>Open terminal</span></li>
+      <li><kbd>C</kbd><span>Open AI chat</span></li>
+      <li><kbd>ESC</kbd><span>Close any open panel</span></li>
+    </ul>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

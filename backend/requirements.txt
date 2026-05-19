@@ -1,6 +1,23 @@
-flask==3.0.2
-flask-cors==4.0.0
-flask-limiter==3.5.0
+# Sabbir Hossain Rafat — Portfolio Backend Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core framework
+flask==3.0.3
+
+# CORS support
+flask-cors==4.0.1
+
+# Rate limiting (optional but recommended)
+flask-limiter==3.7.0
+
+# HTML sanitisation — prevents XSS in form submissions
 bleach==6.1.0
+
+# Environment variable loading
 python-dotenv==1.0.1
-gunicorn==21.2.0
+
+# Production WSGI server
+gunicorn==22.0.0
+
+# Typing support for older Python versions (Python < 3.11)
+# typing-extensions==4.11.0
