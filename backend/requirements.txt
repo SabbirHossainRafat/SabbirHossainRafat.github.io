@@ -1,23 +1,9 @@
 # Sabbir Hossain Rafat — Portfolio Backend Dependencies
-# Install with: pip install -r requirements.txt
+# Install: pip install -r requirements.txt
 
-# Core framework
 flask==3.0.3
-
-# CORS support
 flask-cors==4.0.1
-
-# Rate limiting (optional but recommended)
 flask-limiter==3.7.0
-
-# HTML sanitisation — prevents XSS in form submissions
 bleach==6.1.0
-
-# Environment variable loading
 python-dotenv==1.0.1
-
-# Production WSGI server
 gunicorn==22.0.0
-
-# Typing support for older Python versions (Python < 3.11)
-# typing-extensions==4.11.0

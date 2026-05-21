@@ -18,9 +18,9 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
-    "exactOptionalPropertyTypes": false,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "exactOptionalPropertyTypes": false
   },
   "include": ["script.ts"],
   "exclude": ["node_modules", "dist"]

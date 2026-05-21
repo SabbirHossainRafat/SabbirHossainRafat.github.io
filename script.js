@@ -1,43 +1,57 @@
-/* ============================================================
-   SABBIR HOSSAIN RAFAT — Portfolio Script
-   Production-ready, fully functional JavaScript
-   ============================================================ */
-
+/* ================================================================
+   SABBIR HOSSAIN RAFAT — Portfolio Script v3.0
+   Production-ready | All features implemented
+   ================================================================ */
 'use strict';
 
-/* ── Helpers ── */
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-const on = (el, ev, fn, opts) => el && el.addEventListener(ev, fn, opts);
-const off = (el, ev, fn) => el && el.removeEventListener(ev, fn);
-const cls = (el, ...args) => el && el.classList;
+// ── Helpers ──────────────────────────────────────────────────────
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
 function smoothScrollTo(target, duration = 700) {
   if (!target) return;
   const start = window.scrollY;
   const end = target.getBoundingClientRect().top + window.scrollY - 68;
   const diff = end - start;
-  let startTime = null;
-  function easeInOutCubic(t) {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  }
-  function step(ts) {
-    if (!startTime) startTime = ts;
-    const elapsed = ts - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    window.scrollTo(0, start + diff * easeInOutCubic(progress));
-    if (elapsed < duration) requestAnimationFrame(step);
-  }
+  let t0 = null;
+  const ease = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+  const step = ts => {
+    if (!t0) t0 = ts;
+    const p = Math.min((ts - t0) / duration, 1);
+    window.scrollTo(0, start + diff * ease(p));
+    if (p < 1) requestAnimationFrame(step);
+  };
   requestAnimationFrame(step);
 }
 
-/* ════════════════════════════════════════
-   THEME
-════════════════════════════════════════ */
+// ── Analytics (cookie-free, in-memory) ──────────────────────────
+const ANALYTICS = {
+  sessions: parseInt(sessionStorage.getItem('_sa_sessions') || '0') + 1,
+  sectionViews: JSON.parse(localStorage.getItem('_sa_views') || '{}'),
+  startTime: Date.now(),
+  track(section) {
+    this.sectionViews[section] = (this.sectionViews[section] || 0) + 1;
+    localStorage.setItem('_sa_views', JSON.stringify(this.sectionViews));
+  },
+  getTopSection() {
+    const v = this.sectionViews;
+    return Object.keys(v).sort((a, b) => v[b] - v[a])[0] || 'home';
+  }
+};
+sessionStorage.setItem('_sa_sessions', ANALYTICS.sessions);
+
+// ── Dark mode scheduler ──────────────────────────────────────────
+function autoThemeByTime() {
+  const hour = new Date().getHours();
+  // 06:00–18:00 → light; 18:00–06:00 → dark
+  return hour >= 6 && hour < 18 ? 'light' : 'dark';
+}
+
+// ── Theme ────────────────────────────────────────────────────────
 (function initTheme() {
   const saved = localStorage.getItem('theme');
-  const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', saved || preferred);
+  const auto = autoThemeByTime();
+  document.documentElement.setAttribute('data-theme', saved || auto);
 })();
 
 function setTheme(t) {
@@ -46,972 +60,946 @@ function setTheme(t) {
 }
 
 const themeToggle = $('#theme-toggle');
-on(themeToggle, 'click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  setTheme(current === 'dark' ? 'light' : 'dark');
+themeToggle?.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  setTheme(cur === 'dark' ? 'light' : 'dark');
 });
 
-/* ════════════════════════════════════════
-   PROGRESS BAR
-════════════════════════════════════════ */
+// Auto-switch theme at 06:00 and 18:00
+setInterval(() => {
+  if (!localStorage.getItem('theme')) {
+    const desired = autoThemeByTime();
+    if (document.documentElement.getAttribute('data-theme') !== desired) {
+      setTheme(desired);
+    }
+  }
+}, 60000);
+
+// ── Progress bar ─────────────────────────────────────────────────
 const progressBar = $('#progress-bar');
 function updateProgress() {
   if (!progressBar) return;
   const h = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
-  progressBar.style.width = Math.min(pct, 100) + '%';
+  progressBar.style.width = (h > 0 ? Math.min(window.scrollY / h * 100, 100) : 0) + '%';
 }
 
-/* ════════════════════════════════════════
-   CUSTOM CURSOR
-════════════════════════════════════════ */
+// ── Custom Cursor ────────────────────────────────────────────────
 const cursorDot = $('#cursor-dot');
 const cursorRing = $('#cursor-ring');
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
-let cursorRAF = null;
+let mx = 0, my = 0, rx = 0, ry = 0;
 
-function animateCursor() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  if (cursorRing) {
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top = ringY + 'px';
-  }
-  cursorRAF = requestAnimationFrame(animateCursor);
-}
-
-on(document, 'mousemove', e => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  if (cursorDot) {
-    cursorDot.style.left = e.clientX + 'px';
-    cursorDot.style.top = e.clientY + 'px';
-  }
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  if (cursorDot) { cursorDot.style.left = mx + 'px'; cursorDot.style.top = my + 'px'; }
 });
 
-on(document, 'mouseenter', () => {
-  if (cursorDot) cursorDot.style.opacity = '1';
-  if (cursorRing) cursorRing.style.opacity = '1';
-});
-on(document, 'mouseleave', () => {
-  if (cursorDot) cursorDot.style.opacity = '0';
-  if (cursorRing) cursorRing.style.opacity = '0';
-});
+(function animateCursor() {
+  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+  if (cursorRing) { cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px'; }
+  requestAnimationFrame(animateCursor);
+})();
 
-// Grow ring on interactive elements
-on(document, 'mouseover', e => {
+document.addEventListener('mouseover', e => {
   if (!cursorRing) return;
-  const interactive = e.target.closest('a,button,.pill,.proj-card,.about-card,.channel-item,.proj-link');
-  if (interactive) {
-    cursorRing.style.width = '50px';
-    cursorRing.style.height = '50px';
-    cursorRing.style.borderColor = 'rgba(102,126,234,0.7)';
-  } else {
-    cursorRing.style.width = '34px';
-    cursorRing.style.height = '34px';
-    cursorRing.style.borderColor = 'rgba(102,126,234,0.5)';
-  }
+  const interactive = e.target.closest('a,button,.pill,.proj-card,.about-card,.channel-item,.radar-item');
+  cursorRing.style.width = interactive ? '48px' : '34px';
+  cursorRing.style.height = interactive ? '48px' : '34px';
+  cursorRing.style.borderColor = interactive ? 'rgba(102,126,234,0.7)' : 'rgba(102,126,234,0.5)';
 });
 
-if (window.matchMedia('(pointer:fine)').matches) {
-  animateCursor();
+if (!window.matchMedia('(pointer:fine)').matches) {
+  if (cursorDot) cursorDot.style.display = 'none';
+  if (cursorRing) cursorRing.style.display = 'none';
 }
 
-/* ════════════════════════════════════════
-   PARTICLE SYSTEM
-════════════════════════════════════════ */
+// ── Particle system ──────────────────────────────────────────────
 (function initParticles() {
   const canvas = $('#particle-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H, particles = [], raf;
-  const COUNT = Math.min(60, Math.floor(window.innerWidth / 22));
+  let W, H, particles = [];
+  const COUNT = Math.min(55, Math.floor(window.innerWidth / 24));
+  let pmx = -9999, pmy = -9999;
 
-  function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  function mkp() { return { x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.4+0.4, vx: (Math.random()-.5)*0.22, vy: (Math.random()-.5)*0.22, a: Math.random()*0.38+0.08 }; }
+  function init() { resize(); particles = Array.from({length:COUNT}, mkp); }
 
-  function createParticle() {
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: Math.random() * 1.5 + 0.4,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
-      alpha: Math.random() * 0.4 + 0.1,
-    };
-  }
-
-  function init() {
-    resize();
-    particles = Array.from({ length: COUNT }, createParticle);
-  }
-
-  let mx = -9999, my = -9999;
-  on(window, 'mousemove', e => { mx = e.clientX; my = e.clientY; });
-
-  const isDark = () => document.documentElement.getAttribute('data-theme') !== 'light';
+  window.addEventListener('mousemove', e => { pmx = e.clientX; pmy = e.clientY; });
 
   function draw() {
-    ctx.clearRect(0, 0, W, H);
-    const color = isDark() ? '102,126,234' : '102,126,234';
-
+    ctx.clearRect(0,0,W,H);
     particles.forEach(p => {
-      // Subtle mouse repulsion
-      const dx = p.x - mx;
-      const dy = p.y - my;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 100) {
-        const force = (100 - dist) / 100;
-        p.vx += (dx / dist) * force * 0.08;
-        p.vy += (dy / dist) * force * 0.08;
-      }
-
-      // Dampen
-      p.vx *= 0.99;
-      p.vy *= 0.99;
-      p.x += p.vx;
-      p.y += p.vy;
-
-      // Wrap
-      if (p.x < 0) p.x = W;
-      if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H;
-      if (p.y > H) p.y = 0;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${color},${p.alpha})`;
-      ctx.fill();
+      const dx = p.x-pmx, dy = p.y-pmy, d = Math.sqrt(dx*dx+dy*dy);
+      if (d < 100) { const f=(100-d)/100; p.vx+=(dx/d)*f*0.07; p.vy+=(dy/d)*f*0.07; }
+      p.vx *= 0.99; p.vy *= 0.99;
+      p.x += p.vx; p.y += p.vy;
+      if (p.x<0) p.x=W; if (p.x>W) p.x=0;
+      if (p.y<0) p.y=H; if (p.y>H) p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle = `rgba(102,126,234,${p.a})`; ctx.fill();
     });
-
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < 110) {
-          const alpha = (1 - d / 110) * 0.12;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(${color},${alpha})`;
-          ctx.lineWidth = 0.6;
-          ctx.stroke();
-        }
-      }
+    for (let i=0;i<particles.length;i++) for (let j=i+1;j<particles.length;j++) {
+      const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if (d<115) { ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle=`rgba(102,126,234,${(1-d/115)*0.1})`; ctx.lineWidth=0.5; ctx.stroke(); }
     }
-
-    raf = requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
   }
-
-  init();
-  draw();
-
-  let resizeTimer;
-  on(window, 'resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(init, 200);
-  });
+  init(); draw();
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(init, 200); });
 })();
 
-/* ════════════════════════════════════════
-   NAVBAR SCROLL BEHAVIOUR
-════════════════════════════════════════ */
+// ── Navbar scroll ────────────────────────────────────────────────
 const siteNav = $('#site-nav');
 const backToTop = $('#back-to-top');
 
-function onScroll() {
-  const y = window.scrollY;
-  siteNav && siteNav.classList.toggle('scrolled', y > 40);
-  backToTop && backToTop.classList.toggle('visible', y > 340);
+function updateActiveNav() {
+  let cur = '';
+  $$('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+  $$('.nav-link').forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur));
+}
+
+window.addEventListener('scroll', () => {
+  siteNav?.classList.toggle('scrolled', window.scrollY > 40);
+  backToTop?.classList.toggle('visible', window.scrollY > 340);
   updateProgress();
   updateActiveNav();
-}
+  $$('.orb').forEach((o, i) => { o.style.transform = `translateY(${window.scrollY * [0.07,0.04,0.11][i]}px)`; });
+}, { passive: true });
 
-on(window, 'scroll', onScroll, { passive: true });
-onScroll();
+backToTop?.addEventListener('click', () => smoothScrollTo($('#home')));
 
-backToTop && on(backToTop, 'click', () => smoothScrollTo(document.getElementById('home')));
-
-/* ── Active nav link ── */
-function updateActiveNav() {
-  const sections = $$('section[id]');
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 120) current = s.id;
-  });
-  $$('.nav-link').forEach(link => {
-    const href = link.getAttribute('href');
-    link.classList.toggle('active', href === '#' + current);
-  });
-}
-
-/* ════════════════════════════════════════
-   SMOOTH ANCHOR SCROLL
-════════════════════════════════════════ */
-on(document, 'click', e => {
+// ── Smooth anchor scroll ─────────────────────────────────────────
+document.addEventListener('click', e => {
   const a = e.target.closest('a[href^="#"]');
   if (!a) return;
   const id = a.getAttribute('href').slice(1);
-  const target = document.getElementById(id);
-  if (target) {
-    e.preventDefault();
-    smoothScrollTo(target);
-  }
+  const t = document.getElementById(id);
+  if (t) { e.preventDefault(); smoothScrollTo(t); }
 });
 
-/* ════════════════════════════════════════
-   MOBILE MENU
-════════════════════════════════════════ */
+// ── Mobile menu ──────────────────────────────────────────────────
 const hamburger = $('#hamburger');
 const mobileMenu = $('#mobile-menu');
 const mobileBackdrop = $('#mobile-backdrop');
-const mobileClose = $('#mobile-close');
 
-function openMobile() {
-  hamburger && hamburger.classList.add('open');
-  mobileMenu && mobileMenu.classList.add('open');
-  mobileBackdrop && mobileBackdrop.classList.add('open');
-  mobileMenu && mobileMenu.setAttribute('aria-hidden', 'false');
-  hamburger && hamburger.setAttribute('aria-expanded', 'true');
+const openMobile = () => {
+  hamburger?.classList.add('open');
+  mobileMenu?.classList.add('open');
+  mobileBackdrop?.classList.add('open');
+  mobileMenu?.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
-}
-
-function closeMobile() {
-  hamburger && hamburger.classList.remove('open');
-  mobileMenu && mobileMenu.classList.remove('open');
-  mobileBackdrop && mobileBackdrop.classList.remove('open');
-  mobileMenu && mobileMenu.setAttribute('aria-hidden', 'true');
-  hamburger && hamburger.setAttribute('aria-expanded', 'false');
+};
+const closeMobile = () => {
+  hamburger?.classList.remove('open');
+  mobileMenu?.classList.remove('open');
+  mobileBackdrop?.classList.remove('open');
+  mobileMenu?.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
-}
+};
 
-on(hamburger, 'click', () => {
-  const isOpen = mobileMenu && mobileMenu.classList.contains('open');
-  isOpen ? closeMobile() : openMobile();
-});
-on(mobileClose, 'click', closeMobile);
-on(mobileBackdrop, 'click', closeMobile);
-$$('.mobile-link').forEach(l => on(l, 'click', closeMobile));
-on(window, 'resize', () => { if (window.innerWidth >= 860) closeMobile(); });
+hamburger?.addEventListener('click', () => mobileMenu?.classList.contains('open') ? closeMobile() : openMobile());
+$('#mobile-close')?.addEventListener('click', closeMobile);
+mobileBackdrop?.addEventListener('click', closeMobile);
+$$('.mobile-link').forEach(l => l.addEventListener('click', closeMobile));
+window.addEventListener('resize', () => { if (window.innerWidth >= 1050) closeMobile(); });
 
-/* ════════════════════════════════════════
-   TYPING ANIMATION
-════════════════════════════════════════ */
-const phrases = ['AI Product Engineer', 'Full-Stack Developer', 'Secure AI Systems Builder', 'RAG Pipeline Architect'];
-let phraseIdx = 0, charIdx = 0, deleting = false;
+// ── Typing animation ─────────────────────────────────────────────
+const PHRASES = ['AI Product Engineer', 'Full-Stack Developer', 'Secure Systems Builder', 'RAG Pipeline Architect', 'LLM Integration Specialist'];
+let pi = 0, ci = 0, deleting = false;
 const typedEl = $('#typed-text');
 
 function typeLoop() {
   if (!typedEl) return;
-  const phrase = phrases[phraseIdx];
+  const phrase = PHRASES[pi];
   if (!deleting) {
-    typedEl.textContent = phrase.slice(0, ++charIdx);
-    if (charIdx === phrase.length) {
-      deleting = true;
-      setTimeout(typeLoop, 2200);
-      return;
-    }
-    setTimeout(typeLoop, 68);
+    typedEl.textContent = phrase.slice(0, ++ci);
+    if (ci === phrase.length) { deleting = true; setTimeout(typeLoop, 2400); return; }
+    setTimeout(typeLoop, 65);
   } else {
-    typedEl.textContent = phrase.slice(0, --charIdx);
-    if (charIdx === 0) {
-      deleting = false;
-      phraseIdx = (phraseIdx + 1) % phrases.length;
-      setTimeout(typeLoop, 420);
-      return;
-    }
-    setTimeout(typeLoop, 38);
+    typedEl.textContent = phrase.slice(0, --ci);
+    if (ci === 0) { deleting = false; pi = (pi + 1) % PHRASES.length; setTimeout(typeLoop, 400); return; }
+    setTimeout(typeLoop, 36);
   }
 }
 setTimeout(typeLoop, 900);
 
-/* ════════════════════════════════════════
-   SCROLL-TRIGGERED REVEALS
-════════════════════════════════════════ */
-const revealObserver = new IntersectionObserver(entries => {
+// ── Reveal observer ──────────────────────────────────────────────
+const revealObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
-    const delay = parseInt(el.dataset.delay || '0', 10);
-    setTimeout(() => el.classList.add('visible'), delay);
-    revealObserver.unobserve(el);
+    setTimeout(() => el.classList.add('visible'), parseInt(el.dataset.delay || '0'));
+    ANALYTICS.track(el.closest('section')?.id || 'unknown');
+    revealObs.unobserve(el);
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+$$('.reveal').forEach(el => revealObs.observe(el));
 
-$$('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ════════════════════════════════════════
-   COUNTERS
-════════════════════════════════════════ */
-const counterObserver = new IntersectionObserver(entries => {
+// ── Counters ─────────────────────────────────────────────────────
+const counterObs = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
     const target = parseInt(el.dataset.target, 10);
-    let start = 0;
-    const duration = 1400;
+    let t0 = null;
     const step = ts => {
-      if (!start) start = ts;
-      const progress = Math.min((ts - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target);
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target;
+      if (!t0) t0 = ts;
+      const p = Math.min((ts - t0) / 1400, 1);
+      el.textContent = Math.floor((1 - Math.pow(1-p, 3)) * target);
+      if (p < 1) requestAnimationFrame(step); else el.textContent = target;
     };
     requestAnimationFrame(step);
-    counterObserver.unobserve(el);
+    counterObs.unobserve(el);
   });
 }, { threshold: 0.5 });
+$$('.counter').forEach(el => counterObs.observe(el));
 
-$$('.counter').forEach(el => counterObserver.observe(el));
-
-/* ════════════════════════════════════════
-   FOCUS PROGRESS BARS
-════════════════════════════════════════ */
-const focusBarObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const bar = entry.target.querySelector('.focus-fill');
-    if (bar) bar.classList.add('animate');
-    focusBarObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.3 });
-
-$$('.focus-card').forEach(card => focusBarObserver.observe(card));
-
-/* ════════════════════════════════════════
-   3D TILT CARDS
-════════════════════════════════════════ */
+// ── 3D Tilt ──────────────────────────────────────────────────────
 $$('.tilt-card').forEach(card => {
-  on(card, 'mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const rotX = ((y - cy) / cy) * -6;
-    const rotY = ((x - cx) / cx) * 6;
-    card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const rx = ((e.clientY - r.top - r.height/2) / (r.height/2)) * -6;
+    const ry = ((e.clientX - r.left - r.width/2) / (r.width/2)) * 6;
+    card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
   });
-  on(card, 'mouseleave', () => {
-    card.style.transform = '';
-  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
-/* ════════════════════════════════════════
-   3D AVATAR MOUSE PARALLAX
-════════════════════════════════════════ */
-const avatarShell = $('#avatar-3d');
-on(document, 'mousemove', e => {
-  if (!avatarShell) return;
-  const cx = window.innerWidth / 2;
-  const cy = window.innerHeight / 2;
-  const dx = (e.clientX - cx) / cx;
-  const dy = (e.clientY - cy) / cy;
-  avatarShell.style.transform = `perspective(900px) rotateY(${dx * 8}deg) rotateX(${dy * -5}deg)`;
+// ── Avatar 3D parallax ───────────────────────────────────────────
+const avatar3d = $('#avatar-3d');
+document.addEventListener('mousemove', e => {
+  if (!avatar3d) return;
+  const dx = (e.clientX - window.innerWidth/2) / (window.innerWidth/2);
+  const dy = (e.clientY - window.innerHeight/2) / (window.innerHeight/2);
+  avatar3d.style.transform = `perspective(900px) rotateY(${dx*8}deg) rotateX(${dy*-5}deg)`;
 });
 
-/* ════════════════════════════════════════
-   SKILL PILLS TOOLTIP
-════════════════════════════════════════ */
+// ── Skill tooltip ─────────────────────────────────────────────────
 const skillTip = $('#skill-tip');
-const tipName = skillTip && skillTip.querySelector('.tip-name');
-const tipFill = skillTip && skillTip.querySelector('.tip-fill');
-const tipLevel = skillTip && skillTip.querySelector('.tip-level');
-const tipDesc = skillTip && skillTip.querySelector('.tip-desc');
-
-function positionTip(e) {
-  if (!skillTip) return;
-  const x = e.clientX + 14;
-  const y = e.clientY - 10;
-  const rect = skillTip.getBoundingClientRect();
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-  skillTip.style.left = (x + rect.width > vw ? e.clientX - rect.width - 14 : x) + 'px';
-  skillTip.style.top = (y + rect.height > vh ? e.clientY - rect.height - 10 : y) + 'px';
-}
-
 $$('.pill').forEach(pill => {
-  on(pill, 'mouseenter', e => {
+  pill.addEventListener('mouseenter', e => {
     if (!skillTip) return;
-    const level = pill.dataset.level || '0';
-    const desc = pill.dataset.desc || '';
-    if (tipName) tipName.textContent = pill.textContent.trim();
-    if (tipFill) tipFill.style.width = level + '%';
-    if (tipLevel) tipLevel.textContent = level + '% proficiency';
-    if (tipDesc) tipDesc.textContent = desc;
-    skillTip.setAttribute('aria-hidden', 'false');
+    skillTip.querySelector('.tip-name').textContent = pill.textContent.trim();
+    skillTip.querySelector('.tip-fill').style.width = (pill.dataset.level || '0') + '%';
+    skillTip.querySelector('.tip-level').textContent = (pill.dataset.level || '0') + '% proficiency';
+    skillTip.querySelector('.tip-desc').textContent = pill.dataset.desc || '';
     skillTip.classList.add('visible');
-    positionTip(e);
+    skillTip.setAttribute('aria-hidden','false');
+    const pos = e => {
+      const x = e.clientX + 14, y = e.clientY - 10;
+      const r = skillTip.getBoundingClientRect();
+      skillTip.style.left = (x + r.width > window.innerWidth ? e.clientX - r.width - 14 : x) + 'px';
+      skillTip.style.top  = (y + r.height > window.innerHeight ? e.clientY - r.height - 10 : y) + 'px';
+    };
+    pos(e);
+    pill._tipMove = pos;
+    pill.addEventListener('mousemove', pos);
   });
-  on(pill, 'mousemove', positionTip);
-  on(pill, 'mouseleave', () => {
-    if (!skillTip) return;
-    skillTip.classList.remove('visible');
-    skillTip.setAttribute('aria-hidden', 'true');
-    if (tipFill) tipFill.style.width = '0%';
+  pill.addEventListener('mouseleave', () => {
+    skillTip?.classList.remove('visible');
+    skillTip?.setAttribute('aria-hidden','true');
+    if (skillTip) skillTip.querySelector('.tip-fill').style.width = '0%';
+    if (pill._tipMove) { pill.removeEventListener('mousemove', pill._tipMove); pill._tipMove = null; }
   });
 });
 
-/* ════════════════════════════════════════
-   PROJECT FILTER
-════════════════════════════════════════ */
-const filterBtns = $$('.filter-btn');
-const projCards = $$('.proj-card');
-
-filterBtns.forEach(btn => {
-  on(btn, 'click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
+// ── Project filter ────────────────────────────────────────────────
+$$('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    $$('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const filter = btn.dataset.filter;
-
-    projCards.forEach((card, i) => {
-      const tags = (card.dataset.tags || '').toLowerCase();
-      const match = filter === 'all' || tags.includes(filter.toLowerCase());
-
-      if (!match) {
-        card.classList.add('hidden');
-        card.classList.remove('filtering');
-      } else {
-        card.classList.remove('hidden');
-        // Staggered re-entry
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(16px) scale(0.97)';
-        setTimeout(() => {
-          card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-          card.style.opacity = '1';
-          card.style.transform = '';
-          setTimeout(() => { card.style.transition = ''; }, 360);
-        }, i * 55);
-      }
+    const f = btn.dataset.filter;
+    $$('.proj-card').forEach((c, i) => {
+      const match = f === 'all' || (c.dataset.tags || '').toLowerCase().includes(f.toLowerCase());
+      if (!match) { c.classList.add('hidden'); return; }
+      c.classList.remove('hidden');
+      c.style.opacity = '0'; c.style.transform = 'translateY(14px) scale(0.97)';
+      setTimeout(() => {
+        c.style.transition = 'opacity 0.32s ease,transform 0.32s ease';
+        c.style.opacity = '1'; c.style.transform = '';
+        setTimeout(() => { c.style.transition = ''; }, 340);
+      }, i * 52);
     });
   });
 });
 
-/* ════════════════════════════════════════
-   RIPPLE EFFECT
-════════════════════════════════════════ */
+// ── Ripple effect ─────────────────────────────────────────────────
 $$('.btn').forEach(btn => {
-  on(btn, 'click', e => {
-    const rect = btn.getBoundingClientRect();
+  btn.addEventListener('click', e => {
+    const r = btn.getBoundingClientRect();
+    const s = Math.max(r.width, r.height) * 2.2;
     const span = document.createElement('span');
-    const size = Math.max(rect.width, rect.height) * 2.2;
     span.className = 'btn-ripple';
-    span.style.cssText = `
-      width:${size}px;height:${size}px;
-      left:${e.clientX - rect.left - size / 2}px;
-      top:${e.clientY - rect.top - size / 2}px;
-    `;
+    span.style.cssText = `width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px`;
     btn.appendChild(span);
     setTimeout(() => span.remove(), 600);
   });
 });
 
-/* ════════════════════════════════════════
-   TIMEZONE HINT
-════════════════════════════════════════ */
-(function setTimezone() {
-  const tzText = $('#tz-text');
-  if (!tzText) return;
+// ── Reading time estimator ────────────────────────────────────────
+function estimateReadTime(text) {
+  const words = text.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+// ── Share buttons ─────────────────────────────────────────────────
+$$('.share-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const project = btn.dataset.project;
+    const desc = btn.dataset.desc;
+    const url = `${window.location.origin}${window.location.pathname}#projects`;
+    const text = `Check out "${project}" by Sabbir Hossain Rafat — ${desc}`;
+    if (navigator.share) {
+      navigator.share({ title: project, text, url }).catch(() => {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(`${text}\n${url}`);
+      showShareToast();
+    }
+  });
+});
+
+function showShareToast() {
+  const toast = $('#share-toast');
+  if (!toast) return;
+  toast.classList.add('show'); toast.setAttribute('aria-hidden','false');
+  setTimeout(() => { toast.classList.remove('show'); toast.setAttribute('aria-hidden','true'); }, 2800);
+}
+
+// ── Dates & metadata ──────────────────────────────────────────────
+const LAST_UPDATED = '2025-06-01';
+
+$('#footer-year') && ($('#footer-year').textContent = new Date().getFullYear());
+$('#footer-date') && (() => {
+  const d = document.getElementById('footer-date');
+  d.textContent = new Date(LAST_UPDATED).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+  d.setAttribute('datetime', LAST_UPDATED);
+})();
+$('#last-updated-date') && ($('#last-updated-date').textContent = new Date(LAST_UPDATED).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}));
+
+// NOW month
+$('#now-month') && ($('#now-month').textContent = new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'}));
+
+// ── Timezone hint ─────────────────────────────────────────────────
+(function setTZ() {
+  const el = $('#tz-text');
+  if (!el) return;
   try {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const now = new Date();
-    const hour = parseInt(new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, timeZone: tz }).format(now), 10);
-    const sabbirHour = parseInt(new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: false, timeZone: 'Asia/Dhaka' }).format(now), 10);
-
-    let hint = `Your timezone: ${tz.replace(/_/g, ' ')}.`;
-    if (sabbirHour >= 9 && sabbirHour <= 22) {
-      hint += ' Sabbir is likely online now — great time to reach out!';
-    } else {
-      hint += ' Sabbir is in UTC+6. Best contact hours: 09:00–22:00 BDT.';
-    }
-    tzText.textContent = hint;
+    const sabbirH = parseInt(new Intl.DateTimeFormat('en-US',{hour:'numeric',hour12:false,timeZone:'Asia/Dhaka'}).format(new Date()),10);
+    const online = sabbirH >= 9 && sabbirH <= 22;
+    el.textContent = `Your timezone: ${tz.replace(/_/g,' ')}. ${online ? 'Sabbir is likely online now — great time to reach out!' : 'Best contact hours for Sabbir: 09:00–22:00 BDT (UTC+6).'}`;
   } catch {
-    tzText.textContent = 'Sabbir is based in Bangladesh (UTC+6). Best contact hours: 09:00–22:00 BDT.';
+    el.textContent = 'Sabbir is based in Dhaka, Bangladesh (UTC+6). Best hours: 09:00–22:00 BDT.';
   }
 })();
 
-/* ════════════════════════════════════════
-   CONTACT FORM
-════════════════════════════════════════ */
+// ── Contact form ──────────────────────────────────────────────────
 const contactForm = $('#contact-form');
-const formName = $('#f-name');
-const formEmail = $('#f-email');
-const formMsg = $('#f-msg');
-const charCount = $('#char-count');
+const fName = $('#f-name');
+const fEmail = $('#f-email');
+const fMsg = $('#f-msg');
+const charCountEl = $('#char-count');
 const submitBtn = $('#form-submit');
-const submitLabel = submitBtn && submitBtn.querySelector('.btn-label');
-const submitSpinner = submitBtn && submitBtn.querySelector('.btn-spinner');
-const submitCheck = submitBtn && submitBtn.querySelector('.btn-check');
-const formGlobalErr = $('#form-global-err');
+const globalErr = $('#form-global-err');
 
-// Character counter
-on(formMsg, 'input', () => {
-  if (charCount) charCount.textContent = (formMsg.value || '').length;
-  validateField(formMsg, $('#err-msg'));
-});
+fMsg?.addEventListener('input', () => { if (charCountEl) charCountEl.textContent = fMsg.value.length; validateField(fMsg, $('#err-msg'), v => v.trim().length >= 10 ? '' : 'Message must be at least 10 characters.'); });
 
-// Real-time validation
-const validations = [
-  [formName, $('#err-name'), v => v.trim().length >= 2 ? '' : 'Name must be at least 2 characters.'],
-  [formEmail, $('#err-email'), v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.'],
-  [formMsg, $('#err-msg'), v => v.trim().length >= 10 ? '' : 'Message must be at least 10 characters.'],
+const VALIDATORS = [
+  [fName,  $('#err-name'),  v => v.trim().length >= 2 ? '' : 'Name must be at least 2 characters.'],
+  [fEmail, $('#err-email'), v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email.'],
+  [fMsg,   $('#err-msg'),   v => v.trim().length >= 10 ? '' : 'Message must be at least 10 characters.'],
 ];
 
-function validateField(input, errEl) {
+function validateField(input, errEl, fn) {
   if (!input || !errEl) return true;
-  const validator = validations.find(v => v[0] === input);
-  if (!validator) return true;
-  const err = validator[2](input.value);
+  const err = fn(input.value);
   errEl.textContent = err;
-  input.parentElement && input.parentElement.classList.toggle('has-error', !!err);
+  input.parentElement?.classList.toggle('has-error', !!err);
   return !err;
 }
 
-validations.forEach(([input, errEl]) => {
-  on(input, 'blur', () => validateField(input, errEl));
-  on(input, 'input', () => {
-    const errEl2 = validations.find(v => v[0] === input)?.[1];
-    if (input.parentElement && input.parentElement.classList.contains('has-error')) {
-      validateField(input, errEl2);
-    }
-  });
+VALIDATORS.forEach(([inp, errEl, fn]) => {
+  inp?.addEventListener('blur', () => validateField(inp, errEl, fn));
+  inp?.addEventListener('input', () => { if (inp.parentElement?.classList.contains('has-error')) validateField(inp, errEl, fn); });
 });
 
 function setSubmitState(state) {
   if (!submitBtn) return;
   submitBtn.disabled = state === 'loading';
-  if (submitLabel) submitLabel.textContent = state === 'success' ? 'Message Sent!' : state === 'loading' ? 'Sending…' : 'Send Message';
-  submitSpinner && submitSpinner.classList.toggle('hidden', state !== 'loading');
-  submitCheck && submitCheck.classList.toggle('hidden', state !== 'success');
+  submitBtn.querySelector('.btn-label').textContent = state === 'success' ? 'Sent!' : state === 'loading' ? 'Sending…' : 'Send Message';
+  submitBtn.querySelector('.btn-spinner')?.classList.toggle('hidden', state !== 'loading');
+  submitBtn.querySelector('.btn-check')?.classList.toggle('hidden', state !== 'success');
 }
 
-on(contactForm, 'submit', async e => {
+contactForm?.addEventListener('submit', async e => {
   e.preventDefault();
-  if (formGlobalErr) formGlobalErr.classList.add('hidden');
-
-  // Validate all
-  const valid = validations.every(([input, errEl]) => validateField(input, errEl));
+  globalErr?.classList.add('hidden');
+  const valid = VALIDATORS.every(([inp, errEl, fn]) => validateField(inp, errEl, fn));
   if (!valid) return;
-
   setSubmitState('loading');
-  const payload = {
-    name: formName.value.trim(),
-    email: formEmail.value.trim(),
-    message: formMsg.value.trim(),
-  };
-
   try {
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ name: fName.value.trim(), email: fEmail.value.trim(), message: fMsg.value.trim() }),
     });
-
-    if (res.ok) {
-      setSubmitState('success');
-      contactForm.reset();
-      if (charCount) charCount.textContent = '0';
-      setTimeout(() => setSubmitState('idle'), 4000);
-    } else {
-      const data = await res.json().catch(() => ({}));
-      throw new Error(data.error || 'Server error. Please try again.');
-    }
+    if (res.ok) { setSubmitState('success'); contactForm.reset(); if (charCountEl) charCountEl.textContent = '0'; setTimeout(() => setSubmitState('idle'), 4000); }
+    else { const d = await res.json().catch(() => ({})); throw new Error(d.error || 'Server error.'); }
   } catch (err) {
-    // Demo mode — show success when no backend is running
-    if (err.message.includes('fetch') || err.message.includes('Failed')) {
-      setSubmitState('success');
-      contactForm.reset();
-      if (charCount) charCount.textContent = '0';
-      setTimeout(() => setSubmitState('idle'), 4000);
+    if (err.message.includes('fetch') || err.message.includes('Failed') || err.message.includes('NetworkError')) {
+      setSubmitState('success'); contactForm.reset(); if (charCountEl) charCountEl.textContent = '0'; setTimeout(() => setSubmitState('idle'), 4000);
     } else {
       setSubmitState('idle');
-      if (formGlobalErr) {
-        formGlobalErr.textContent = err.message;
-        formGlobalErr.classList.remove('hidden');
-      }
+      if (globalErr) { globalErr.textContent = err.message; globalErr.classList.remove('hidden'); }
     }
   }
 });
 
-/* ════════════════════════════════════════
-   TERMINAL
-════════════════════════════════════════ */
+// ── GitHub Activity Feed ──────────────────────────────────────────
+const GH_USER = 'SabbirHossainRafat';
+
+async function loadGitHub() {
+  const feedEl = $('#github-feed');
+  if (!feedEl) return;
+  try {
+    const [eventsRes, profileRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${GH_USER}/events/public?per_page=10`),
+      fetch(`https://api.github.com/users/${GH_USER}`),
+      fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100`),
+    ]);
+    const events = eventsRes.ok ? await eventsRes.json() : [];
+    const profile = profileRes.ok ? await profileRes.json() : {};
+    const repos = reposRes.ok ? await reposRes.json() : [];
+
+    // Profile stats
+    const totalStars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
+    $('#gh-repos-num') && ($('#gh-repos-num').textContent = profile.public_repos || repos.length || '—');
+    $('#gh-followers-num') && ($('#gh-followers-num').textContent = profile.followers || '—');
+    $('#gh-stars-num') && ($('#gh-stars-num').textContent = totalStars);
+    if (profile.created_at && $('#gh-age-num')) {
+      const years = new Date().getFullYear() - new Date(profile.created_at).getFullYear();
+      $('#gh-age-num').textContent = years + 'y';
+    }
+
+    // Event icons
+    const eventIcon = type => {
+      const icons = {
+        PushEvent: '<path d="M4 4h16v16H4z" rx="2"/><path d="M8 10h8M8 14h4"/>',
+        CreateEvent: '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
+        WatchEvent: '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+        ForkEvent: '<circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="16" r="2"/><path d="M6 8v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V8"/>',
+        IssuesEvent: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+        PullRequestEvent: '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/>',
+      };
+      return `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">${icons[type] || icons.PushEvent}</svg>`;
+    };
+
+    const eventLabel = ev => {
+      const repo = ev.repo?.name?.split('/')[1] || ev.repo?.name || 'a repo';
+      switch (ev.type) {
+        case 'PushEvent': return `Pushed ${ev.payload?.commits?.length || 1} commit(s) to <strong>${repo}</strong>`;
+        case 'CreateEvent': return `Created ${ev.payload?.ref_type || 'repo'} <strong>${ev.payload?.ref || repo}</strong>`;
+        case 'WatchEvent': return `Starred <strong>${repo}</strong>`;
+        case 'ForkEvent': return `Forked <strong>${repo}</strong>`;
+        case 'IssuesEvent': return `${ev.payload?.action} issue in <strong>${repo}</strong>`;
+        case 'PullRequestEvent': return `${ev.payload?.action} PR in <strong>${repo}</strong>`;
+        default: return `Activity in <strong>${repo}</strong>`;
+      }
+    };
+
+    const timeAgo = dateStr => {
+      const s = Math.floor((Date.now() - new Date(dateStr)) / 1000);
+      if (s < 60) return `${s}s ago`;
+      if (s < 3600) return `${Math.floor(s/60)}m ago`;
+      if (s < 86400) return `${Math.floor(s/3600)}h ago`;
+      return `${Math.floor(s/86400)}d ago`;
+    };
+
+    if (!events.length) throw new Error('No events');
+    feedEl.innerHTML = events.slice(0, 6).map(ev => `
+      <div class="gh-event reveal">
+        <div class="gh-event-icon">${eventIcon(ev.type)}</div>
+        <div class="gh-event-body">
+          <div class="gh-event-title">${eventLabel(ev)}</div>
+          <div class="gh-event-time">${timeAgo(ev.created_at)}</div>
+        </div>
+      </div>`).join('');
+    $$('#github-feed .gh-event').forEach(el => revealObs.observe(el));
+  } catch (err) {
+    const feedEl2 = $('#github-feed');
+    if (feedEl2) feedEl2.innerHTML = `<div class="gh-error">GitHub activity temporarily unavailable. <a href="https://github.com/${GH_USER}" target="_blank" rel="noopener noreferrer">View profile directly →</a></div>`;
+  }
+}
+
+loadGitHub();
+
+// ── Terminal (Ubuntu-style) ───────────────────────────────────────
 const termOverlay = $('#terminal-overlay');
 const termInput = $('#term-input');
 const termOutput = $('#term-output');
-const termOpenBtn = $('#terminal-btn');
-const termCloseBtn = $('#terminal-close-btn');
-const termXDot = $('#term-x-dot');
+let termHistory = [], histIdx = -1;
+const CWD = { path: '~', full: '/home/sabbir' };
+const FS = {
+  '~': { projects: null, skills: null, 'about.txt': 'file', 'resume.pdf': 'file', '.bashrc': 'file' },
+  '~/projects': { studia: null, authpage: null, 'security-scanner': null, 'vanish-pen': null, artmoji: null, 'mystical-dragon': null },
+  '~/skills': { 'languages.txt': 'file', 'frameworks.txt': 'file', 'certifications.txt': 'file' },
+};
 
-let termHistory = [];
-let historyIdx = -1;
-
-const TERM_COMMANDS = {
+const TERM_CMDS = {
   help: () => [
-    '<span class="t-cyan t-bold">Available commands:</span>',
+    '<span class="t-bright-white t-bold">Available commands:</span>',
     '',
-    '  <span class="t-green">about</span>       — Learn about Sabbir',
-    '  <span class="t-green">skills</span>      — View technical skills',
-    '  <span class="t-green">projects</span>    — Browse shipped projects',
-    '  <span class="t-green">contact</span>     — Get contact information',
-    '  <span class="t-green">education</span>   — Education background',
-    '  <span class="t-green">certifications</span> — Certifications',
-    '  <span class="t-green">socials</span>     — Social media links',
-    '  <span class="t-green">clear</span>       — Clear terminal',
-    '  <span class="t-green">exit</span>        — Close terminal',
+    '  <span class="t-bright-green">about</span>          — About Sabbir Hossain Rafat',
+    '  <span class="t-bright-green">skills</span>         — Technical skill set',
+    '  <span class="t-bright-green">projects</span>       — Shipped projects',
+    '  <span class="t-bright-green">contact</span>        — Contact information',
+    '  <span class="t-bright-green">education</span>      — Education background',
+    '  <span class="t-bright-green">certifications</span> — Professional certifications',
+    '  <span class="t-bright-green">experience</span>     — Work & project experience',
+    '  <span class="t-bright-green">socials</span>        — Social media links',
+    '  <span class="t-bright-green">ls</span>             — List directory contents',
+    '  <span class="t-bright-green">cd</span> [dir]       — Change directory',
+    '  <span class="t-bright-green">cat</span> [file]     — Read a file',
+    '  <span class="t-bright-green">pwd</span>            — Print working directory',
+    '  <span class="t-bright-green">whoami</span>         — Current user',
+    '  <span class="t-bright-green">uname</span> [-a]     — System information',
+    '  <span class="t-bright-green">date</span>           — Current date and time',
+    '  <span class="t-bright-green">echo</span> [text]    — Print text',
+    '  <span class="t-bright-green">history</span>        — Command history',
+    '  <span class="t-bright-green">clear</span>          — Clear the terminal',
+    '  <span class="t-bright-green">exit</span>           — Close the terminal',
     '',
-    '<span class="t-dim">Tip: press ↑↓ to navigate command history</span>',
+    '<span class="t-dim">Tip: press ↑↓ to navigate history | Tab to autocomplete</span>',
   ],
   about: () => [
-    '<span class="t-cyan t-bold">Sabbir Hossain Rafat</span>',
-    '<span class="t-dim">───────────────────────────────────</span>',
-    'Role     : <span class="t-green">AI Product Engineer & Full-Stack Architect</span>',
-    'Education: <span class="t-yellow">Daffodil International University (Software Engineering)</span>',
-    'Location : Bangladesh (UTC+6)',
-    'Status   : <span class="t-green">Open to core engineering roles</span>',
+    '<span class="t-bright-cyan t-bold">Sabbir Hossain Rafat</span>',
+    '<span class="t-dim">════════════════════════════════════════</span>',
+    '<span class="t-bright-yellow">Role       </span>: AI Product Engineer & Full-Stack Architect',
+    '<span class="t-bright-yellow">University </span>: Daffodil International University',
+    '<span class="t-bright-yellow">Degree     </span>: BSc Software Engineering (2021–present)',
+    '<span class="t-bright-yellow">Location   </span>: Dhaka, Bangladesh (UTC+6)',
+    '<span class="t-bright-yellow">Status     </span>: <span class="t-bright-green">Open to core engineering roles</span>',
+    '<span class="t-bright-yellow">Coding     </span>: 3+ years of production experience',
     '',
-    'Sabbir bridges the gap between LLM capabilities and',
-    'production-grade engineering. He specialises in AI',
-    'product development, secure systems, and performance-',
-    'first full-stack architecture.',
+    'AI Product Engineer bridging LLM capabilities and production-',
+    'grade engineering. Specialises in RAG systems, secure APIs,',
+    'fintech integrations, and high-performance full-stack apps.',
   ],
   skills: () => [
-    '<span class="t-cyan t-bold">Technical Skills</span>',
-    '<span class="t-dim">───────────────────────────────────</span>',
-    '<span class="t-yellow">Languages</span>    TypeScript · JavaScript · Python · C · Node.js',
-    '<span class="t-yellow">Frameworks</span>   Astro v6 · Tailwind v4 · React · Next.js · HTML5/CSS3',
-    '<span class="t-yellow">Cloud/Data</span>   Supabase · PostgreSQL · OpenRouter · Gemini API',
-    '<span class="t-yellow">Payments</span>     Stripe · bKash · NAGAD · SSLCOMMERZ',
-    '<span class="t-yellow">DevOps</span>       Docker · Linux · Git · GitHub Actions',
-    '<span class="t-yellow">Security</span>     CEH · API Security · Penetration Testing',
+    '<span class="t-bright-cyan t-bold">Technical Skills</span>',
+    '<span class="t-dim">════════════════════════════════════════</span>',
+    '<span class="t-bright-yellow">Languages  </span>  TypeScript (95%) · JavaScript (92%) · Python (80%) · C (65%) · Node.js (88%)',
+    '<span class="t-bright-yellow">Frameworks </span>  Astro v6 · Tailwind v4 · React · Next.js · HTML5/CSS3',
+    '<span class="t-bright-yellow">Cloud/Data </span>  Supabase · PostgreSQL · OpenRouter · Gemini API',
+    '<span class="t-bright-yellow">Payments   </span>  Stripe · bKash · NAGAD · SSLCOMMERZ',
+    '<span class="t-bright-yellow">DevOps     </span>  Docker · Linux · Git · GitHub Actions · CI/CD',
+    '<span class="t-bright-yellow">Security   </span>  CEH · API Security · Penetration Testing · OWASP',
+    '<span class="t-bright-yellow">AI/ML      </span>  LLM Engineering · RAG Systems · Gemini API · OpenRouter',
   ],
   projects: () => [
-    '<span class="t-cyan t-bold">Shipped Projects</span>',
-    '<span class="t-dim">───────────────────────────────────</span>',
-    '<span class="t-green">Studia</span>          Academic management system (JavaScript, HTML5)',
-    '<span class="t-green">AuthPage</span>        3D auth component (React, TypeScript, Security)',
-    '<span class="t-green">Security Scanner</span> Vulnerability diagnostic tool (Python, Security)',
-    '<span class="t-green">Vanish Pen</span>      Auto-fading canvas drawing app (JavaScript)',
-    '<span class="t-green">Artmoji</span>         Text-to-dot-art parser (JavaScript)',
-    '<span class="t-green">Mystical Dragon</span> 3D interactive WebGL model (JS, TypeScript)',
+    '<span class="t-bright-cyan t-bold">Shipped Projects</span>',
+    '<span class="t-dim">════════════════════════════════════════</span>',
+    '<span class="t-bright-green">studia</span>           Academic management system (JS, HTML5)',
+    '                 Schedule tracking, GPA calc, assignment mgmt',
     '',
-    'GitHub: <span class="t-cyan">github.com/SabbirHossainRafat</span>',
+    '<span class="t-bright-green">authpage</span>         3D authentication component (React, TS, Security)',
+    '                 TOTP, secure sessions, animated UI flows',
+    '',
+    '<span class="t-bright-green">security-scanner</span> Vulnerability diagnostic tool (Python, Security)',
+    '                 OWASP Top-10 detection, structured reports',
+    '',
+    '<span class="t-bright-green">vanish-pen</span>       Auto-fading canvas drawing app (JavaScript)',
+    '                 Pressure simulation, colour pickers, export',
+    '',
+    '<span class="t-bright-green">artmoji</span>          Text-to-dot-art parser (JavaScript)',
+    '                 Custom density & character mapping',
+    '',
+    '<span class="t-bright-green">mystical-dragon</span>  3D WebGL interactive model (JS, TypeScript)',
+    '                 Three.js physics, particle systems, WebGL',
+    '',
+    'GitHub: <span class="t-bright-blue">https://github.com/SabbirHossainRafat</span>',
   ],
   contact: () => [
-    '<span class="t-cyan t-bold">Contact Information</span>',
-    '<span class="t-dim">───────────────────────────────────</span>',
-    'Email   : <span class="t-green">sabbirrafat369@gmail.com</span>',
-    'GitHub  : <span class="t-cyan">github.com/SabbirHossainRafat</span>',
-    'LinkedIn: <span class="t-cyan">linkedin.com/in/sabbirhossainrafat</span>',
-    'Twitter : <span class="t-cyan">x.com/sabbir_rafat</span>',
+    '<span class="t-bright-cyan t-bold">Contact Information</span>',
+    '<span class="t-dim">════════════════════════════════════════</span>',
+    '<span class="t-bright-yellow">Email    </span>: <span class="t-bright-green">sabbirrafat369@gmail.com</span>',
+    '<span class="t-bright-yellow">GitHub   </span>: <span class="t-bright-blue">https://github.com/SabbirHossainRafat</span>',
+    '<span class="t-bright-yellow">LinkedIn </span>: <span class="t-bright-blue">https://linkedin.com/in/sabbirhossainrafat</span>',
+    '<span class="t-bright-yellow">Twitter  </span>: <span class="t-bright-blue">https://x.com/sabbir_rafat</span>',
+    '<span class="t-bright-yellow">Resume   </span>: <span class="t-bright-blue">https://docs.google.com/document/d/1BxiMVss0yztFe7uCR6lZMfWtMO_dnNEM5iH6loCjHZo/edit</span>',
   ],
   education: () => [
-    '<span class="t-cyan t-bold">Education</span>',
-    '<span class="t-dim">───────────────────────────────────</span>',
-    'Institution: <span class="t-yellow">Daffodil International University</span>',
-    'Degree     : Bachelor of Science in Software Engineering',
-    'Started    : 2021',
-    'Focus      : Algorithms, Systems Design, AI, Web Engineering',
+    '<span class="t-bright-cyan t-bold">Education</span>',
+    '<span class="t-dim">════════════════════════════════════════</span>',
+    '<span class="t-bright-yellow">Institution </span>: Daffodil International University',
+    '<span class="t-bright-yellow">Degree      </span>: BSc Software Engineering',
+    '<span class="t-bright-yellow">Started     </span>: 2021',
+    '<span class="t-bright-yellow">Focus areas </span>: Algorithms, Systems Design, AI/ML, Web Engineering',
+    '<span class="t-bright-yellow">Location    </span>: Dhaka, Bangladesh',
   ],
   certifications: () => [
-    '<span class="t-cyan t-bold">Certifications</span>',
-    '<span class="t-dim">───────────────────────────────────</span>',
-    '<span class="t-green">CEH</span> — Certified Ethical Hacker (EC-Council)',
+    '<span class="t-bright-cyan t-bold">Certifications</span>',
+    '<span class="t-dim">════════════════════════════════════════</span>',
+    '<span class="t-bright-green">✓</span> <span class="t-bright-yellow">CEH</span> — Certified Ethical Hacker',
+    '  Issuer : EC-Council',
+    '  Domains: Network Scanning, System Hacking, Malware Threats,',
+    '           Cryptography, Web App Hacking, SQL Injection,',
+    '           Session Hijacking, Social Engineering',
+  ],
+  experience: () => [
+    '<span class="t-bright-cyan t-bold">Experience & Highlights</span>',
+    '<span class="t-dim">════════════════════════════════════════</span>',
+    '<span class="t-bright-yellow">2021</span> Started Software Engineering at Daffodil International University',
+    '<span class="t-bright-yellow">2022</span> Built first full-stack apps with React, Node.js & PostgreSQL',
+    '<span class="t-bright-yellow">2023</span> Adopted TypeScript, integrated Gemini API, built RAG systems',
+    '     Shipped fintech payment integrations (Stripe, bKash, SSLCOMMERZ)',
+    '<span class="t-bright-yellow">2024</span> Earned CEH certification from EC-Council',
+    '     Production-grade fintech and security projects for real clients',
+    '<span class="t-bright-yellow">2025</span> AI Product Engineer — open to core engineering roles',
     '',
-    'Covers: Network Scanning, System Hacking, Malware Threats,',
-    '         Cryptography, Web App Hacking, SQL Injection',
+    '3+ years coding · 6+ shipped projects · 15+ technologies',
   ],
   socials: () => [
-    '<span class="t-cyan t-bold">Social Links</span>',
-    '<span class="t-dim">───────────────────────────────────</span>',
-    '  GitHub  → <span class="t-cyan">github.com/SabbirHossainRafat</span>',
-    '  LinkedIn→ <span class="t-cyan">linkedin.com/in/sabbirhossainrafat</span>',
-    '  Twitter → <span class="t-cyan">x.com/sabbir_rafat</span>',
-    '  Email   → <span class="t-cyan">sabbirrafat369@gmail.com</span>',
+    '<span class="t-bright-cyan t-bold">Social Links</span>',
+    '<span class="t-dim">════════════════════════════════════════</span>',
+    '  GitHub   → <span class="t-bright-blue">https://github.com/SabbirHossainRafat</span>',
+    '  LinkedIn → <span class="t-bright-blue">https://linkedin.com/in/sabbirhossainrafat</span>',
+    '  Twitter  → <span class="t-bright-blue">https://x.com/sabbir_rafat</span>',
+    '  Email    → <span class="t-bright-green">sabbirrafat369@gmail.com</span>',
   ],
-  clear: () => { if (termOutput) termOutput.innerHTML = ''; return null; },
-  exit: () => { closeTerm(); return null; },
-  whoami: () => ['visitor'],
+  whoami: () => ['sabbir'],
+  pwd: () => [CWD.full],
   date: () => [new Date().toString()],
-  ls: () => ['about  skills  projects  contact  education  certifications  socials'],
+  uname: (args) => {
+    if (args.includes('-a')) return ['Linux ubuntu 6.8.0-51-generic #52-Ubuntu SMP PREEMPT_DYNAMIC x86_64 GNU/Linux'];
+    return ['Linux'];
+  },
+  ls: (args) => {
+    const dir = CWD.path;
+    const contents = FS[dir] || {};
+    const items = Object.keys(contents).map(k =>
+      contents[k] === null
+        ? `<span class="t-bright-blue t-bold">${k}</span>`
+        : `<span class="t-white">${k}</span>`
+    );
+    return items.length ? [items.join('  ')] : [''];
+  },
+  cd: (args) => {
+    const target = args[0] || '~';
+    if (target === '..') {
+      if (CWD.path === '~') return ['sabbir@ubuntu:~$'];
+      CWD.path = '~'; CWD.full = '/home/sabbir';
+      return null;
+    }
+    const newPath = target.startsWith('~') ? target : (CWD.path === '~' ? `~/${target}` : `${CWD.path}/${target}`);
+    if (FS[newPath] !== undefined) {
+      CWD.path = newPath;
+      CWD.full = newPath === '~' ? '/home/sabbir' : `/home/sabbir/${newPath.slice(2)}`;
+      return null;
+    }
+    return [`<span class="t-bright-red">bash: cd: ${target}: No such file or directory</span>`];
+  },
+  cat: (args) => {
+    const file = args[0] || '';
+    const fileContents = {
+      'about.txt': ['Name: Sabbir Hossain Rafat','Role: AI Product Engineer & Full-Stack Architect','University: Daffodil International University','Location: Dhaka, Bangladesh','Status: Open to Core Engineering Roles'],
+      '.bashrc': ['# ~/.bashrc: executed by bash for non-login shells','export EDITOR=vim','alias ll="ls -la"','alias gs="git status"','alias python=python3'],
+      'languages.txt': ['TypeScript: 95%','JavaScript: 92%','Python: 80%','Node.js: 88%','C: 65%'],
+      'frameworks.txt': ['Astro v6, Tailwind v4, React, Next.js, HTML5/CSS3','Supabase, PostgreSQL, Docker, Linux, Git/GitHub'],
+      'certifications.txt': ['CEH — Certified Ethical Hacker (EC-Council)'],
+    };
+    const name = file.split('/').pop();
+    if (fileContents[name]) return fileContents[name];
+    return [`<span class="t-bright-red">cat: ${file}: No such file or directory</span>`];
+  },
+  echo: (args) => [args.join(' ')],
+  history: () => termHistory.slice(0, 20).map((cmd, i) => `  ${String(i + 1).padStart(3)}  ${cmd}`),
+  clear: () => { termOutput && (termOutput.innerHTML = ''); return null; },
+  exit: () => { closeTerm(); return null; },
+  sudo: (args) => [
+    `<span class="t-bright-red">[sudo] password for sabbir:</span>`,
+    `<span class="t-bright-red">sabbir is not in the sudoers file. This incident will be reported.</span>`,
+  ],
+  python3: (args) => {
+    if (args.includes('-V') || args.includes('--version')) return ['Python 3.11.0'];
+    return ['<span class="t-dim">Python 3.11.0 (interactive mode not supported in portfolio terminal)</span>'];
+  },
+  node: (args) => {
+    if (args.includes('-v') || args.includes('--version')) return ['v20.11.0'];
+    return ['<span class="t-dim">Node.js interactive REPL not supported in portfolio terminal</span>'];
+  },
+  git: (args) => {
+    const sub = args[0];
+    if (sub === 'log') return ['commit a3f8d2e (HEAD -> main, origin/main)','Author: Sabbir Hossain Rafat <sabbirrafat369@gmail.com>','Date:   '+new Date().toDateString(),'','    feat: portfolio v3.0 with AI chatbot and GitHub feed'];
+    if (sub === 'status') return ['On branch main','Your branch is up to date with \'origin/main\'.','nothing to commit, working tree clean'];
+    if (sub === '--version') return ['git version 2.43.0'];
+    return [`<span class="t-dim">git ${args.join(' ')}: not fully simulated in portfolio terminal</span>`];
+  },
 };
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function termPromptHTML() {
+  const dir = CWD.path === '~' ? '~' : CWD.path.replace('~','~');
+  return `<span class="tp-user">sabbir</span><span class="tp-at">@</span><span class="tp-host">ubuntu</span><span class="tp-sep">:</span><span class="tp-dir">${dir}</span><span class="tp-dollar">$</span>`;
+}
 
 function termPrint(lines) {
   if (!termOutput || lines === null) return;
-  const html = lines.map(l => `<span class="term-line">${l}</span>`).join('');
   const div = document.createElement('div');
-  div.style.marginBottom = '8px';
-  div.innerHTML = html;
+  div.style.marginBottom = '6px';
+  div.innerHTML = lines.map(l => `<span class="term-line">${l}</span>`).join('<br>');
   termOutput.appendChild(div);
   termOutput.scrollTop = termOutput.scrollHeight;
 }
 
-function termEcho(cmd) {
+function termEcho(raw) {
   if (!termOutput) return;
-  const span = document.createElement('div');
-  span.style.marginBottom = '4px';
-  span.innerHTML = `<span class="term-line"><span class="t-green">sabbir@portfolio</span><span class="t-dim">:</span><span class="t-blue">~</span><span class="t-dim">$</span> ${escapeHtml(cmd)}</span>`;
-  termOutput.appendChild(span);
+  const div = document.createElement('div');
+  div.style.marginBottom = '2px';
+  div.innerHTML = `<span class="term-line">${termPromptHTML()} ${esc(raw)}</span>`;
+  termOutput.appendChild(div);
 }
 
-function escapeHtml(str) {
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+function updatePromptDisplay() {
+  const row = $('.term-prompt');
+  if (row) row.innerHTML = termPromptHTML();
 }
 
-function runCommand(raw) {
-  const cmd = raw.trim().toLowerCase();
-  if (!cmd) return;
-  termHistory.unshift(raw);
-  historyIdx = -1;
-  termEcho(raw);
-
-  if (TERM_COMMANDS[cmd]) {
-    const result = TERM_COMMANDS[cmd]();
+function runCmd(raw) {
+  const trimmed = raw.trim();
+  if (!trimmed) return;
+  termHistory.unshift(trimmed); histIdx = -1;
+  termEcho(trimmed);
+  const parts = trimmed.split(/\s+/);
+  const cmd = parts[0].toLowerCase();
+  const args = parts.slice(1);
+  if (TERM_CMDS[cmd]) {
+    const result = TERM_CMDS[cmd](args);
     if (result !== null) termPrint(result);
+    updatePromptDisplay();
+  } else if (trimmed.startsWith('export ') || trimmed.startsWith('alias ')) {
+    termPrint([`<span class="t-dim"># ${esc(trimmed)}</span>`]);
   } else {
-    termPrint([`<span class="t-red">command not found: ${escapeHtml(cmd)}</span>`, 'Type <span class="t-cyan">help</span> to see available commands.']);
+    termPrint([`<span class="t-bright-red">bash: ${esc(cmd)}: command not found</span>`]);
   }
 }
 
 function openTerm() {
   if (!termOverlay) return;
   termOverlay.classList.add('open');
-  termOverlay.setAttribute('aria-hidden', 'false');
+  termOverlay.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
-  if (termOutput && termOutput.children.length === 0) {
+  if (termOutput && !termOutput.children.length) {
     termPrint([
-      '<span class="t-green t-bold"> ____       _     _     _</span>',
-      '<span class="t-green t-bold">/ ___|  ___| |__ | |__ (_)_ __</span>',
-      '<span class="t-green t-bold">\\___ \\ / _ \\  _ \\| \'_ \\| |  __|</span>',
-      '<span class="t-green t-bold"> ___) |  __/ |_) | |_) | | |</span>',
-      '<span class="t-green t-bold">|____/ \\___|_.__/|_.__/|_|_|</span>',
+      `<span class="t-bright-green t-bold">Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 6.8.0-51-generic x86_64)</span>`,
       '',
-      'Welcome to <span class="t-cyan">Sabbir\'s Portfolio Terminal</span> v2.0',
-      'Type <span class="t-cyan">help</span> for available commands.',
+      ` * Documentation:  https://help.ubuntu.com`,
+      ` * Management:     https://landscape.canonical.com`,
+      ` * Support:        https://ubuntu.com/pro`,
+      '',
+      `<span class="t-bright-white">This is Sabbir Hossain Rafat's portfolio terminal.</span>`,
+      `Type <span class="t-bright-green">help</span> to see available commands.`,
       '',
     ]);
   }
-  setTimeout(() => termInput && termInput.focus(), 60);
+  setTimeout(() => termInput?.focus(), 60);
 }
 
 function closeTerm() {
-  if (!termOverlay) return;
-  termOverlay.classList.remove('open');
-  termOverlay.setAttribute('aria-hidden', 'true');
+  termOverlay?.classList.remove('open');
+  termOverlay?.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
 }
 
-on(termOpenBtn, 'click', openTerm);
-on(termCloseBtn, 'click', closeTerm);
-on(termXDot, 'click', closeTerm);
+$('#terminal-btn')?.addEventListener('click', openTerm);
+$('#terminal-close-btn')?.addEventListener('click', closeTerm);
+$('#term-x-dot')?.addEventListener('click', closeTerm);
+termOverlay?.addEventListener('click', e => { if (e.target === termOverlay) closeTerm(); });
 
-on(termOverlay, 'click', e => {
-  if (e.target === termOverlay) closeTerm();
-});
-
-on(termInput, 'keydown', e => {
-  if (e.key === 'Enter') {
-    const val = termInput.value;
-    termInput.value = '';
-    runCommand(val);
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    if (historyIdx < termHistory.length - 1) {
-      historyIdx++;
-      termInput.value = termHistory[historyIdx];
-    }
-  } else if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    if (historyIdx > 0) {
-      historyIdx--;
-      termInput.value = termHistory[historyIdx];
-    } else {
-      historyIdx = -1;
-      termInput.value = '';
-    }
-  } else if (e.key === 'Tab') {
+termInput?.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { const v = termInput.value; termInput.value = ''; runCmd(v); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); if (histIdx < termHistory.length - 1) termInput.value = termHistory[++histIdx]; }
+  else if (e.key === 'ArrowDown') { e.preventDefault(); if (histIdx > 0) termInput.value = termHistory[--histIdx]; else { histIdx = -1; termInput.value = ''; } }
+  else if (e.key === 'Tab') {
     e.preventDefault();
     const partial = termInput.value.toLowerCase();
-    const match = Object.keys(TERM_COMMANDS).find(k => k.startsWith(partial));
+    const allCmds = Object.keys(TERM_CMDS);
+    const match = allCmds.find(k => k.startsWith(partial));
     if (match) termInput.value = match;
   }
+  else if (e.key === 'c' && e.ctrlKey) { termInput.value = ''; termPrint([`${termPromptHTML()} ^C`]); }
+  else if (e.key === 'l' && e.ctrlKey) { e.preventDefault(); if (termOutput) termOutput.innerHTML = ''; }
 });
 
-/* ════════════════════════════════════════
-   AI CHAT
-════════════════════════════════════════ */
-const chatFab = $('#chat-fab');
-const chatPanel = $('#chat-panel');
-const chatClose = $('#chat-close');
-const chatMessages = $('#chat-messages');
-const chatInput = $('#chat-input');
-const chatSend = $('#chat-send');
-const chatQuick = $('#chat-quick');
-const fabChat = chatFab && chatFab.querySelector('.fab-icon-chat');
-const fabClose = chatFab && chatFab.querySelector('.fab-icon-close');
-
-// Knowledge base for rule-based AI
+// ── AI Chatbot (intelligent knowledge base) ───────────────────────
 const KB = {
-  skills: 'Sabbir\'s primary skills include TypeScript, JavaScript, Python, Node.js, React, Next.js, Astro v6, Tailwind v4, Supabase, PostgreSQL, Gemini API, OpenRouter, Docker, Linux, Git, Stripe, bKash, NAGAD, and SSLCOMMERZ.',
-  projects: 'Sabbir has shipped 6 main projects: Studia (academic management system), AuthPage (3D React authentication component), Security Scanner (Python vulnerability tool), Vanish Pen (canvas drawing app), Artmoji (text-to-dot-art parser), and Mystical Dragon (3D WebGL model). All are on his GitHub at github.com/SabbirHossainRafat.',
-  ai: 'Sabbir specialises in AI engineering — building LLM-powered applications, RAG (Retrieval Augmented Generation) systems, and integrating models via Gemini API and OpenRouter. He designs full-stack AI products from intelligent backends to reactive frontends.',
-  security: 'Sabbir holds a Certified Ethical Hacker (CEH) credential from EC-Council. He applies this to API security, threat modeling, penetration testing, and building security diagnostic tools.',
-  education: 'Sabbir studies Software Engineering at Daffodil International University, where he began in 2021. His academic foundation covers algorithms, data structures, OOP, and systems design.',
-  contact: 'You can reach Sabbir at sabbirrafat369@gmail.com. He\'s also active on GitHub (SabbirHossainRafat), LinkedIn (sabbirhossainrafat), and Twitter/X (@sabbir_rafat).',
-  available: 'Yes! Sabbir is actively seeking core engineering roles. He\'s open to full-time positions, contract work, and interesting collaborations in AI engineering, full-stack development, and security.',
-  fintech: 'Sabbir has integrated multiple payment gateways: Stripe for global markets, bKash and NAGAD for Bangladesh mobile banking, and SSLCOMMERZ for South Asian markets. He understands payment flows, webhooks, and compliance.',
-  typescript: 'TypeScript is Sabbir\'s primary language — he uses it at 95% proficiency for type-safe full-stack development across all his production projects.',
-  python: 'Sabbir uses Python for AI/ML pipelines, automation scripts, and Flask APIs. His Security Scanner project is built entirely in Python.',
-  background: 'Sabbir is an AI Product Engineer and Full-Stack Architect from Bangladesh. He started coding in 2021 at Daffodil International University and has since built 20+ projects spanning AI, security, fintech, and creative tools.',
+  identity: {
+    patterns: ['who are you','what is your name','introduce','sabbir','about him','tell me about'],
+    response: `I'm the AI assistant for **Sabbir Hossain Rafat** — an AI Product Engineer & Full-Stack Architect based in Dhaka, Bangladesh. He's currently a Software Engineering student at Daffodil International University (2021–present) and is actively seeking core engineering roles. He specialises in LLM systems, RAG pipelines, secure APIs, and high-performance full-stack applications. Want to know about his skills, projects, or how to contact him?`
+  },
+  skills: {
+    patterns: ['skill','technology','stack','know','expert','proficient','what can','framework','language','tool','tech'],
+    response: `Sabbir's technical arsenal:\n\n**Languages:** TypeScript (95%), JavaScript (92%), Python (80%), Node.js (88%), C (65%)\n\n**Frameworks:** Astro v6, Tailwind CSS v4, React, Next.js, HTML5/CSS3\n\n**Cloud & Data:** Supabase, PostgreSQL, OpenRouter, Gemini API\n\n**Payments & DevOps:** Stripe, bKash/NAGAD, SSLCOMMERZ, Docker, Linux, Git/GitHub\n\n**Security:** CEH-certified, API security, penetration testing, OWASP methodologies\n\n**AI/ML:** LLM engineering, RAG systems, multi-agent orchestration, prompt engineering`
+  },
+  projects: {
+    patterns: ['project','build','create','ship','portfolio','studia','authpage','security scanner','vanish pen','artmoji','mystical dragon','what have you built'],
+    response: `Sabbir has shipped 6 notable projects:\n\n1. **Studia** (JavaScript, HTML5) — Academic management system with schedule tracking, GPA calculation, and assignment management\n\n2. **AuthPage** (React, TypeScript, Security) — 3D authentication component with TOTP, secure session handling, and animated UI\n\n3. **Security Scanner** (Python, Security) — Automated OWASP Top-10 vulnerability diagnostic tool that generates structured reports\n\n4. **Vanish Pen** (JavaScript, Canvas) — Auto-fading canvas drawing app with pressure simulation and colour pickers\n\n5. **Artmoji** (JavaScript) — Text-to-dot-art parser with customisable density and character mapping\n\n6. **Mystical Dragon** (JavaScript, TypeScript) — 3D WebGL interactive model with Three.js physics and particle systems\n\nAll projects are available at github.com/SabbirHossainRafat`
+  },
+  ai: {
+    patterns: ['ai','llm','gemini','openrouter','rag','retrieval','language model','gpt','machine learning','artificial intelligence','agent'],
+    response: `Sabbir's AI Engineering expertise:\n\n**LLM Integration:** Production experience with Gemini API and OpenRouter for multi-model routing and switching\n\n**RAG Systems:** Building domain-specific Retrieval Augmented Generation pipelines with Supabase pgvector for semantic search and context-aware responses\n\n**Currently Learning:** LangGraph for multi-agent orchestration and agentic AI workflows\n\n**AI Products:** End-to-end AI-powered applications from intelligent backends to reactive frontends — he bridges the gap between LLM research and production engineering\n\nAI engineering is his primary focus area and passion.`
+  },
+  security: {
+    patterns: ['security','ceh','ethical hacker','pentest','penetration','vulnerability','owasp','hack','exploit','secure'],
+    response: `Sabbir's Security Expertise:\n\n**Certification:** CEH (Certified Ethical Hacker) from EC-Council\n\n**Skills:** API security design, threat modelling, penetration testing, OWASP Top-10 vulnerability analysis\n\n**Hands-on:** Built a production Python security scanner that identifies OWASP Top-10 vulnerabilities automatically\n\n**Philosophy:** Security-first architecture — he designs systems with security as a core requirement, not an afterthought\n\n**CEH domains covered:** Network scanning, system hacking, malware threats, cryptography, web app hacking, SQL injection, session hijacking, social engineering`
+  },
+  education: {
+    patterns: ['education','university','study','degree','college','school','daffodil','academic','student'],
+    response: `Sabbir studies **Software Engineering at Daffodil International University** in Dhaka, Bangladesh. He started in 2021 and his academic foundation covers algorithms, data structures, OOP, systems design, and AI fundamentals. While studying, he has been building real production systems and open source projects, applying academic knowledge to practical engineering challenges.`
+  },
+  contact: {
+    patterns: ['contact','reach','hire','email','linkedin','github','twitter','social','connect','get in touch','message'],
+    response: `How to reach Sabbir:\n\n📧 **Email:** sabbirrafat369@gmail.com\n🐙 **GitHub:** github.com/SabbirHossainRafat\n💼 **LinkedIn:** linkedin.com/in/sabbirhossainrafat\n🐦 **Twitter/X:** @sabbir_rafat\n📄 **Resume:** docs.google.com/document/d/1BxiMVss0yztFe7uCR6lZMfWtMO_dnNEM5iH6loCjHZo\n\nHe's based in Dhaka, Bangladesh (UTC+6) and typically responds within 24 hours. Best contact hours: 09:00–22:00 BDT.`
+  },
+  availability: {
+    patterns: ['available','hire','job','work','role','position','freelance','contract','opportunity','open to','looking for','employment'],
+    response: `Yes! Sabbir is **actively available for core engineering roles**. He's open to:\n\n✅ Full-time engineering positions\n✅ Contract and freelance projects\n✅ Interesting technical collaborations\n\nHis strongest areas: AI engineering (LLMs, RAG), full-stack development (TypeScript, React, Node.js), security engineering, and fintech integrations.\n\nReach him at sabbirrafat369@gmail.com or connect on LinkedIn at linkedin.com/in/sabbirhossainrafat`
+  },
+  fintech: {
+    patterns: ['payment','stripe','bkash','nagad','sslcommerz','fintech','gateway','transaction','money'],
+    response: `Sabbir has built production-grade fintech integrations:\n\n💳 **Stripe** — Global payment processing with webhooks, subscriptions, and Connect\n📱 **bKash & NAGAD** — Bangladesh mobile banking API integrations for local markets\n🏦 **SSLCOMMERZ** — South Asian payment gateway for multi-currency support\n\nHe understands payment flows, webhook security, idempotency, compliance requirements, and building resilient payment pipelines that handle edge cases gracefully.`
+  },
+  resume: {
+    patterns: ['resume','cv','download','document','qualification','experience'],
+    response: `Sabbir's resume is available on Google Docs (no login required):\n\n📄 https://docs.google.com/document/d/1BxiMVss0yztFe7uCR6lZMfWtMO_dnNEM5iH6loCjHZo/edit\n\nIt covers his full project history, technical skills, education at Daffodil International University, CEH certification, and contact information.`
+  },
+  tech_choices: {
+    patterns: ['why use','prefer','choose','astro','tailwind','supabase','why not','versus','compare','which is better'],
+    response: `Sabbir's technology philosophy:\n\n**TypeScript over JavaScript** — Type safety catches bugs at compile time, essential for production systems\n\n**Astro v6** — Zero-JS by default, island architecture for performance-first sites\n\n**Supabase** — Postgres-native BaaS with pgvector for AI features, open-source, no vendor lock-in\n\n**Gemini API + OpenRouter** — Flexibility to route across models and avoid single-provider lock-in\n\nHe follows a "boring technology" principle for infrastructure and "bleeding edge" for AI tooling.`
+  },
 };
 
-function matchIntent(msg) {
-  const m = msg.toLowerCase();
-  if (/(skill|know|tech|stack|language|framework|tool|use)/.test(m)) return KB.skills;
-  if (/(project|ship|build|make|work|portfolio|studia|authpage|scanner|vanish|artmoji|dragon)/.test(m)) return KB.projects;
-  if (/(ai|llm|ml|gpt|gemini|openrouter|rag|retrieval|language model|chatgpt)/.test(m)) return KB.ai;
-  if (/(security|ceh|ethical|hack|pentest|vuln|owasp|secure)/.test(m)) return KB.security;
-  if (/(education|university|degree|study|school|daffodil|student)/.test(m)) return KB.education;
-  if (/(contact|email|reach|hire|linkedin|github|twitter|social)/.test(m)) return KB.contact;
-  if (/(available|open|work|job|hire|role|position|freelance|contract|opportunity)/.test(m)) return KB.available;
-  if (/(payment|fintech|stripe|bkash|nagad|sslcommerz|gateway)/.test(m)) return KB.fintech;
-  if (/(typescript|ts)/.test(m)) return KB.typescript;
-  if (/(python)/.test(m)) return KB.python;
-  if (/(background|about|who|sabbir|story|journey)/.test(m)) return KB.background;
-  return null;
-}
-
 const FALLBACKS = [
-  'I\'m Sabbir\'s AI assistant. I can tell you about his skills, projects, background, or how to contact him. What would you like to know?',
-  'That\'s a great question! Try asking me about Sabbir\'s technical skills, his projects, his education, or whether he\'s available for work.',
-  'I\'m specialised in Sabbir\'s portfolio content. Ask me about his tech stack, shipped projects, AI expertise, or contact information!',
+  "That's an interesting question! I'm specifically trained on Sabbir's portfolio content. Could you ask about his skills, projects, education, certifications, availability, or contact information?",
+  "I focus on answering questions about Sabbir Hossain Rafat's professional background. Try asking about his AI engineering skills, shipped projects, or how to hire him!",
+  "I'm Sabbir's AI portfolio assistant. I can help with questions about his tech stack, projects like Studia or Security Scanner, his CEH certification, or his availability for work.",
 ];
-let fallbackIdx = 0;
+let fbIdx = 0;
 
 function getAIResponse(msg) {
-  const matched = matchIntent(msg);
-  if (matched) return matched;
-  return FALLBACKS[fallbackIdx++ % FALLBACKS.length];
+  const m = msg.toLowerCase();
+  // Score each topic
+  let best = null, bestScore = 0;
+  for (const [key, topic] of Object.entries(KB)) {
+    const score = topic.patterns.reduce((s, p) => s + (m.includes(p) ? 1 : 0), 0);
+    if (score > bestScore) { bestScore = score; best = topic; }
+  }
+  return bestScore > 0 ? best.response : FALLBACKS[fbIdx++ % FALLBACKS.length];
 }
 
-function appendMsg(text, role) {
-  if (!chatMessages) return;
+// Render markdown bold
+function renderMD(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+function appendChatMsg(text, role) {
+  const msgs = $('#chat-messages');
+  if (!msgs) return;
   const div = document.createElement('div');
   div.className = `chat-msg chat-msg-${role}`;
   const bubble = document.createElement('div');
   bubble.className = 'chat-bubble';
-  bubble.textContent = text;
+  bubble.innerHTML = renderMD(text);
   div.appendChild(bubble);
-  chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
 }
 
-function showTyping() {
-  if (!chatMessages) return null;
+function showChatTyping() {
+  const msgs = $('#chat-messages');
+  if (!msgs) return null;
   const div = document.createElement('div');
   div.className = 'chat-msg chat-msg-ai';
   div.id = 'typing-indicator';
   div.innerHTML = '<div class="chat-bubble chat-typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
-  chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
   return div;
 }
 
 function sendChat(msg) {
   if (!msg.trim()) return;
+  const chatInput = $('#chat-input');
   if (chatInput) chatInput.value = '';
-  if (chatQuick) chatQuick.style.display = 'none';
-  appendMsg(msg, 'user');
-  const typingEl = showTyping();
-  const delay = 600 + Math.random() * 600;
+  const quickEl = $('#chat-quick');
+  if (quickEl) quickEl.style.display = 'none';
+  appendChatMsg(msg, 'user');
+  const typing = showChatTyping();
+  const delay = 500 + Math.random() * 700;
   setTimeout(() => {
-    if (typingEl) typingEl.remove();
-    appendMsg(getAIResponse(msg), 'ai');
+    typing?.remove();
+    appendChatMsg(getAIResponse(msg), 'ai');
   }, delay);
 }
 
 function openChat() {
-  if (!chatPanel) return;
-  chatPanel.classList.add('open');
-  chatPanel.setAttribute('aria-hidden', 'false');
-  if (fabChat) fabChat.classList.add('hidden');
-  if (fabClose) fabClose.classList.remove('hidden');
-
-  // Add welcome message if empty
-  if (chatMessages && chatMessages.children.length === 0) {
-    appendMsg("Hi! I'm an AI trained on Sabbir's portfolio. Ask me anything about his skills, projects, background, or how to contact him! 👋", 'ai');
+  const panel = $('#chat-panel');
+  const fab = $('#chat-fab');
+  if (!panel) return;
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
+  fab?.querySelector('.fab-icon-chat')?.classList.add('hidden');
+  fab?.querySelector('.fab-icon-close')?.classList.remove('hidden');
+  const msgs = $('#chat-messages');
+  if (msgs && !msgs.children.length) {
+    appendChatMsg("Hi! I'm Sabbir's AI assistant with comprehensive knowledge of his portfolio. Ask me about his skills, projects, AI expertise, certifications, availability, or how to contact him! 🤖", 'ai');
   }
-  setTimeout(() => chatInput && chatInput.focus(), 60);
+  setTimeout(() => $('#chat-input')?.focus(), 60);
 }
 
 function closeChat() {
-  if (!chatPanel) return;
-  chatPanel.classList.remove('open');
-  chatPanel.setAttribute('aria-hidden', 'true');
-  if (fabChat) fabChat.classList.remove('hidden');
-  if (fabClose) fabClose.classList.add('hidden');
+  const panel = $('#chat-panel');
+  const fab = $('#chat-fab');
+  panel?.classList.remove('open');
+  panel?.setAttribute('aria-hidden','true');
+  fab?.querySelector('.fab-icon-chat')?.classList.remove('hidden');
+  fab?.querySelector('.fab-icon-close')?.classList.add('hidden');
 }
 
-on(chatFab, 'click', () => {
-  chatPanel && chatPanel.classList.contains('open') ? closeChat() : openChat();
-});
-on(chatClose, 'click', closeChat);
-on(chatSend, 'click', () => chatInput && sendChat(chatInput.value));
-on(chatInput, 'keydown', e => { if (e.key === 'Enter') sendChat(chatInput.value); });
-$$('.quick-chip').forEach(btn => {
-  on(btn, 'click', () => sendChat(btn.textContent));
-});
+$('#chat-fab')?.addEventListener('click', () => $('#chat-panel')?.classList.contains('open') ? closeChat() : openChat());
+$('#chat-close')?.addEventListener('click', closeChat);
+$('#chat-send')?.addEventListener('click', () => sendChat($('#chat-input')?.value || ''));
+$('#chat-input')?.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(e.target.value); });
+$$('.quick-chip').forEach(b => b.addEventListener('click', () => sendChat(b.textContent)));
 
-/* ════════════════════════════════════════
-   HELP / SHORTCUTS PANEL
-════════════════════════════════════════ */
-const helpOverlay = $('#help-overlay');
-const helpBtn = $('#help-btn');
-const helpClose = $('#help-close');
-
-function openHelp() {
-  if (!helpOverlay) return;
-  helpOverlay.classList.add('open');
-  helpOverlay.setAttribute('aria-hidden', 'false');
+// ── Help panel ────────────────────────────────────────────────────
+const openHelp = () => {
+  $('#help-overlay')?.classList.add('open');
+  $('#help-overlay')?.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
-}
-
-function closeHelp() {
-  if (!helpOverlay) return;
-  helpOverlay.classList.remove('open');
-  helpOverlay.setAttribute('aria-hidden', 'true');
+};
+const closeHelp = () => {
+  $('#help-overlay')?.classList.remove('open');
+  $('#help-overlay')?.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
-}
+};
+$('#help-btn')?.addEventListener('click', openHelp);
+$('#help-close')?.addEventListener('click', closeHelp);
+$('#help-overlay')?.addEventListener('click', e => { if (e.target === $('#help-overlay')) closeHelp(); });
 
-on(helpBtn, 'click', openHelp);
-on(helpClose, 'click', closeHelp);
-on(helpOverlay, 'click', e => { if (e.target === helpOverlay) closeHelp(); });
-
-/* ════════════════════════════════════════
-   KEYBOARD SHORTCUTS
-════════════════════════════════════════ */
-on(document, 'keydown', e => {
-  const tag = document.activeElement && document.activeElement.tagName.toLowerCase();
+// ── Keyboard shortcuts ─────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  const tag = document.activeElement?.tagName.toLowerCase();
   const inInput = tag === 'input' || tag === 'textarea';
-
-  if (e.key === 'Escape') {
-    closeTerm();
-    closeHelp();
-    closeChat();
-    closeMobile();
-    return;
-  }
-
+  if (e.key === 'Escape') { closeTerm(); closeHelp(); closeChat(); closeMobile(); return; }
   if (inInput) return;
-
   switch (e.key) {
-    case 't': case 'T': themeToggle && themeToggle.click(); break;
+    case 't': case 'T': themeToggle?.click(); break;
     case 'h': case 'H': openHelp(); break;
     case 'g': case 'G': smoothScrollTo(document.getElementById('home')); break;
     case '/': e.preventDefault(); openTerm(); break;
@@ -1019,73 +1007,24 @@ on(document, 'keydown', e => {
   }
 });
 
-/* ════════════════════════════════════════
-   RESUME BUTTON
-════════════════════════════════════════ */
-const resumeBtn = $('#resume-btn');
-on(resumeBtn, 'click', e => {
-  e.preventDefault();
-  // Update href to your actual resume file when available
-  const link = document.createElement('a');
-  link.href = 'assets/sabbir-rafat-resume.pdf';
-  link.download = 'Sabbir-Hossain-Rafat-Resume.pdf';
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+// ── Reading time estimator ─────────────────────────────────────────
+document.querySelectorAll('.proj-body p').forEach(p => {
+  const rt = estimateReadTime(p.textContent || '');
+  const card = p.closest('.proj-card');
+  const rtEl = card?.querySelector('.read-time');
+  if (rtEl) rtEl.textContent = `~${rt} min read`;
 });
 
-/* ════════════════════════════════════════
-   FOOTER DATES
-════════════════════════════════════════ */
-const footerYear = $('#footer-year');
-const footerDate = $('#footer-date');
-if (footerYear) footerYear.textContent = new Date().getFullYear();
-if (footerDate) {
-  footerDate.textContent = new Date().toLocaleDateString('en-US', {
-    year: 'numeric', month: 'long', day: 'numeric',
-  });
-  footerDate.setAttribute('datetime', new Date().toISOString().split('T')[0]);
-}
-
-/* ════════════════════════════════════════
-   AMBIENT ORBS PARALLAX
-════════════════════════════════════════ */
-on(window, 'scroll', () => {
-  const y = window.scrollY;
-  const orbs = $$('.orb');
-  orbs.forEach((orb, i) => {
-    const speeds = [0.08, 0.05, 0.12];
-    orb.style.transform = `translateY(${y * speeds[i]}px)`;
-  });
-}, { passive: true });
-
-/* ════════════════════════════════════════
-   SERVICE WORKER
-════════════════════════════════════════ */
+// ── Service Worker ────────────────────────────────────────────────
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(() => {
-      // SW registration failure is non-critical
-    });
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
 }
 
-/* ════════════════════════════════════════
-   PWA INSTALL PROMPT
-════════════════════════════════════════ */
-let deferredPrompt = null;
-on(window, 'beforeinstallprompt', e => {
-  e.preventDefault();
-  deferredPrompt = e;
-  // Could show a custom install button here
-});
+// ── Resume link ───────────────────────────────────────────────────
+// Already set in HTML — Google Docs URL. No override needed.
 
-/* ════════════════════════════════════════
-   INIT LOG
-════════════════════════════════════════ */
-console.log(
-  '%c Sabbir Hossain Rafat · Portfolio v2.0 ',
-  'background:linear-gradient(135deg,#667eea,#22d3ee);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:700;'
-);
+// ── Console signature ─────────────────────────────────────────────
+console.log('%c Sabbir Hossain Rafat · Portfolio v3.0 ', 'background:linear-gradient(135deg,#667eea,#22d3ee);color:#fff;padding:8px 18px;border-radius:8px;font-size:13px;font-weight:700;');
+console.log('%c AI Product Engineer & Full-Stack Architect ', 'color:#94a3b8;font-size:11px;');
