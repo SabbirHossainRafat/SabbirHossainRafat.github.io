@@ -3,111 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sabbir Hossain Rafat — AI Product Engineer & Full-Stack Architect specialising in LLM systems, secure APIs, and high-performance web applications." />
-  <meta name="keywords" content="Sabbir Hossain Rafat, AI Engineer, Full-Stack Developer, Cyber Security, Daffodil International University, TypeScript, Python, React" />
+  <meta name="description" content="Sabbir Hossain Rafat — AI Product Engineer & Full-Stack Architect. Building intelligent systems, secure APIs, and high-performance web applications." />
+  <meta name="keywords" content="Sabbir Hossain Rafat, AI Engineer, Full-Stack Developer, Cyber Security, Daffodil International University" />
   <meta name="author" content="Sabbir Hossain Rafat" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#080c18" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Sabbir Rafat" />
-  <!-- Open Graph -->
   <meta property="og:title" content="Sabbir Hossain Rafat — AI Product Engineer" />
   <meta property="og:description" content="AI Product Engineer & Full-Stack Architect building intelligent, secure, high-performance systems." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sabbirrafat.dev" />
-  <meta property="og:image" content="https://sabbirrafat.dev/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <!-- Twitter -->
+  <meta property="og:image" content="https://sabbirrafat.dev/icons/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@sabbir_rafat" />
   <meta name="twitter:creator" content="@sabbir_rafat" />
-  <meta name="twitter:title" content="Sabbir Hossain Rafat — AI Product Engineer" />
-  <meta name="twitter:description" content="AI Product Engineer & Full-Stack Architect building intelligent, secure, high-performance systems." />
-  <!-- PWA -->
   <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png" />
-  <!-- Schema.org -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Sabbir Hossain Rafat",
-    "jobTitle":"AI Product Engineer & Full-Stack Architect",
-    "email":"sabbirrafat369@gmail.com",
-    "url":"https://sabbirrafat.dev",
-    "image":"https://lh3.googleusercontent.com/d/1ybpH93SRDNyl1vkh4PtJL3YQ50W56726",
-    "sameAs":[
-      "https://github.com/SabbirHossainRafat",
-      "https://linkedin.com/in/sabbirhossainrafat",
-      "https://x.com/sabbir_rafat"
-    ],
-    "alumniOf":{
-      "@type":"CollegeOrUniversity",
-      "name":"Daffodil International University"
-    },
-    "knowsAbout":["Artificial Intelligence","Full-Stack Development","Cyber Security","TypeScript","Python","React","RAG Systems","LLM Engineering"]
-  }
+  {"@context":"https://schema.org","@type":"Person","name":"Sabbir Hossain Rafat","jobTitle":"AI Product Engineer & Full-Stack Architect","email":"sabbirrafat369@gmail.com","url":"https://sabbirrafat.dev","sameAs":["https://github.com/SabbirHossainRafat","https://linkedin.com/in/sabbirhossainrafat","https://x.com/sabbir_rafat"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Daffodil International University"},"knowsAbout":["Artificial Intelligence","Full-Stack Development","Cyber Security","TypeScript","Python","React","RAG Systems"]}
   </script>
   <title>Sabbir Hossain Rafat · AI Product Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Ubuntu+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Ubuntu+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ░░ Progress bar ░░ -->
 <div id="progress-bar" aria-hidden="true"></div>
-
-<!-- ░░ Custom cursor ░░ -->
 <div id="cursor-dot" aria-hidden="true"></div>
 <div id="cursor-ring" aria-hidden="true"></div>
-
-<!-- ░░ Grain ░░ -->
 <div class="grain" aria-hidden="true"></div>
-
-<!-- ░░ Particles ░░ -->
 <canvas id="particle-canvas" aria-hidden="true"></canvas>
-
-<!-- ░░ Ambient orbs ░░ -->
 <div class="ambient-orbs" aria-hidden="true">
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
 </div>
 
-<!-- ════════════════ NAV ════════════════ -->
+<!-- NAV -->
 <header id="site-nav" role="banner">
-  <nav class="nav-container" aria-label="Primary">
-    <a href="#home" class="nav-logo" aria-label="Sabbir Rafat — home">
+  <nav class="nav-container" aria-label="Primary navigation">
+    <a href="#home" class="nav-logo" aria-label="Sabbir Rafat — back to top">
       <span class="logo-first">Sabbir</span><span class="logo-accent">Rafat</span>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="#home"     class="nav-link">Home</a></li>
-      <li><a href="#about"    class="nav-link">Profile</a></li>
-      <li><a href="#skills"   class="nav-link">Toolkit</a></li>
-      <li><a href="#timeline" class="nav-link">Journey</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#radar"    class="nav-link">Tech Radar</a></li>
-      <li><a href="#github"   class="nav-link">Activity</a></li>
-      <li><a href="#contact"  class="nav-link">Connect</a></li>
+      <li><a href="#home"     class="nav-link" aria-label="Go to Home section">Home</a></li>
+      <li><a href="#about"    class="nav-link" aria-label="Go to Profile section">Profile</a></li>
+      <li><a href="#skills"   class="nav-link" aria-label="Go to Toolkit section">Toolkit</a></li>
+      <li><a href="#timeline" class="nav-link" aria-label="Go to Journey section">Journey</a></li>
+      <li><a href="#projects" class="nav-link" aria-label="Go to Projects section">Projects</a></li>
+      <li><a href="#radar"    class="nav-link" aria-label="Go to Tech Radar section">Tech Radar</a></li>
+      <li><a href="#github"   class="nav-link" aria-label="Go to Activity section">Activity</a></li>
+      <li><a href="#contact"  class="nav-link" aria-label="Go to Connect section">Connect</a></li>
     </ul>
     <div class="nav-actions">
-      <button id="terminal-btn" class="nav-icon-btn" aria-label="Open terminal (/)" title="Terminal">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+      <button id="terminal-btn" class="nav-icon-btn" aria-label="Open terminal (press / key)" title="Open Terminal">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
       </button>
-      <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme (T)">
-        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle colour theme (press T key)">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <button id="help-btn" class="nav-icon-btn" aria-label="Keyboard shortcuts (H)">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg>
+      <button id="help-btn" class="nav-icon-btn" aria-label="Open keyboard shortcuts help (press H key)" title="Keyboard Shortcuts">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></svg>
       </button>
-      <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <button id="hamburger" class="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -115,11 +78,11 @@
 </header>
 
 <div id="mobile-backdrop" class="mobile-backdrop" aria-hidden="true"></div>
-<div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-label="Mobile navigation menu" aria-modal="true">
   <div class="mobile-header">
     <span class="mobile-title">Navigation</span>
-    <button id="mobile-close" aria-label="Close">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <button id="mobile-close" aria-label="Close navigation menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
   <ul class="mobile-links" role="list">
@@ -134,7 +97,7 @@
   </ul>
 </div>
 
-<!-- ════════════════ HERO ════════════════ -->
+<!-- HERO -->
 <section id="home" class="section hero">
   <div class="container hero-grid">
     <div class="hero-visual">
@@ -145,30 +108,32 @@
         <div class="orbit-node node-a" aria-hidden="true"></div>
         <div class="orbit-node node-b" aria-hidden="true"></div>
         <img
-          src="https://lh3.googleusercontent.com/d/1ybpH93SRDNyl1vkh4PtJL3YQ50W56726"
-          alt="Sabbir Hossain Rafat"
+          id="hero-photo"
+          src="icons/icon-192.png"
+          alt="Sabbir Hossain Rafat — AI Product Engineer and Full-Stack Architect"
           class="hero-photo"
-          loading="eager"
-          onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\'%3E%3Crect width=\'300\' height=\'300\' fill=\'%230d1117\'/%3E%3Ccircle cx=\'150\' cy=\'120\' r=\'55\' fill=\'%23667eea\'/%3E%3Cellipse cx=\'150\' cy=\'270\' rx=\'85\' ry=\'55\' fill=\'%23667eea\'/%3E%3C/svg%3E'"
+          width="260" height="260"
+          fetchpriority="high"
+          onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'260\' height=\'260\'%3E%3Crect width=\'260\' height=\'260\' fill=\'%230d1117\'/%3E%3Ccircle cx=\'130\' cy=\'110\' r=\'50\' fill=\'%23667eea\'/%3E%3Cellipse cx=\'130\' cy=\'240\' rx=\'75\' ry=\'50\' fill=\'%23667eea\'/%3E%3Ctext x=\'130\' y=\'120\' font-family=\'sans-serif\' font-size=\'36\' font-weight=\'bold\' fill=\'white\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3ES.R.%3C/text%3E%3C/svg%3E'"
         />
       </div>
       <div class="avail-badge">
         <span class="avail-dot" aria-hidden="true"></span>
-        Available for Core Engineering Roles
+        <span>Available for Core Engineering Roles</span>
       </div>
-      <div class="hero-stats">
+      <div class="hero-stats" aria-label="Career statistics">
         <div class="stat-item">
-          <span class="stat-num counter" data-target="6">0</span><span class="stat-plus">+</span>
+          <span class="stat-num" id="gh-repo-count" aria-label="Number of projects">6</span><span class="stat-plus" aria-hidden="true">+</span>
           <span class="stat-lbl">Projects</span>
         </div>
         <div class="stat-rule" aria-hidden="true"></div>
         <div class="stat-item">
-          <span class="stat-num counter" data-target="15">0</span><span class="stat-plus">+</span>
+          <span class="stat-num counter" data-target="15" aria-label="Number of technologies">0</span><span class="stat-plus" aria-hidden="true">+</span>
           <span class="stat-lbl">Technologies</span>
         </div>
         <div class="stat-rule" aria-hidden="true"></div>
         <div class="stat-item">
-          <span class="stat-num counter" data-target="3">0</span><span class="stat-plus">+</span>
+          <span class="stat-num counter" data-target="2" aria-label="Years of coding experience">0</span><span class="stat-plus" aria-hidden="true">+</span>
           <span class="stat-lbl">Yrs coding</span>
         </div>
       </div>
@@ -177,41 +142,40 @@
     <div class="hero-copy">
       <p class="hero-eyebrow">Hello, World! 👋</p>
       <h1 class="hero-name">Sabbir Hossain<br /><span class="gradient-text">Rafat</span></h1>
-      <div class="hero-role" aria-live="polite">
+      <div class="hero-role" aria-live="polite" aria-label="Current professional role">
         <span class="role-prefix" aria-hidden="true">›_ </span>
         <span id="typed-text"></span>
         <span class="type-cursor" aria-hidden="true"></span>
       </div>
       <p class="hero-bio">
         <strong>AI</strong> Product Engineer crafting intelligent, <strong>secure</strong>,
-        and blazingly <strong>fast</strong> systems. I bridge the gap between LLM capabilities
-        and production-grade engineering.
+        and blazingly <strong>fast</strong> systems. Bridging LLM capabilities with production-grade engineering.
       </p>
       <div class="hero-meta">
         <span class="meta-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Dhaka, Bangladesh (UTC+6)
         </span>
         <span class="meta-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           Daffodil International University
         </span>
-        <span class="meta-item" id="last-updated-meta">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Updated: <span id="last-updated-date"></span>
+        <span class="meta-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Updated: <time id="last-updated-date" datetime="2025-05-20"></time>
         </span>
       </div>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           System Deploys
         </a>
-        <a href="https://docs.google.com/document/d/1BxiMVss0yztFe7uCR6lZMfWtMO_dnNEM5iH6loCjHZo/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="resume-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <a href="https://docs.google.com/document/d/1s2c_ilaTXWodISMNfIhg0M_QlBbPbESNaf1xoDqWr64/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="View Sabbir's resume (opens in new tab)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           View Resume
         </a>
-        <a href="#contact" class="btn btn-ghost">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="#contact" class="btn btn-ghost" aria-label="Go to contact section">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Connect
         </a>
       </div>
@@ -223,7 +187,7 @@
   </div>
 </section>
 
-<!-- ════════════════ ABOUT ════════════════ -->
+<!-- ABOUT -->
 <section id="about" class="section">
   <div class="container">
     <header class="section-hd reveal">
@@ -233,125 +197,100 @@
     </header>
     <div class="about-grid">
       <article class="about-card tilt-card reveal" data-delay="0">
-        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+        <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
         <h3>AI Engineering</h3>
         <p>LLM solutions with Gemini API &amp; OpenRouter. Production RAG pipelines, intelligent agents, and AI-powered workflows that scale.</p>
         <div class="card-tags"><span>Gemini API</span><span>OpenRouter</span><span>RAG</span></div>
       </article>
       <article class="about-card tilt-card reveal" data-delay="80">
-        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <h3>Performance Stack</h3>
         <p>Astro v6, Tailwind CSS v4 &amp; microservices. Core Web Vitals optimisation, SSR, zero-JS-by-default philosophy.</p>
         <div class="card-tags"><span>Astro v6</span><span>Tailwind v4</span><span>SSR</span></div>
       </article>
       <article class="about-card tilt-card reveal" data-delay="160">
-        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Secure Systems</h3>
         <p>CEH-certified mindset applied to API security, threat modelling, and penetration testing. Security-first architecture.</p>
         <div class="card-tags"><span>CEH</span><span>API Security</span><span>Pentest</span></div>
       </article>
       <article class="about-card tilt-card reveal" data-delay="240">
-        <div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+        <div class="card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
         <h3>Fintech Flows</h3>
         <p>Stripe, bKash, NAGAD &amp; SSLCOMMERZ integrations. Compliant payment pipelines for South Asian &amp; global markets.</p>
         <div class="card-tags"><span>Stripe</span><span>bKash</span><span>SSLCOMMERZ</span></div>
       </article>
     </div>
-
-    <!-- NOW / CURRENTLY LEARNING -->
     <div class="now-section reveal" data-delay="100">
-      <h3 class="now-title">
-        <span class="now-dot" aria-hidden="true"></span>
-        Currently — <time id="now-month"></time>
-      </h3>
+      <h3 class="now-title"><span class="now-dot" aria-hidden="true"></span>Currently — <time id="now-month"></time></h3>
       <div class="now-grid">
-        <div class="now-card">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          <div>
-            <strong>Building</strong>
-            <p>Production RAG pipeline with Supabase pgvector and Gemini API</p>
-          </div>
-        </div>
-        <div class="now-card">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          <div>
-            <strong>Learning</strong>
-            <p>LangGraph for multi-agent orchestration and agentic AI systems</p>
-          </div>
-        </div>
-        <div class="now-card">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <div>
-            <strong>Studying</strong>
-            <p>Advanced web application penetration testing methodologies</p>
-          </div>
-        </div>
+        <div class="now-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><div><strong>Building</strong><p>Production RAG pipeline with Supabase pgvector and Gemini API</p></div></div>
+        <div class="now-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><div><strong>Learning</strong><p>LangGraph for multi-agent orchestration and agentic AI systems</p></div></div>
+        <div class="now-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><strong>Studying</strong><p>Advanced web application penetration testing methodologies</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ SKILLS ════════════════ -->
+<!-- SKILLS -->
 <section id="skills" class="section alt-bg">
   <div class="container">
     <header class="section-hd reveal">
       <p class="section-eyebrow">// toolkit</p>
       <h2 class="section-title">My <span class="gradient-text">Arsenal</span></h2>
-      <p class="section-sub">Hover any tag to see proficiency. Technologies I wield daily in production.</p>
+      <p class="section-sub">Hover any tag to see proficiency. Technologies I use daily in production.</p>
     </header>
     <div class="skills-layout">
       <div class="skill-group reveal" data-delay="0">
-        <h3 class="group-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Languages</h3>
-        <div class="pills">
-          <button class="pill" data-level="95" data-desc="Primary language for type-safe full-stack development">TypeScript</button>
-          <button class="pill" data-level="92" data-desc="Browser tooling, interactive UIs, Node.js scripting">JavaScript</button>
-          <button class="pill" data-level="80" data-desc="AI/ML pipelines, automation, Flask backend APIs">Python</button>
-          <button class="pill" data-level="65" data-desc="Systems programming and data structures fundamentals">C</button>
-          <button class="pill" data-level="88" data-desc="Backend runtime — REST APIs, microservices, streaming">Node.js</button>
+        <h3 class="group-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Languages</h3>
+        <div class="pills" role="list">
+          <button class="pill" data-level="95" data-desc="Primary language — type-safe full-stack development" role="listitem">TypeScript</button>
+          <button class="pill" data-level="92" data-desc="Browser tooling, interactive UIs, Node.js scripting" role="listitem">JavaScript</button>
+          <button class="pill" data-level="80" data-desc="AI/ML pipelines, automation, Flask backend APIs" role="listitem">Python</button>
+          <button class="pill" data-level="65" data-desc="Systems programming and data structures fundamentals" role="listitem">C</button>
+          <button class="pill" data-level="88" data-desc="Backend runtime — REST APIs, microservices, streaming" role="listitem">Node.js</button>
         </div>
       </div>
       <div class="skill-group reveal" data-delay="80">
-        <h3 class="group-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Frameworks</h3>
-        <div class="pills">
-          <button class="pill" data-level="90" data-desc="Zero-JS island architecture — blazing-fast static sites">Astro v6</button>
-          <button class="pill" data-level="93" data-desc="Utility-first CSS with v4 cascade layers and new engine">Tailwind v4</button>
-          <button class="pill" data-level="86" data-desc="Component UIs with hooks, context, concurrent rendering">React</button>
-          <button class="pill" data-level="78" data-desc="SSR/SSG with App Router, Server Components, edge runtime">Next.js</button>
-          <button class="pill" data-level="96" data-desc="Semantic markup with Canvas, WebGL, Web Audio APIs">HTML5 / CSS3</button>
+        <h3 class="group-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Frameworks</h3>
+        <div class="pills" role="list">
+          <button class="pill" data-level="90" data-desc="Zero-JS island architecture — blazing-fast static sites" role="listitem">Astro v6</button>
+          <button class="pill" data-level="93" data-desc="Utility-first CSS with v4 cascade layers" role="listitem">Tailwind v4</button>
+          <button class="pill" data-level="86" data-desc="Component UIs with hooks, context, concurrent rendering" role="listitem">React</button>
+          <button class="pill" data-level="78" data-desc="SSR/SSG with App Router, Server Components" role="listitem">Next.js</button>
+          <button class="pill" data-level="96" data-desc="Semantic markup with Canvas, WebGL, Web Audio" role="listitem">HTML5 / CSS3</button>
         </div>
       </div>
       <div class="skill-group reveal" data-delay="160">
-        <h3 class="group-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>Cloud &amp; Data</h3>
-        <div class="pills">
-          <button class="pill" data-level="83" data-desc="BaaS — auth, realtime DB, storage, pgvector, edge functions">Supabase</button>
-          <button class="pill" data-level="76" data-desc="Relational DB with JSONB, full-text search, row-level security">PostgreSQL</button>
-          <button class="pill" data-level="85" data-desc="LLM routing and model switching across providers">OpenRouter</button>
-          <button class="pill" data-level="88" data-desc="Google multimodal AI — text, image, and code generation">Gemini API</button>
+        <h3 class="group-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>Cloud &amp; Data</h3>
+        <div class="pills" role="list">
+          <button class="pill" data-level="83" data-desc="BaaS — auth, realtime DB, pgvector, edge functions" role="listitem">Supabase</button>
+          <button class="pill" data-level="76" data-desc="Relational DB with JSONB, full-text search, RLS" role="listitem">PostgreSQL</button>
+          <button class="pill" data-level="85" data-desc="LLM routing and model switching across providers" role="listitem">OpenRouter</button>
+          <button class="pill" data-level="88" data-desc="Google multimodal AI — text, image, code generation" role="listitem">Gemini API</button>
         </div>
       </div>
       <div class="skill-group reveal" data-delay="240">
-        <h3 class="group-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Payments &amp; DevOps</h3>
-        <div class="pills">
-          <button class="pill" data-level="82" data-desc="Global payments — webhooks, subscriptions, Connect">Stripe</button>
-          <button class="pill" data-level="78" data-desc="Bangladesh mobile banking API integrations">bKash / NAGAD</button>
-          <button class="pill" data-level="75" data-desc="South Asian payment gateway for local markets">SSLCOMMERZ</button>
-          <button class="pill" data-level="71" data-desc="Containerised deployments, multi-stage builds">Docker</button>
-          <button class="pill" data-level="86" data-desc="Shell scripting, sysadmin, server management">Linux</button>
-          <button class="pill" data-level="91" data-desc="Version control, CI/CD, GitHub Actions workflows">Git / GitHub</button>
+        <h3 class="group-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Payments &amp; DevOps</h3>
+        <div class="pills" role="list">
+          <button class="pill" data-level="82" data-desc="Global payments — webhooks, subscriptions, Connect" role="listitem">Stripe</button>
+          <button class="pill" data-level="78" data-desc="Bangladesh mobile banking API integrations" role="listitem">bKash / NAGAD</button>
+          <button class="pill" data-level="75" data-desc="South Asian payment gateway for local markets" role="listitem">SSLCOMMERZ</button>
+          <button class="pill" data-level="71" data-desc="Containerised deployments, multi-stage builds" role="listitem">Docker</button>
+          <button class="pill" data-level="86" data-desc="Shell scripting, sysadmin, server management" role="listitem">Linux</button>
+          <button class="pill" data-level="91" data-desc="Version control, CI/CD, GitHub Actions" role="listitem">Git / GitHub</button>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Skill tooltip -->
 <div id="skill-tip" class="skill-tip" role="tooltip" aria-hidden="true">
   <div class="tip-name"></div>
   <div class="tip-track"><div class="tip-fill"></div></div>
   <div class="tip-meta"><span class="tip-level"></span><span class="tip-desc"></span></div>
 </div>
 
-<!-- ════════════════ TIMELINE ════════════════ -->
+<!-- TIMELINE -->
 <section id="timeline" class="section">
   <div class="container">
     <header class="section-hd reveal">
@@ -364,10 +303,10 @@
         <div class="tl-spine" aria-hidden="true"></div>
         <div class="tl-dot" aria-hidden="true"></div>
         <div class="tl-card">
-          <time class="tl-year" datetime="2021">2021</time>
+          <time class="tl-year" datetime="2024">2024</time>
           <h3>Started Software Engineering</h3>
           <p class="tl-org">Daffodil International University</p>
-          <p>Began the academic journey into computer science — algorithms, data structures, OOP, and the first sparks of curiosity for building real systems.</p>
+          <p>Began the academic journey — algorithms, data structures, OOP, and the first sparks of curiosity for building real systems.</p>
           <div class="tl-tags"><span>DSA</span><span>C</span><span>OOP</span></div>
         </div>
       </li>
@@ -375,43 +314,32 @@
         <div class="tl-spine" aria-hidden="true"></div>
         <div class="tl-dot" aria-hidden="true"></div>
         <div class="tl-card">
-          <time class="tl-year" datetime="2022">2022</time>
-          <h3>Web Development Deep Dive</h3>
+          <time class="tl-year" datetime="2024">2024</time>
+          <h3>Web Development &amp; TypeScript</h3>
           <p class="tl-org">Self-Directed Learning &amp; Open Source</p>
-          <p>Mastered HTML/CSS/JS, then React and Node.js. Built first full-stack applications with PostgreSQL, deployed them live, and contributed to open source.</p>
-          <div class="tl-tags"><span>React</span><span>Node.js</span><span>PostgreSQL</span></div>
+          <p>Mastered HTML/CSS/JS, React, Node.js. Adopted TypeScript across all codebases. Built first full-stack apps with PostgreSQL.</p>
+          <div class="tl-tags"><span>React</span><span>TypeScript</span><span>Node.js</span></div>
         </div>
       </li>
       <li class="tl-item reveal" data-delay="200">
         <div class="tl-spine" aria-hidden="true"></div>
         <div class="tl-dot" aria-hidden="true"></div>
         <div class="tl-card">
-          <time class="tl-year" datetime="2023">2023</time>
-          <h3>TypeScript &amp; AI Integration</h3>
-          <p class="tl-org">Client Projects &amp; Open Source</p>
-          <p>Adopted TypeScript across all codebases. Integrated Gemini API and OpenRouter, shipped first RAG architecture, built fintech payment integrations.</p>
-          <div class="tl-tags"><span>TypeScript</span><span>LLMs</span><span>RAG</span></div>
-        </div>
-      </li>
-      <li class="tl-item reveal" data-delay="300">
-        <div class="tl-spine" aria-hidden="true"></div>
-        <div class="tl-dot" aria-hidden="true"></div>
-        <div class="tl-card">
           <time class="tl-year" datetime="2024">2024</time>
-          <h3>Security Certification &amp; Fintech</h3>
-          <p class="tl-org">CEH (EC-Council) + Payment APIs</p>
-          <p>Earned the Certified Ethical Hacker credential. Built production-grade fintech integrations with Stripe, bKash, and SSLCOMMERZ for real client projects.</p>
-          <div class="tl-tags"><span>CEH</span><span>Stripe</span><span>Pentest</span></div>
+          <h3>AI Integration &amp; Security</h3>
+          <p class="tl-org">Client Projects &amp; Certifications</p>
+          <p>Integrated Gemini API and OpenRouter, shipped first RAG architecture. Earned CEH from Arena Web Security. Built fintech integrations.</p>
+          <div class="tl-tags"><span>LLMs</span><span>RAG</span><span>CEH</span></div>
         </div>
       </li>
-      <li class="tl-item tl-item-now reveal" data-delay="400">
+      <li class="tl-item tl-item-now reveal" data-delay="300">
         <div class="tl-spine tl-spine-end" aria-hidden="true"></div>
         <div class="tl-dot tl-dot-active" aria-hidden="true"></div>
         <div class="tl-card tl-card-active">
           <time class="tl-year" datetime="2025">2025 →</time>
           <h3>AI Product Engineer</h3>
           <p class="tl-org">Seeking Core Engineering Roles</p>
-          <p>Combining AI, security, and performance engineering into a distinctive skillset. Shipping projects that demonstrate production-ready thinking at every level.</p>
+          <p>Combining AI, security, and performance engineering into a distinctive skillset. Shipping projects that demonstrate production-ready thinking.</p>
           <div class="tl-tags"><span>AI Products</span><span>Full-Stack</span><span class="tag-green">Open to Work</span></div>
         </div>
       </li>
@@ -419,7 +347,7 @@
   </div>
 </section>
 
-<!-- ════════════════ PROJECTS ════════════════ -->
+<!-- PROJECTS -->
 <section id="projects" class="section alt-bg">
   <div class="container">
     <header class="section-hd reveal">
@@ -427,122 +355,113 @@
       <h2 class="section-title">What I've <span class="gradient-text">Shipped</span></h2>
       <p class="section-sub">Production systems, creative experiments, and security tooling — all public on GitHub.</p>
     </header>
-    <div class="filter-row reveal" role="group" aria-label="Filter projects">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="javascript">JavaScript</button>
-      <button class="filter-btn" data-filter="typescript">TypeScript</button>
-      <button class="filter-btn" data-filter="react">React</button>
-      <button class="filter-btn" data-filter="python">Python</button>
-      <button class="filter-btn" data-filter="security">Security</button>
+    <div class="filter-row reveal" role="group" aria-label="Filter projects by technology">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="javascript" aria-pressed="false">JavaScript</button>
+      <button class="filter-btn" data-filter="typescript" aria-pressed="false">TypeScript</button>
+      <button class="filter-btn" data-filter="react" aria-pressed="false">React</button>
+      <button class="filter-btn" data-filter="python" aria-pressed="false">Python</button>
+      <button class="filter-btn" data-filter="security" aria-pressed="false">Security</button>
     </div>
-    <div class="projects-grid" id="projects-grid">
-
-      <article class="proj-card reveal" data-tags="javascript html5" data-delay="0">
+    <div class="projects-grid" id="projects-grid" role="list">
+      <article class="proj-card reveal" data-tags="javascript html5" data-delay="0" role="listitem">
         <div class="proj-vis pv-indigo" aria-hidden="true"><div class="pv-deco deco-rings"></div></div>
         <div class="proj-body">
-          <div class="proj-meta-row">
-            <h3>Studia</h3>
-            <span class="read-time">~2 min read</span>
-          </div>
-          <p>Academic management system — schedule tracking, assignment management, and GPA calculation in one unified platform for students.</p>
+          <div class="proj-meta-row"><h3>Studia</h3><span class="read-time">~2 min</span></div>
+          <p>Academic management system — schedule tracking, assignment management, and GPA calculation in one unified platform.</p>
           <div class="proj-tags"><span>JavaScript</span><span>HTML5</span></div>
           <div class="proj-actions">
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Studia source code on GitHub (opens in new tab)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               View Source
             </a>
-            <button class="share-btn" data-project="Studia" data-desc="Academic management system — schedule tracking, GPA calculation" aria-label="Share Studia">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <button class="share-btn" data-project="Studia" data-desc="Academic management system with GPA calculation" aria-label="Share Studia project link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
           </div>
         </div>
       </article>
-
-      <article class="proj-card reveal" data-tags="react typescript security" data-delay="80">
+      <article class="proj-card reveal" data-tags="react typescript security" data-delay="80" role="listitem">
         <div class="proj-vis pv-violet" aria-hidden="true"><div class="pv-deco deco-dots"></div></div>
         <div class="proj-body">
-          <div class="proj-meta-row">
-            <h3>AuthPage</h3>
-            <span class="read-time">~3 min read</span>
-          </div>
-          <p>3D authentication component with secure session handling, TOTP support, and animated login/register flow built with React + TypeScript.</p>
+          <div class="proj-meta-row"><h3>AuthPage</h3><span class="read-time">~3 min</span></div>
+          <p>3D authentication component with TOTP support, secure session handling, and animated login/register flow in React + TypeScript.</p>
           <div class="proj-tags"><span>React</span><span>TypeScript</span><span>Security</span></div>
           <div class="proj-actions">
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>View Source</a>
-            <button class="share-btn" data-project="AuthPage" data-desc="3D authentication component with TOTP and React" aria-label="Share AuthPage">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View AuthPage source code on GitHub (opens in new tab)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View Source
+            </a>
+            <button class="share-btn" data-project="AuthPage" data-desc="3D React authentication with TOTP" aria-label="Share AuthPage project link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
           </div>
         </div>
       </article>
-
-      <article class="proj-card reveal" data-tags="python security" data-delay="160">
+      <article class="proj-card reveal" data-tags="python security" data-delay="160" role="listitem">
         <div class="proj-vis pv-teal" aria-hidden="true"><div class="pv-deco deco-mesh"></div></div>
         <div class="proj-body">
-          <div class="proj-meta-row">
-            <h3>Security Scanner</h3>
-            <span class="read-time">~4 min read</span>
-          </div>
-          <p>Automated safety diagnostic tool — crawls web targets, identifies OWASP Top-10 vulnerabilities, generates structured security reports.</p>
+          <div class="proj-meta-row"><h3>Security Scanner</h3><span class="read-time">~4 min</span></div>
+          <p>Automated OWASP Top-10 vulnerability diagnostic tool — crawls web targets, identifies SQLi/XSS/CSRF, generates structured security reports.</p>
           <div class="proj-tags"><span>Python</span><span>Security</span></div>
           <div class="proj-actions">
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>View Source</a>
-            <button class="share-btn" data-project="Security Scanner" data-desc="Python OWASP vulnerability diagnostic tool" aria-label="Share Security Scanner">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Security Scanner source on GitHub (opens in new tab)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View Source
+            </a>
+            <button class="share-btn" data-project="Security Scanner" data-desc="Python OWASP vulnerability diagnostic tool" aria-label="Share Security Scanner project link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
           </div>
         </div>
       </article>
-
-      <article class="proj-card reveal" data-tags="javascript canvas" data-delay="0">
+      <article class="proj-card reveal" data-tags="javascript canvas" data-delay="0" role="listitem">
         <div class="proj-vis pv-rose" aria-hidden="true"><div class="pv-deco deco-bars"></div></div>
         <div class="proj-body">
-          <div class="proj-meta-row">
-            <h3>Vanish Pen</h3>
-            <span class="read-time">~2 min read</span>
-          </div>
+          <div class="proj-meta-row"><h3>Vanish Pen</h3><span class="read-time">~2 min</span></div>
           <p>Auto-fading canvas drawing app — strokes gradually disappear like ink on water. Pressure simulation, colour pickers, and export mode.</p>
           <div class="proj-tags"><span>JavaScript</span><span>Canvas</span></div>
           <div class="proj-actions">
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>View Source</a>
-            <button class="share-btn" data-project="Vanish Pen" data-desc="Auto-fading canvas drawing app with pressure simulation" aria-label="Share Vanish Pen">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Vanish Pen source on GitHub (opens in new tab)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View Source
+            </a>
+            <button class="share-btn" data-project="Vanish Pen" data-desc="Auto-fading canvas drawing app" aria-label="Share Vanish Pen project link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
           </div>
         </div>
       </article>
-
-      <article class="proj-card reveal" data-tags="javascript" data-delay="80">
+      <article class="proj-card reveal" data-tags="javascript" data-delay="80" role="listitem">
         <div class="proj-vis pv-amber" aria-hidden="true"><div class="pv-deco deco-diamonds"></div></div>
         <div class="proj-body">
-          <div class="proj-meta-row">
-            <h3>Artmoji</h3>
-            <span class="read-time">~2 min read</span>
-          </div>
-          <p>Text-to-dot-art parser — converts any text input into creative ASCII/dot-art compositions with customisable density and character mapping.</p>
+          <div class="proj-meta-row"><h3>Artmoji</h3><span class="read-time">~2 min</span></div>
+          <p>Text-to-dot-art parser — converts any text into creative ASCII/dot-art compositions with customisable density and character mapping.</p>
           <div class="proj-tags"><span>JavaScript</span></div>
           <div class="proj-actions">
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>View Source</a>
-            <button class="share-btn" data-project="Artmoji" data-desc="Text-to-dot-art parser with customisable density" aria-label="Share Artmoji">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Artmoji source on GitHub (opens in new tab)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View Source
+            </a>
+            <button class="share-btn" data-project="Artmoji" data-desc="Text-to-dot-art parser" aria-label="Share Artmoji project link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
           </div>
         </div>
       </article>
-
-      <article class="proj-card reveal" data-tags="javascript typescript" data-delay="160">
+      <article class="proj-card reveal" data-tags="javascript typescript" data-delay="160" role="listitem">
         <div class="proj-vis pv-purple" aria-hidden="true"><div class="pv-deco deco-cross"></div></div>
         <div class="proj-body">
-          <div class="proj-meta-row">
-            <h3>Mystical Dragon</h3>
-            <span class="read-time">~3 min read</span>
-          </div>
-          <p>3D interactive dragon with real-time physics, fire breath particle systems, and WebGL-powered environment built with Three.js.</p>
+          <div class="proj-meta-row"><h3>Mystical Dragon</h3><span class="read-time">~3 min</span></div>
+          <p>3D interactive dragon with real-time physics, fire breath particle systems, and WebGL-powered environment using Three.js.</p>
           <div class="proj-tags"><span>JavaScript</span><span>TypeScript</span></div>
           <div class="proj-actions">
-            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>View Source</a>
-            <button class="share-btn" data-project="Mystical Dragon" data-desc="3D WebGL dragon with physics and particle systems" aria-label="Share Mystical Dragon">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="proj-link" aria-label="View Mystical Dragon source on GitHub (opens in new tab)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              View Source
+            </a>
+            <button class="share-btn" data-project="Mystical Dragon" data-desc="3D WebGL dragon with physics" aria-label="Share Mystical Dragon project link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
           </div>
         </div>
@@ -551,103 +470,72 @@
   </div>
 </section>
 
-<!-- ════════════════ TECH RADAR ════════════════ -->
+<!-- TECH RADAR -->
 <section id="radar" class="section">
   <div class="container">
     <header class="section-hd reveal">
       <p class="section-eyebrow">// technology radar</p>
       <h2 class="section-title">Tech <span class="gradient-text">Positioning</span></h2>
-      <p class="section-sub">Strategic view of my technology adoption — where I'm investing, mastering, and what I'm phasing out.</p>
+      <p class="section-sub">Strategic view of my technology adoption — investing, mastering, and phasing out.</p>
     </header>
     <div class="radar-grid reveal">
       <div class="radar-ring ring-adopt">
-        <h3 class="ring-label">
-          <span class="ring-dot dot-green" aria-hidden="true"></span>
-          Adopt — actively using in production
-        </h3>
-        <div class="radar-items">
-          <span class="radar-item">TypeScript</span><span class="radar-item">React</span>
-          <span class="radar-item">Supabase</span><span class="radar-item">Gemini API</span>
-          <span class="radar-item">Astro v6</span><span class="radar-item">Tailwind v4</span>
-          <span class="radar-item">Python</span><span class="radar-item">Git / GitHub</span>
+        <h3 class="ring-label"><span class="ring-dot dot-green" aria-hidden="true"></span>Adopt — using in production</h3>
+        <div class="radar-items" role="list">
+          <span class="radar-item" role="listitem">TypeScript</span><span class="radar-item" role="listitem">React</span>
+          <span class="radar-item" role="listitem">Supabase</span><span class="radar-item" role="listitem">Gemini API</span>
+          <span class="radar-item" role="listitem">Astro v6</span><span class="radar-item" role="listitem">Tailwind v4</span>
+          <span class="radar-item" role="listitem">Python</span><span class="radar-item" role="listitem">Git / GitHub</span>
         </div>
       </div>
       <div class="radar-ring ring-trial">
-        <h3 class="ring-label">
-          <span class="ring-dot dot-blue" aria-hidden="true"></span>
-          Trial — experimenting &amp; evaluating
-        </h3>
-        <div class="radar-items">
-          <span class="radar-item">LangGraph</span><span class="radar-item">Bun</span>
-          <span class="radar-item">Hono.js</span><span class="radar-item">Drizzle ORM</span>
-          <span class="radar-item">pgvector</span><span class="radar-item">Fly.io</span>
+        <h3 class="ring-label"><span class="ring-dot dot-blue" aria-hidden="true"></span>Trial — evaluating</h3>
+        <div class="radar-items" role="list">
+          <span class="radar-item" role="listitem">LangGraph</span><span class="radar-item" role="listitem">Bun</span>
+          <span class="radar-item" role="listitem">Hono.js</span><span class="radar-item" role="listitem">Drizzle ORM</span>
+          <span class="radar-item" role="listitem">pgvector</span><span class="radar-item" role="listitem">Fly.io</span>
         </div>
       </div>
       <div class="radar-ring ring-assess">
-        <h3 class="ring-label">
-          <span class="ring-dot dot-yellow" aria-hidden="true"></span>
-          Assess — exploring with interest
-        </h3>
-        <div class="radar-items">
-          <span class="radar-item">Rust</span><span class="radar-item">WebAssembly</span>
-          <span class="radar-item">Deno 2</span><span class="radar-item">Anthropic Claude API</span>
-          <span class="radar-item">Temporal.io</span>
+        <h3 class="ring-label"><span class="ring-dot dot-yellow" aria-hidden="true"></span>Assess — exploring</h3>
+        <div class="radar-items" role="list">
+          <span class="radar-item" role="listitem">Rust</span><span class="radar-item" role="listitem">WebAssembly</span>
+          <span class="radar-item" role="listitem">Deno 2</span><span class="radar-item" role="listitem">Claude API</span>
+          <span class="radar-item" role="listitem">Temporal.io</span>
         </div>
       </div>
       <div class="radar-ring ring-hold">
-        <h3 class="ring-label">
-          <span class="ring-dot dot-red" aria-hidden="true"></span>
-          Hold — phasing out or avoiding
-        </h3>
-        <div class="radar-items">
-          <span class="radar-item">jQuery</span><span class="radar-item">Create React App</span>
-          <span class="radar-item">REST-only architectures</span><span class="radar-item">PHP/WordPress</span>
+        <h3 class="ring-label"><span class="ring-dot dot-red" aria-hidden="true"></span>Hold — phasing out</h3>
+        <div class="radar-items" role="list">
+          <span class="radar-item" role="listitem">jQuery</span><span class="radar-item" role="listitem">Create React App</span>
+          <span class="radar-item" role="listitem">REST-only APIs</span><span class="radar-item" role="listitem">PHP/WordPress</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ GITHUB ACTIVITY ════════════════ -->
+<!-- GITHUB ACTIVITY -->
 <section id="github" class="section alt-bg">
   <div class="container">
     <header class="section-hd reveal">
       <p class="section-eyebrow">// live activity</p>
       <h2 class="section-title">GitHub <span class="gradient-text">Feed</span></h2>
-      <p class="section-sub">Recent public activity from <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="inline-link">@SabbirHossainRafat</a></p>
+      <p class="section-sub">Recent public activity from <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="inline-link" aria-label="Visit SabbirHossainRafat on GitHub (opens in new tab)">@SabbirHossainRafat</a></p>
     </header>
-    <div id="github-feed" class="github-feed reveal">
-      <div class="github-loading">
-        <div class="loading-spinner"></div>
-        <span>Fetching GitHub activity…</span>
-      </div>
+    <div id="github-feed" class="github-feed reveal" aria-live="polite" aria-label="GitHub activity feed">
+      <div class="github-loading"><div class="loading-spinner" aria-hidden="true"></div><span>Fetching GitHub activity…</span></div>
     </div>
-    <div class="github-stats-row reveal" data-delay="100">
-      <div class="gh-stat-card" id="gh-repos">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
-        <span class="gh-stat-num" id="gh-repos-num">—</span>
-        <span class="gh-stat-lbl">Public Repos</span>
-      </div>
-      <div class="gh-stat-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span class="gh-stat-num" id="gh-followers-num">—</span>
-        <span class="gh-stat-lbl">Followers</span>
-      </div>
-      <div class="gh-stat-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span class="gh-stat-num" id="gh-stars-num">—</span>
-        <span class="gh-stat-lbl">Total Stars</span>
-      </div>
-      <div class="gh-stat-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span class="gh-stat-num" id="gh-age-num">—</span>
-        <span class="gh-stat-lbl">Account Age</span>
-      </div>
+    <div class="github-stats-row reveal" data-delay="100" role="list" aria-label="GitHub statistics">
+      <div class="gh-stat-card" role="listitem"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg><span class="gh-stat-num" id="gh-repos-num" aria-label="Public repositories">—</span><span class="gh-stat-lbl">Public Repos</span></div>
+      <div class="gh-stat-card" role="listitem"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="gh-stat-num" id="gh-followers-num" aria-label="GitHub followers">—</span><span class="gh-stat-lbl">Followers</span></div>
+      <div class="gh-stat-card" role="listitem"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span class="gh-stat-num" id="gh-stars-num" aria-label="Total GitHub stars">—</span><span class="gh-stat-lbl">Total Stars</span></div>
+      <div class="gh-stat-card" role="listitem"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="gh-stat-num" id="gh-age-num" aria-label="GitHub account age">—</span><span class="gh-stat-lbl">Account Age</span></div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ QUOTE ════════════════ -->
+<!-- QUOTE -->
 <section class="section quote-sec">
   <div class="container">
     <div class="quote-wrap reveal">
@@ -660,8 +548,8 @@
   </div>
 </section>
 
-<!-- ════════════════ CONTACT ════════════════ -->
-<section id="contact" class="section alt-bg">
+<!-- CONTACT — equal-height CSS Grid -->
+<section id="contact" class="section">
   <div class="container">
     <header class="section-hd reveal">
       <p class="section-eyebrow">// initialize connection</p>
@@ -672,172 +560,161 @@
       <div class="contact-info reveal">
         <p class="channel-cmd"><span class="cmd-dollar">$</span> <span class="cmd-text">channels --list</span></p>
         <div class="channels">
-          <a href="mailto:sabbirrafat369@gmail.com" class="channel-item">
-            <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <a href="mailto:sabbirrafat369@gmail.com" class="channel-item" aria-label="Send email to Sabbir at sabbirrafat369@gmail.com">
+            <div class="ch-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <div class="ch-copy"><span class="ch-label">Email</span><span class="ch-val">sabbirrafat369@gmail.com</span></div>
           </a>
-          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="channel-item">
-            <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></div>
+          <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" class="channel-item" aria-label="Visit Sabbir on GitHub (opens in new tab)">
+            <div class="ch-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></div>
             <div class="ch-copy"><span class="ch-label">GitHub</span><span class="ch-val">SabbirHossainRafat</span></div>
           </a>
-          <a href="https://linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer" class="channel-item">
-            <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+          <a href="https://linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer" class="channel-item" aria-label="Visit Sabbir on LinkedIn (opens in new tab)">
+            <div class="ch-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
             <div class="ch-copy"><span class="ch-label">LinkedIn</span><span class="ch-val">sabbirhossainrafat</span></div>
           </a>
-          <a href="https://x.com/sabbir_rafat" target="_blank" rel="noopener noreferrer" class="channel-item">
-            <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.213 5.567 6.03-5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+          <a href="https://x.com/sabbir_rafat" target="_blank" rel="noopener noreferrer" class="channel-item" aria-label="Visit Sabbir on Twitter/X (opens in new tab)">
+            <div class="ch-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.213 5.567 6.03-5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
             <div class="ch-copy"><span class="ch-label">Twitter / X</span><span class="ch-val">@sabbir_rafat</span></div>
           </a>
         </div>
         <div class="tz-hint" id="tz-hint" aria-live="polite">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span id="tz-text">Detecting your timezone…</span>
         </div>
       </div>
+
       <div class="contact-form-wrap reveal" data-delay="150">
-        <form id="contact-form" novalidate>
+        <form id="contact-form" novalidate aria-label="Contact form">
+          <!-- Honeypot — hidden from real users, ignored by screen readers -->
+          <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">
+            <input type="text" name="website" id="hp-website" autocomplete="off" tabindex="-1" />
+            <input type="text" name="phone_number" id="hp-phone" autocomplete="off" tabindex="-1" />
+          </div>
+          <input type="hidden" name="_token" id="form-token" value="" />
           <div class="field-wrap">
-            <input type="text" id="f-name" name="name" placeholder=" " autocomplete="name" required />
+            <input type="text" id="f-name" name="name" placeholder=" " autocomplete="name" required aria-required="true" aria-describedby="err-name" />
             <label for="f-name">Your Name</label>
-            <span class="field-err" id="err-name" role="alert"></span>
+            <span class="field-err" id="err-name" role="alert" aria-live="polite"></span>
           </div>
           <div class="field-wrap">
-            <input type="email" id="f-email" name="email" placeholder=" " autocomplete="email" required />
+            <input type="email" id="f-email" name="email" placeholder=" " autocomplete="email" required aria-required="true" aria-describedby="err-email" />
             <label for="f-email">Email Address</label>
-            <span class="field-err" id="err-email" role="alert"></span>
+            <span class="field-err" id="err-email" role="alert" aria-live="polite"></span>
           </div>
           <div class="field-wrap field-textarea">
-            <textarea id="f-msg" name="message" rows="5" maxlength="1000" placeholder=" " required></textarea>
+            <textarea id="f-msg" name="message" rows="5" maxlength="1000" placeholder=" " required aria-required="true" aria-describedby="err-msg char-count-desc"></textarea>
             <label for="f-msg">Message</label>
-            <span class="field-err" id="err-msg" role="alert"></span>
-            <div class="char-wrap"><span id="char-count">0</span> / 1000</div>
+            <span class="field-err" id="err-msg" role="alert" aria-live="polite"></span>
+            <div class="char-wrap"><span id="char-count" aria-live="polite">0</span><span id="char-count-desc"> / 1000 characters</span></div>
           </div>
-          <button type="submit" id="form-submit" class="btn btn-primary btn-full">
+          <button type="submit" id="form-submit" class="btn btn-primary btn-full" aria-label="Send your message to Sabbir">
             <span class="btn-label">Send Message</span>
-            <svg class="btn-spinner hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><circle cx="12" cy="12" r="10" opacity="0.2"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>
-            <svg class="btn-check hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg class="btn-spinner hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="10" opacity="0.2"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>
+            <svg class="btn-check hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           </button>
-          <p id="form-global-err" class="form-global hidden" role="alert"></p>
+          <p id="form-global-err" class="form-global hidden" role="alert" aria-live="assertive"></p>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════ FOOTER ════════════════ -->
-<footer class="site-footer">
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
   <div class="container footer-inner">
     <div class="footer-left">
       <p class="footer-copy">© <span id="footer-year"></span> Sabbir Hossain Rafat</p>
       <p class="footer-sync">Last updated: <time id="footer-date"></time></p>
     </div>
     <div class="footer-center">
-      <p class="footer-colophon">Built with TypeScript · Vite · Flask · ♥</p>
+      <p class="footer-colophon">Built with TypeScript · Vite · Flask</p>
     </div>
-    <nav class="footer-nav" aria-label="Footer">
-      <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="mailto:sabbirrafat369@gmail.com">Email</a>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="https://github.com/SabbirHossainRafat" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in new tab)">GitHub</a>
+      <a href="https://linkedin.com/in/sabbirhossainrafat" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">LinkedIn</a>
+      <a href="mailto:sabbirrafat369@gmail.com" aria-label="Send email">Email</a>
     </nav>
   </div>
 </footer>
 
-<button id="back-to-top" class="back-to-top" aria-label="Scroll to top">
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+<button id="back-to-top" class="back-to-top" aria-label="Scroll back to top of page">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<!-- ════════════════ TERMINAL ════════════════ -->
+<!-- TERMINAL MODAL -->
 <div id="terminal-overlay" class="overlay" aria-hidden="true">
-  <div id="terminal-modal" class="terminal" role="dialog" aria-modal="true" aria-label="Ubuntu terminal">
+  <div id="terminal-modal" class="terminal" role="dialog" aria-modal="true" aria-label="Interactive Ubuntu terminal">
     <div class="term-titlebar">
       <div class="term-dots">
         <button class="tdot tdot-red" id="term-x-dot" aria-label="Close terminal"></button>
         <span class="tdot tdot-yellow" aria-hidden="true"></span>
         <span class="tdot tdot-green" aria-hidden="true"></span>
       </div>
-      <span class="term-title">sabbir@ubuntu: ~</span>
+      <span class="term-title" id="term-title-bar">sabbir@ubuntu: ~</span>
       <button id="terminal-close-btn" class="term-close" aria-label="Close terminal">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div id="term-output" class="term-output" role="log" aria-live="polite"></div>
+    <div id="term-output" class="term-output" role="log" aria-live="polite" aria-label="Terminal output"></div>
     <div class="term-row">
-      <span class="term-prompt" aria-hidden="true">
-        <span class="tp-user">sabbir</span><span class="tp-at">@</span><span class="tp-host">ubuntu</span><span class="tp-sep">:</span><span class="tp-dir">~</span><span class="tp-dollar">$</span>
+      <span class="term-prompt" id="term-prompt-el" aria-hidden="true">
+        <span class="tp-user" id="tp-user">sabbir</span><span class="tp-at">@</span><span class="tp-host" id="tp-host">ubuntu</span><span class="tp-sep">:</span><span class="tp-dir" id="term-cwd-display">~</span><span class="tp-dollar">$</span>
       </span>
-      <input id="term-input" type="text" class="term-input" autocomplete="off" spellcheck="false" autocapitalize="none" aria-label="Terminal input" />
+      <input id="term-input" type="text" class="term-input" autocomplete="off" spellcheck="false" autocapitalize="none" aria-label="Terminal command input" />
     </div>
   </div>
 </div>
 
-<!-- ════════════════ AI CHAT ════════════════ -->
-<button id="chat-fab" class="chat-fab" aria-label="Open AI assistant">
-  <!-- Neural AI icon -->
-  <svg class="fab-icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+<!-- AI CHAT -->
+<button id="chat-fab" class="chat-fab" aria-label="Open AI assistant chat" aria-expanded="false">
+  <svg class="fab-icon-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
     <circle cx="12" cy="12" r="3"/>
-    <circle cx="4" cy="6" r="1.5"/>
-    <circle cx="20" cy="6" r="1.5"/>
-    <circle cx="4" cy="18" r="1.5"/>
-    <circle cx="20" cy="18" r="1.5"/>
+    <circle cx="4" cy="6" r="1.5"/><circle cx="20" cy="6" r="1.5"/>
+    <circle cx="4" cy="18" r="1.5"/><circle cx="20" cy="18" r="1.5"/>
     <line x1="5.5" y1="6.5" x2="9.5" y2="10.5"/>
     <line x1="18.5" y1="6.5" x2="14.5" y2="10.5"/>
     <line x1="5.5" y1="17.5" x2="9.5" y2="13.5"/>
     <line x1="18.5" y1="17.5" x2="14.5" y2="13.5"/>
   </svg>
-  <svg class="fab-icon-close hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  <svg class="fab-icon-close hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   <span class="fab-badge" aria-hidden="true">AI</span>
 </button>
-
-<div id="chat-panel" class="chat-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Sabbir's AI assistant">
+<div id="chat-panel" class="chat-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-label="AI portfolio assistant">
   <div class="chat-hd">
     <div class="chat-hd-left">
       <div class="chat-avatar" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="3"/>
-          <circle cx="4" cy="6" r="1.5"/><circle cx="20" cy="6" r="1.5"/>
-          <circle cx="4" cy="18" r="1.5"/><circle cx="20" cy="18" r="1.5"/>
-          <line x1="5.5" y1="6.5" x2="9.5" y2="10.5"/>
-          <line x1="18.5" y1="6.5" x2="14.5" y2="10.5"/>
-          <line x1="5.5" y1="17.5" x2="9.5" y2="13.5"/>
-          <line x1="18.5" y1="17.5" x2="14.5" y2="13.5"/>
-        </svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="1.5"/><circle cx="20" cy="6" r="1.5"/><circle cx="4" cy="18" r="1.5"/><circle cx="20" cy="18" r="1.5"/><line x1="5.5" y1="6.5" x2="9.5" y2="10.5"/><line x1="18.5" y1="6.5" x2="14.5" y2="10.5"/><line x1="5.5" y1="17.5" x2="9.5" y2="13.5"/><line x1="18.5" y1="17.5" x2="14.5" y2="13.5"/></svg>
       </div>
       <div>
         <p class="chat-bot-name">Sabbir's AI</p>
-        <p class="chat-bot-status"><span class="online-dot" aria-hidden="true"></span>Ready to help</p>
+        <p class="chat-bot-status"><span class="online-dot" aria-hidden="true"></span><span>Ready to help</span></p>
       </div>
     </div>
-    <button id="chat-close" aria-label="Close chat">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
+    <button id="chat-close" aria-label="Close AI chat panel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   </div>
-  <div id="chat-messages" class="chat-msgs"></div>
-  <div id="chat-quick" class="chat-quick">
+  <div id="chat-messages" class="chat-msgs" aria-live="polite" aria-label="Chat conversation"></div>
+  <div id="chat-quick" class="chat-quick" role="group" aria-label="Quick question suggestions">
     <button class="quick-chip">What are your top skills?</button>
     <button class="quick-chip">Tell me about your projects</button>
     <button class="quick-chip">Are you available for work?</button>
     <button class="quick-chip">What's your background?</button>
-    <button class="quick-chip">Explain your AI expertise</button>
-    <button class="quick-chip">What certifications do you have?</button>
+    <button class="quick-chip">Your AI expertise?</button>
+    <button class="quick-chip">CEH certification?</button>
   </div>
   <div class="chat-input-bar">
-    <input type="text" id="chat-input" placeholder="Ask me anything about Sabbir…" autocomplete="off" aria-label="Chat input" />
-    <button id="chat-send" aria-label="Send">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </button>
+    <input type="text" id="chat-input" placeholder="Ask me anything about Sabbir…" autocomplete="off" aria-label="Type your question for the AI assistant" />
+    <button id="chat-send" aria-label="Send message to AI assistant"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
   </div>
 </div>
 
-<!-- ════════════════ HELP PANEL ════════════════ -->
+<!-- HELP PANEL -->
 <div id="help-overlay" class="overlay" aria-hidden="true">
-  <div class="help-modal" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+  <div class="help-modal" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts reference">
     <div class="help-hd">
       <h2>Keyboard Shortcuts</h2>
-      <button id="help-close" aria-label="Close">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+      <button id="help-close" aria-label="Close keyboard shortcuts panel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
-    <ul class="shortcut-list">
+    <ul class="shortcut-list" role="list">
       <li><kbd>T</kbd><span>Toggle dark / light theme</span></li>
       <li><kbd>H</kbd><span>Open keyboard shortcuts</span></li>
       <li><kbd>G</kbd><span>Scroll to top</span></li>
@@ -849,9 +726,9 @@
 </div>
 
 <!-- Share toast -->
-<div id="share-toast" class="share-toast" aria-live="polite" aria-hidden="true">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-  <span>Link copied to clipboard!</span>
+<div id="share-toast" class="share-toast" aria-live="polite" aria-hidden="true" role="status">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+  <span>Link copied!</span>
 </div>
 
 <script src="script.js"></script>

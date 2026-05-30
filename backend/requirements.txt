@@ -1,9 +1,8 @@
-# Sabbir Hossain Rafat — Portfolio Backend Dependencies
-# Install: pip install -r requirements.txt
-
 flask==3.0.3
 flask-cors==4.0.1
 flask-limiter==3.7.0
 bleach==6.1.0
 python-dotenv==1.0.1
 gunicorn==22.0.0
+requests==2.32.3
+psutil==6.0.0

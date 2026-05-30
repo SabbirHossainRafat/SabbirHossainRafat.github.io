@@ -1,0 +1,47 @@
+# ── Environment ──
+.env
+.env.local
+.env.*.local
+
+# ── Node ──
+node_modules/
+dist/
+.vite/
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+venv/
+.venv/
+env/
+.env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ── Logs ──
+*.log
+portfolio.log
+portfolio.log.*
+contact_messages.log
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editors ──
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── Misc ──
+*.bak
+*.tmp

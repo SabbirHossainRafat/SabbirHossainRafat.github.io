@@ -1,38 +1,30 @@
 {
   "name": "sabbir-portfolio",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Sabbir Hossain Rafat — AI Product Engineer & Full-Stack Architect portfolio",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "type-check": "tsc --noEmit",
-    "backend": "python app.py",
-    "backend:prod": "gunicorn --bind 0.0.0.0:5000 --workers 4 --timeout 60 app:app"
+    "dev":          "vite",
+    "build":        "tsc --noEmit && vite build",
+    "preview":      "vite preview",
+    "type-check":   "tsc --noEmit",
+    "backend":      "python app.py",
+    "backend:prod": "gunicorn --bind 0.0.0.0:5000 --workers 1 --timeout 60 app:app"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
-    "vite": "^5.2.12"
+    "vite":       "^5.2.12"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node":   ">=18.0.0",
     "python": ">=3.10.0"
   },
-  "keywords": [
-    "portfolio",
-    "ai-engineer",
-    "full-stack",
-    "sabbir-hossain-rafat",
-    "typescript",
-    "react",
-    "gemini-api"
-  ],
-  "author": "Sabbir Hossain Rafat <sabbirrafat369@gmail.com>",
+  "keywords": ["portfolio","ai-engineer","full-stack","sabbir-hossain-rafat","typescript","python"],
+  "author":  "Sabbir Hossain Rafat <sabbirrafat369@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SabbirHossainRafat/portfolio"
+    "url":  "https://github.com/SabbirHossainRafat/portfolio"
   },
   "homepage": "https://sabbirrafat.dev"
 }

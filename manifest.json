@@ -1,126 +1,52 @@
 {
-  "name": "Sabbir Hossain Rafat — AI Product Engineer",
-  "short_name": "Sabbir Rafat",
-  "description": "AI Product Engineer & Full-Stack Architect — building intelligent, secure, high-performance systems.",
-  "start_url": "/",
-  "display": "standalone",
-  "orientation": "portrait-primary",
-  "background_color": "#080c18",
-  "theme_color": "#667eea",
-  "categories": ["portfolio", "developer", "technology"],
-  "lang": "en",
-  "dir": "ltr",
-  "scope": "/",
+  "name":             "Sabbir Hossain Rafat — AI Product Engineer",
+  "short_name":       "Sabbir Rafat",
+  "description":      "AI Product Engineer & Full-Stack Architect — building intelligent, secure, high-performance systems.",
+  "start_url":        "/",
+  "scope":            "/",
+  "display":          "standalone",
+  "orientation":      "portrait-primary",
+  "background_color": "#080b14",
+  "theme_color":      "#0d1117",
+  "lang":             "en",
+  "dir":              "ltr",
+  "categories":       ["portfolio", "developer", "technology"],
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "icons/icon-16.png",
-      "sizes": "16x16",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-32.png",
-      "sizes": "32x32",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-48.png",
-      "sizes": "48x48",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
+      "src":     "icons/icon-192.png",
+      "sizes":   "192x192",
+      "type":    "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src":     "icons/icon-512.png",
+      "sizes":   "512x512",
+      "type":    "image/png",
       "purpose": "any maskable"
     }
   ],
   "shortcuts": [
     {
-      "name": "Projects",
-      "short_name": "Projects",
+      "name":        "Projects",
+      "short_name":  "Projects",
       "description": "View Sabbir's shipped projects",
-      "url": "/#projects",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "url":         "/#projects",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Contact",
-      "short_name": "Contact",
+      "name":        "Contact",
+      "short_name":  "Contact",
       "description": "Get in touch with Sabbir",
-      "url": "/#contact",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "url":         "/#contact",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Resume",
-      "short_name": "Resume",
-      "description": "View Sabbir's resume",
-      "url": "https://docs.google.com/document/d/1BxiMVss0yztFe7uCR6lZMfWtMO_dnNEM5iH6loCjHZo/edit?usp=sharing",
-      "icons": [{ "src": "icons/icon-96.png", "sizes": "96x96" }]
+      "name":        "Resume",
+      "short_name":  "Resume",
+      "description": "View Sabbir's resume on Google Docs",
+      "url":         "https://docs.google.com/document/d/1s2c_ilaTXWodISMNfIhg0M_QlBbPbESNaf1xoDqWr64/edit?usp=sharing",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
-  ],
-  "screenshots": [
-    {
-      "src": "screenshots/desktop.png",
-      "sizes": "1280x800",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Sabbir Rafat Portfolio — Desktop"
-    },
-    {
-      "src": "screenshots/mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Sabbir Rafat Portfolio — Mobile"
-    }
-  ],
-  "related_applications": [],
-  "edge_side_panel": {
-    "preferred_width": 480
-  }
+  ]
 }
