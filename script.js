@@ -6,9 +6,7 @@
 'use strict';
 
 /* ── Build-time injected constants ── */
-const API_BASE = (typeof __API_BASE__ !== 'undefined' && __API_BASE__)
-  ? __API_BASE__
-  : (location.hostname === 'localhost' || location.hostname === '127.0.0.1' ? '' : '');
+const API_BASE = 'https://sabbir-rafat-portfolio.onrender.com';
 
 const BUILD_DATE = (typeof __BUILD_DATE__ !== 'undefined' && __BUILD_DATE__)
   ? __BUILD_DATE__
